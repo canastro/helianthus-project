@@ -1,6 +1,7 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
 import {Component, View, NgFor} from 'angular2/angular2';
 import {CategoriesService} from '../../services/categories';
+import {RouterLink} from 'angular2/router';
 
 // Annotation section
 @Component({
@@ -9,7 +10,7 @@ import {CategoriesService} from '../../services/categories';
 
 @View({
   templateUrl: 'components/navbar/navbar.html',
-  directives: [NgFor]
+  directives: [NgFor, RouterLink]
 })
 
 // Component controller
