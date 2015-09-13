@@ -49,6 +49,7 @@
 # Tutorials
     - http://www.sitepoint.com/getting-started-with-angular-2-using-typescript/
     - https://github.com/sitepoint-editors/PinYourAchievements-Angular2-TypeScript
+    - https://github.com/rkirov/youtube-app
 
 # Run
 

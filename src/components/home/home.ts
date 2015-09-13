@@ -4,15 +4,15 @@ import {CategoriesService} from '../../services/categories';
 
 // Annotation section
 @Component({
-  selector: 'navbar'
+  selector: 'home'
 })
 
 @View({
-  templateUrl: 'components/navbar/navbar.html'
+  templateUrl: 'components/home/home.html'
 })
 
 // Component controller
-export class NavBar {
+export class Home {
 
     constructor(@Inject(CategoriesService) private categoriesService: CategoriesService) {
     }

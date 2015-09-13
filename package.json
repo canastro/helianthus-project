@@ -9,14 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/EladRK/angular-starter.git"
+    "url": "https://github.com/canastro/helianthus-project.git"
   },
   "author": "Elad Katz",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/EladRK/angular-starter/issues"
-  },
-  "homepage": "https://github.com/EladRK/angular-starter",
   "devDependencies": {
     "connect-livereload": "^0.5.3",
     "del": "^1.2.0",
