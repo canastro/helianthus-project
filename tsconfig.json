@@ -21,6 +21,7 @@
     ],
     "files": [
         "./src/app.ts",
+        "./src/components/about/about.ts",
         "./src/components/app/app.ts",
         "./src/components/home/home.ts",
         "./src/components/navbar/navbar.ts",

@@ -2,6 +2,8 @@
 import {Component, View, bootstrap} from 'angular2/angular2';
 import {NavBar} from '../navbar/navbar';
 import {Home} from '../home/home';
+import {About} from '../about/about';
+import {Router, RouterOutlet} from 'angular2/router';
 
 // Annotation section
 @Component({
@@ -10,14 +12,16 @@ import {Home} from '../home/home';
 
 @View({
     templateUrl: 'components/app/app.html',
-    directives: [Home, NavBar]
+    directives: [RouterOutlet, NavBar]
 })
 
 // Component controller
 export class App {
-  name: string;
 
-  constructor() {
-    this.name = 'Alice';
-  }
+    constructor(router: Router) {
+        router.config([
+            { path: '/', as: 'home', component: Home },
+            { path: '/about', as: 'about', component: About }
+        ]);
+    }
 }

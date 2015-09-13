@@ -3,7 +3,12 @@ import {Http} from 'angular2/http';
 
 @Injectable()
 export class CategoriesService {
-	constructor(@Inject(Http) private http: Http) {
+
+	// categories: Array<any>;
+
+	constructor(private http: Http) {
+
+		//this.getAllCategories();
 	}
 
 	getAchievementsOfType(type: string) : any {
@@ -11,9 +16,16 @@ export class CategoriesService {
 		return this.http.get(path);
 	}
 
+	//TODO: get a way of storing this and return as promises... this.http.get doesnt return promises??
 	getAllCategories() : any {
-		var path = '/api/achievements';
-		return this.http.get(path);
+		var self = this;
+		var path = '/api/categories';
+
+		return this.http.get(path)
+		// .toRx()
+		// .subscribe(result => {
+		// 	self.categories = JSON.parse(result._body);
+		// });
 	}
 
 	addAnAchievement(newAchievement) {

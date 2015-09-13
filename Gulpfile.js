@@ -6,17 +6,14 @@ var runSequence = require('run-sequence');
 var sourcemaps = require('gulp-sourcemaps');
 var connect = require('gulp-connect');
 var open = require('gulp-open');
-
-var serverOptions = {
-	root: 'public',
-	port: 8000,
-	livereload: true,
-};
+var sass = require('gulp-sass');
+var modRewrite = require('connect-modrewrite');
 
 var tasks = {
 	'default': 'default',
 	cleanAll : 'Clean-All',
 	typeScript: 'TypeScript-Compile',
+	sass: 'Compile-SASS',
 	html: 'Copy-HTML',
 	copy: 'Copy-Compiled-JS',
 	cleanSrc: 'Clean-Source',
@@ -31,6 +28,7 @@ gulp.task(tasks.default, function () {
 	runSequence(
         tasks.cleanAll,
 		tasks.typeScript,
+		tasks.sass,
 		tasks.html,
 		tasks.copy,
 		tasks.cleanSrc,
@@ -45,6 +43,7 @@ gulp.task(tasks.watcherRebuild, function (callback) {
 	runSequence(
 		tasks.cleanPublic,
 		tasks.typeScript,
+		tasks.sass,
 		tasks.html,
 		tasks.copy,
 		tasks.cleanSrc
@@ -71,6 +70,18 @@ gulp.task(tasks.html, function () {
 	return gulp.src(['src/**/**.html'])
         .pipe(gulp.dest('build'));
 });
+
+gulp.task(tasks.sass, function (done) {
+
+    return gulp.src('./src/assets/styles/main.scss')
+        .pipe(
+            sass({
+                style: 'compressed'
+            }).on('error', sass.logError)
+        )
+        .pipe(gulp.dest('./build/assets/styles'));
+});
+
 
 // copy generated/compiled files
 // from  directory to public/scripts directory
@@ -100,10 +111,22 @@ gulp.task(tasks.cleanSrc, function () {
 
 // watcher
 gulp.task(tasks.watch, function () {
-	gulp.watch(['src/**/**.ts', 'src/**/**.html'], [tasks.watcherRebuild]);
+	gulp.watch(['src/**/**.ts', 'src/**/**.html', 'src/**/*.scss'], [tasks.watcherRebuild]);
 });
 
 // starts web server
 gulp.task(tasks.startWebServer, function () {
-	connect.server(serverOptions);
+	connect.server({
+		root: 'public',
+		port: 8000,
+		livereload: true,
+		middleware: function() {
+			return [
+				modRewrite([
+					'^/api/(.*)$ http://localhost:8080/api/$1 [P]'
+				])
+			];
+		}
+	});
+
 });
