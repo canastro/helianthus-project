@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Angular 2 Quickstart</title>
+
+        <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="https://cask.scotch.io/bootstrap-4.0-flex.css">
+
+    </head>
+    <body>
+
+        <!-- The app component created in app.ts -->
+        <hellianthus-app></hellianthus-app>
+
+        <!-- jQuery first, then Bootstrap JS. -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+        <script src="https://github.jspm.io/jmcriffey/bower-traceur-runtime@0.0.91/traceur-runtime.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.4/system.src.js"></script>
+        <script>
+            System.config({
+                defaultJSExtensions: true
+            });
+        </script>
+
+        <script src="https://code.angularjs.org/2.0.0-alpha.37/angular2.js"></script>
+        <script src="https://code.angularjs.org/2.0.0-alpha.37/http.dev.js"></script>
+        <script src="https://code.angularjs.org/2.0.0-alpha.37/router.dev.js"></script>
+        <script>System.import('app');</script>
+    </body>
+</html>
