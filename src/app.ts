@@ -12,8 +12,9 @@ import {HTTP_BINDINGS} from 'angular2/http';
 import {App} from './components/app/app';
 
 import {CategoriesService} from './services/categories'
+import {AuthService} from './services/auth'
 
 // Second parameter provides a set of additional bindings
 // that will be used by Component (in our case application)
 // read more here: https://angular.io/docs/js/latest/api/core/bootstrap-function.html
-bootstrap(App, [ROUTER_BINDINGS, HTTP_BINDINGS, CategoriesService]);
+bootstrap(App, [ROUTER_BINDINGS, HTTP_BINDINGS, CategoriesService, AuthService]);

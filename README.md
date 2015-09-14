@@ -16,6 +16,10 @@
         - http://tympanus.net/codrops/category/blueprints/
         - Pre-loader: http://tympanus.net/Tutorials/SVGLoaderGSAP/index6.html
         - Off-canvas menu: http://tympanus.net/codrops/2014/09/16/off-canvas-menu-effects/
+        - http://tympanus.net/Development/HoverEffectIdeas/
+        - http://tympanus.net/Tutorials/SamsungGrid/
+        - http://tympanus.net/Development/ScatteredPolaroidsGallery/
+        - http://tympanus.net/Development/CreativeLoadingEffects/
 
 # Features
 

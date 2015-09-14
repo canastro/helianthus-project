@@ -3,6 +3,7 @@ import {Component, View, bootstrap} from 'angular2/angular2';
 import {NavBar} from '../navbar/navbar';
 import {Home} from '../home/home';
 import {About} from '../about/about';
+import {AdminHome} from '../admin/home/admin-home';
 import {Router, RouterOutlet} from 'angular2/router';
 
 // Annotation section
@@ -21,7 +22,8 @@ export class App {
     constructor(router: Router) {
         router.config([
             { path: '/', as: 'home', component: Home },
-            { path: '/about', as: 'about', component: About }
+            { path: '/about', as: 'about', component: About },
+            { path: '/admin', as: 'admin', component: AdminHome }
         ]);
     }
 }

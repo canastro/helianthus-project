@@ -22,9 +22,13 @@
     "files": [
         "./src/app.ts",
         "./src/components/about/about.ts",
+        "./src/components/admin/auth/admin-auth.ts",
+        "./src/components/admin/categories/admin-category.ts",
+        "./src/components/admin/home/admin-home.ts",
         "./src/components/app/app.ts",
         "./src/components/home/home.ts",
         "./src/components/navbar/navbar.ts",
+        "./src/services/auth.ts",
         "./src/services/categories.ts",
         "./typings/angular2/angular2.d.ts",
         "./typings/angular2/http.d.ts",

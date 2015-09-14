@@ -10,12 +10,7 @@ export class CategoriesService {
 
 		//this.getAllCategories();
 	}
-
-	getAchievementsOfType(type: string) : any {
-		var path = '/api/achievements/' + type;
-		return this.http.get(path);
-	}
-
+	
 	//TODO: get a way of storing this and return as promises... this.http.get doesnt return promises??
 	getAllCategories() : any {
 		var self = this;
@@ -26,10 +21,5 @@ export class CategoriesService {
 		// .subscribe(result => {
 		// 	self.categories = JSON.parse(result._body);
 		// });
-	}
-
-	addAnAchievement(newAchievement) {
-		var path = '/api/achievements';
-		return this.http.post(path, JSON.stringify(newAchievement));
 	}
 }
