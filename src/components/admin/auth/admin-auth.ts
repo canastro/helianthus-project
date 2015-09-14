@@ -34,7 +34,6 @@ export class AdminAuth {
 
     authenticate() {
         this.authService.authenticate(this.authForm.value)
-            .toRx()
     		.subscribe(result => {
     			console.log(result);
     		});
