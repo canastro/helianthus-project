@@ -4,24 +4,25 @@ import {AuthService} from '../../../services/auth';
 
 // Annotation section
 @Component({
-    selector: 'admin-auth',
+    selector: 'auth',
     viewBindings: [
         FormBuilder
     ]
 })
 
 @View({
-  templateUrl: 'components/admin/auth/admin-auth.html',
+  templateUrl: 'components/admin/auth/auth.html',
   directives: [FORM_DIRECTIVES]
 })
 
 // Component controller
-export class AdminAuth {
+export class Auth {
     authForm: any;
 
     //TODO: https://github.com/auth0/angular2-authentication-sample/blob/master/src/login/login.ts
     //TODO; https://github.com/sitepoint-editors/PinYourAchievements-Angular2-TypeScript/blob/master/scripts/src/components/add/add.ts
     //TODO: https://groups.google.com/forum/#!topic/angular/diuTityfBOU
+    //TODO: https://github.com/auth0/angular2-authentication-sample/blob/master/src/app/LoggedInOutlet.ts
     constructor(
         private formBuilder: FormBuilder,
         @Inject(AuthService) private authService: AuthService

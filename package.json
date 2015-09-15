@@ -25,7 +25,6 @@
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-typescript": "^2.7.6",
-    "run-sequence": "^1.1.0",
-    "typescript": "^1.5.0-beta"
+    "run-sequence": "^1.1.0"
   }
 }

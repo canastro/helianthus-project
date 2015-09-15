@@ -1,0 +1,12 @@
+
+<form (ng-submit)="createCategory()" [ng-form-model]="categoryForm">
+<!-- <form> -->
+    <fieldset class="form-group">
+        <label for="name">Category Name</label>
+
+        <!-- TODO: está a estourar aqui! -->
+        <input id="name" type="name" class="form-control" ng-control="name" placeholder="Enter name"/>
+    </fieldset>
+
+    <button type="submit" value="click" class="btn btn-primary">Submit</button>
+</form>

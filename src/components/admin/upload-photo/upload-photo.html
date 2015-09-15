@@ -1,0 +1,15 @@
+
+<form (ng-submit)="uploadPhoto()" [ng-form-model]="photoForm">
+    <fieldset class="form-group">
+        <label for="name">Upload photo</label>
+
+        <input id="title" type="text" class="form-control" ng-control="title" placeholder="Enter title"/>
+
+        <textarea id="description" type="text" class="form-control" ng-control="description" placeholder="Enter description">
+        </textarea>
+
+        <input id="photo" type="file" class="form-control" [(ng-model)]="file" (input)="changed($event)"/>
+    </fieldset>
+
+    <button type="submit" value="click" class="btn btn-primary">Submit</button>
+</form>

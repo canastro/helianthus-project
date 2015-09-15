@@ -1,0 +1,7 @@
+<ul class="dashboard-items-container">
+    <li *ng-for="#item of items" class="dashboard-item">
+        <a [router-link]="[item.path]">
+            <span class="dashboard-item-title">{{item.name}}</span>
+        </a>
+    </li>
+</ul>

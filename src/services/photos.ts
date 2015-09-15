@@ -3,28 +3,24 @@ import {Http, Headers} from 'angular2/http';
 import {AuthService} from './auth';
 
 @Injectable()
-export class CategoriesService {
-
-	// categories: Array<any>;
+export class PhotosService {
 
 	constructor(
 		private http: Http,
 		@Inject(AuthService) private authService: AuthService
 	) {
-
-		//this.getAllCategories();
 	}
 
-	getAllCategories() : any {
+	getAllPhotos() : any {
 		var self = this;
-		var path = '/api/categories';
+		var path = '/api/photos';
 
 		return this.http.get(path);
 	}
 
-	createCategory(params) : any {
+	uploadPhoto(params) : any {
 
-		let path = '/api/admin/categories';
+		let path = '/api/admin/photos';
 		let options = {
 			headers: new Headers()
 		};

@@ -1,5 +1,5 @@
 import {Component, Injectable, Inject} from 'angular2/angular2';
-import {Http} from 'angular2/http';
+import {Http, Headers} from 'angular2/http';
 import * as Rx from 'rx';
 
 @Injectable()
@@ -9,16 +9,35 @@ export class AuthService {
 	constructor(private http: Http) {
 	}
 
-	authenticate(params): any {
+	authenticate(params) : any {
 
-		var path = '/api/admin/authenticate';
+		let path = '/api/admin/authenticate';
+		let options = {
+			headers: new Headers()
+		};
+		options.headers.append('Content-Type', 'application/json');
 
-		return this.http.post(path, params)
+		return this.http.post(path, JSON.stringify(params), options)
             .toRx()
-			.flatMap(result => {
-				var token = JSON.parse(result._body);
-				localStorage.setItem('jwt', token)
+			.selectMany(result => {
+				var response = JSON.parse(result._body);
+
+				if (!response.success) {
+					return Promise.reject({
+						error: 'Failed to authenticate'
+					});
+				}
+
+				localStorage.setItem('jwt', response.token)
 				return Promise.resolve();
 			});
+	}
+
+	isLogged() : boolean {
+		return !!localStorage.getItem('jwt');
+	}
+
+	getToken() : string {
+		return localStorage.getItem('jwt');
 	}
 }
