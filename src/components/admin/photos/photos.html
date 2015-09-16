@@ -1,0 +1,21 @@
+
+<a class="nav-link" [router-link]="['/admin/photos/create']">Upload Photo</a>
+
+<table class="table photo-list-container">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ng-for="#photo of photos">
+            <td>{{photo.title}}</td>
+            <td>{{photo.description}}</td>
+            <td>{{photo.category ? photo.category.name : ''}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<router-outlet></router-outlet>

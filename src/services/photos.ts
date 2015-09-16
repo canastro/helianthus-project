@@ -11,7 +11,7 @@ export class PhotosService {
 	) {
 	}
 
-	getAllPhotos() : any {
+	getPhotos() : any {
 		var self = this;
 		var path = '/api/photos';
 

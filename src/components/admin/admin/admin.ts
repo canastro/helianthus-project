@@ -7,7 +7,7 @@ import {AuthService} from '../../../services/auth';
 import {Dashboard} from '../dashboard/dashboard';
 import {CreateCategory} from '../create-category/create-category';
 import {CreateTag} from '../create-tag/create-tag';
-import {UploadPhoto} from '../upload-photo/upload-photo';
+import {Photos} from '../photos/photos';
 
 import {ROUTER_DIRECTIVES, Router, RouterOutlet, RouteConfig} from 'angular2/router';
 
@@ -18,7 +18,7 @@ import {ROUTER_DIRECTIVES, Router, RouterOutlet, RouteConfig} from 'angular2/rou
 
 @View({
     templateUrl: 'components/admin/admin/admin.html',
-    directives: [ROUTER_DIRECTIVES, UploadPhoto]
+    directives: [ROUTER_DIRECTIVES]
 })
 
 @RouteConfig([
@@ -27,7 +27,7 @@ import {ROUTER_DIRECTIVES, Router, RouterOutlet, RouteConfig} from 'angular2/rou
     { path: '/auth', as: 'auth', component: Auth },
     { path: '/categories', as: 'categories', component: CreateCategory },
     { path: '/tags', as: 'tags', component: CreateTag },
-    { path: '/photos', as: 'photos', component: UploadPhoto }
+    { path: '/photos/...', as: 'photos', component: Photos }
 ])
 
 // Component controller
