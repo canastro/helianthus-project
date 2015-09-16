@@ -1,6 +1,6 @@
 /// <reference path="../../../../typings/angular2/angular2.d.ts" />
 import {FORM_DIRECTIVES, FormBuilder, Component, View, Validators, ControlGroup, Inject} from 'angular2/angular2';
-import {TasksService} from '../../../services/tasks';
+import {TagsService} from '../../../services/tags';
 
 // Annotation section
 @Component({
@@ -11,12 +11,12 @@ import {TasksService} from '../../../services/tasks';
 })
 
 @View({
-  templateUrl: 'components/admin/create-task/create-task.html',
+  templateUrl: 'components/admin/create-tag/create-tag.html',
   directives: [FORM_DIRECTIVES]
 })
 
 // Component controller
-export class CreateTask {
+export class CreateTag {
     taskForm: any;
 
     //TODO: https://github.com/auth0/angular2-authentication-sample/blob/master/src/login/login.ts
@@ -25,15 +25,15 @@ export class CreateTask {
     //TODO: https://github.com/auth0/angular2-authentication-sample/blob/master/src/app/LoggedInOutlet.ts
     constructor(
         private formBuilder: FormBuilder,
-        @Inject(TasksService) private tasksService: TasksService
+        @Inject(TagsService) private tagsService: TagsService
     ) {
         this.taskForm = formBuilder.group({
             name: ['']
         });
     }
 
-    createTask() {
-        this.tasksService.createTask(this.taskForm.value)
+    createTag() {
+        this.tagsService.createTag(this.taskForm.value)
             .subscribe(result => {
     			console.log(result);
     		});

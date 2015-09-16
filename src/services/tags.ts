@@ -3,7 +3,7 @@ import {Http, Headers} from 'angular2/http';
 import {AuthService} from './auth';
 
 @Injectable()
-export class TasksService {
+export class TagsService {
 
 	constructor(
 		private http: Http,
@@ -11,16 +11,16 @@ export class TasksService {
 	) {
 	}
 
-	getAllTasks() : any {
+	getAllTags() : any {
 		var self = this;
-		var path = '/api/tasks';
+		var path = '/api/tags';
 
 		return this.http.get(path);
 	}
 
-	createTask(params) : any {
+	createTag(params) : any {
 
-		let path = '/api/admin/tasks';
+		let path = '/api/admin/tags';
 		let options = {
 			headers: new Headers()
 		};

@@ -18,14 +18,28 @@ export class PhotosService {
 		return this.http.get(path);
 	}
 
+	//TODO: http://stackoverflow.com/questions/32423348/angular2-post-uploaded-file
+	//https://github.com/angular/angular/issues/2803
 	uploadPhoto(params) : any {
 
+		// let formData = new FormData();
 		let path = '/api/admin/photos';
 		let options = {
 			headers: new Headers()
 		};
 		options.headers.append('x-access-token', this.authService.getToken());
 		options.headers.append('Content-Type', 'application/json');
+
+		// options.headers.append('x-access-token', this.authService.getToken());
+		// options.headers.append('Content-Type', 'multipart/form-data');
+		//
+		// Object.keys(params).forEach(key => {
+		//
+		// 	if (key === 'file') {
+		// 		formData.append(key, params[key], key + '.png');
+		// 	}
+		//     formData.append(key, params[key]);
+		// });
 
 		return this.http.post(
 			path,

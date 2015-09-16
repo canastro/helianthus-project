@@ -23,10 +23,10 @@ export class NavBar {
         var self = this;
 
         categoriesService.getAllCategories()
-        .toRx()
-        .subscribe(result => {
-            self.categories = JSON.parse(result._body);
-        });
+            .toRx()
+            .subscribe(result => {
+                self.categories = JSON.parse(result._body);
+            });
 
     }
 

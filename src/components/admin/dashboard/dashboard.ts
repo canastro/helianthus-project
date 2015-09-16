@@ -21,8 +21,8 @@ export class Dashboard {
             name: 'Categories',
             path: '/admin/categories'
         }, {
-            name: 'Tasks',
-            path: '/admin/tasks'
+            name: 'Tags',
+            path: '/admin/tags'
         }, {
             name: 'Photos',
             path: '/admin/photos'

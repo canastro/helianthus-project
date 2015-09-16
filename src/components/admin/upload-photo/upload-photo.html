@@ -8,7 +8,18 @@
         <textarea id="description" type="text" class="form-control" ng-control="description" placeholder="Enter description">
         </textarea>
 
-        <input id="photo" type="file" class="form-control" [(ng-model)]="file" (input)="changed($event)"/>
+        <input id="photo" type="file" class="form-control" (change)="onChange($event, $this)"/>
+
+        <select ng-control="category">
+           <option *ng-for="#category of allCategories" [value]="category._id">{{category.name}}</option>
+        </select>
+
+        <div class="tags-container">
+            <div class="tag-item" *ng-for="#tag of allTags">
+                <label>{{tag.name}}</label>
+                <input #checkbox type="checkbox" [checked]="tag.selected" (click)="addTag(tag, checkbox.value)"/>
+            </div>
+        </div>
     </fieldset>
 
     <button type="submit" value="click" class="btn btn-primary">Submit</button>

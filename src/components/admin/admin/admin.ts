@@ -6,7 +6,7 @@ import {AuthService} from '../../../services/auth';
 
 import {Dashboard} from '../dashboard/dashboard';
 import {CreateCategory} from '../create-category/create-category';
-import {CreateTask} from '../create-task/create-task';
+import {CreateTag} from '../create-tag/create-tag';
 import {UploadPhoto} from '../upload-photo/upload-photo';
 
 import {ROUTER_DIRECTIVES, Router, RouterOutlet, RouteConfig} from 'angular2/router';
@@ -26,7 +26,7 @@ import {ROUTER_DIRECTIVES, Router, RouterOutlet, RouteConfig} from 'angular2/rou
     { path: '/dashboard', as: 'dashboard', component: Dashboard },
     { path: '/auth', as: 'auth', component: Auth },
     { path: '/categories', as: 'categories', component: CreateCategory },
-    { path: '/tasks', as: 'tasks', component: CreateTask },
+    { path: '/tags', as: 'tags', component: CreateTag },
     { path: '/photos', as: 'photos', component: UploadPhoto }
 ])
 
