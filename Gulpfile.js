@@ -8,6 +8,7 @@ var connect = require('gulp-connect');
 var open = require('gulp-open');
 var sass = require('gulp-sass');
 var modRewrite = require('connect-modrewrite');
+var historyApiFallback = require('connect-history-api-fallback');
 
 var tasks = {
 	'default': 'default',
@@ -116,15 +117,18 @@ gulp.task(tasks.watch, function () {
 
 // starts web server
 gulp.task(tasks.startWebServer, function () {
+
 	connect.server({
 		root: 'public',
 		port: 8000,
+		host: '0.0.0.0',
 		livereload: true,
 		middleware: function() {
 			return [
 				modRewrite([
-					'^/api/(.*)$ http://localhost:8080/api/$1 [P]'
-				])
+					'^/api/(.*)$ http://localhost:8080/api/$1 [P]',
+				]),
+				historyApiFallback()
 			];
 		}
 	});
