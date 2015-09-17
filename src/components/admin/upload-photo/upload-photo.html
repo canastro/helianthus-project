@@ -1,26 +1,41 @@
 
 <form (ng-submit)="uploadPhoto()" [ng-form-model]="photoForm">
+
     <fieldset class="form-group">
-        <label for="name">Upload photo</label>
+        <label for="photo-name">Name</label>
+        <input id="photo-name" type="text" class="form-control" ng-control="name" placeholder="Enter a name"/>
+    </fieldset>
 
-        <input id="title" type="text" class="form-control" ng-control="title" placeholder="Enter title"/>
+    <fieldset class="form-group">
+        <label for="photo-title">Title</label>
+        <input id="photo-title" type="text" class="form-control" ng-control="title" placeholder="Enter a title"/>
+    </fieldset>
 
-        <textarea id="description" type="text" class="form-control" ng-control="description" placeholder="Enter description">
-        </textarea>
+    <fieldset class="form-group">
+        <label for="photo-description">Description</label>
+        <textarea class="form-control" id="photo-description" rows="3" ng-control="description"></textarea>
+    </fieldset>
 
-        <input id="photo" type="file" class="form-control" (change)="onChange($event, $this)"/>
+    <fieldset class="form-group">
+        <label for="photo-description">File</label>
+        <input id="photo-file" type="file" class="form-control" (change)="onChange($event, $this)"/>
+    </fieldset>
 
-        <select ng-control="category">
+    <fieldset class="form-group">
+        <label for="photo-category">Select a category</label>
+        <select id="photo-category" class="form-control" ng-control="category">
            <option *ng-for="#category of allCategories" [value]="category._id">{{category.name}}</option>
         </select>
+    </fieldset>
 
-        <div class="tags-container">
-            <div class="tag-item" *ng-for="#tag of allTags">
-                <label>{{tag.name}}</label>
-                <input #checkbox type="checkbox" [checked]="tag.selected" (click)="addTag(tag, checkbox.value)"/>
-            </div>
+    <fieldset class="form-group">
+        <label for="photo-category">Select multiple tags</label>
+        <div class="tag-item" *ng-for="#tag of allTags">
+            <label>{{tag.name}}</label>
+            <input #checkbox type="checkbox" [checked]="tag.selected" (click)="addTag(tag, checkbox.value)"/>
         </div>
     </fieldset>
+
 
     <button type="submit" value="click" class="btn btn-primary">Submit</button>
 </form>

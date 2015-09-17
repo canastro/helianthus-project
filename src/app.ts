@@ -15,8 +15,17 @@ import {CategoriesService} from './services/categories';
 import {TagsService} from './services/tags';
 import {PhotosService} from './services/photos';
 import {AuthService} from './services/auth';
+import {ContactService} from './services/contact';
 
 // Second parameter provides a set of additional bindings
 // that will be used by Component (in our case application)
 // read more here: https://angular.io/docs/js/latest/api/core/bootstrap-function.html
-bootstrap(App, [ROUTER_BINDINGS, HTTP_BINDINGS, CategoriesService, AuthService, TagsService, PhotosService]);
+bootstrap(App, [
+    ROUTER_BINDINGS,
+    HTTP_BINDINGS,
+    CategoriesService,
+    AuthService,
+    TagsService,
+    PhotosService,
+    ContactService
+]);

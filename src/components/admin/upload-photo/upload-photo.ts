@@ -14,7 +14,6 @@ import {
 import {PhotosService} from '../../../services/photos';
 import {CategoriesService} from '../../../services/categories';
 import {TagsService} from '../../../services/tags';
-import {Uploader} from '../../../directives/uploader';
 
 // Annotation section
 @Component({
@@ -26,7 +25,7 @@ import {Uploader} from '../../../directives/uploader';
 
 @View({
   templateUrl: 'components/admin/upload-photo/upload-photo.html',
-  directives: [FORM_DIRECTIVES, Uploader, NgFor]
+  directives: [FORM_DIRECTIVES, NgFor]
 })
 
 export class UploadPhoto {
@@ -42,6 +41,7 @@ export class UploadPhoto {
         @Inject(TagsService) private tagsService: TagsService
     ) {
         this.photoForm = formBuilder.group({
+            name: [''],
             title: [''],
             description: [''],
             category: ['']

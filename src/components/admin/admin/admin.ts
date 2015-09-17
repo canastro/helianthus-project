@@ -35,21 +35,9 @@ export class Admin {
 
     constructor(
         private router: Router,
-        @Inject(AuthService) private authService: AuthService
+        private authService: AuthService
     ) {
 
-    }
-
-    onInit () {
-        if (this.authService.isLogged()) {
-            this.router.navigate('/admin/dashboard').then(function () {
-                console.log('success', arguments)
-            }, function () {
-                console.log('error', arguments)
-            });
-        } else {
-            this.router.navigate('/admin/auth');
-        }
     }
 
     isLogged() : boolean {

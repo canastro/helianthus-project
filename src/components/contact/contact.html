@@ -1,0 +1,19 @@
+<div class="content-container">
+
+    <form (ng-submit)="contact()" [ng-form-model]="contactForm">
+
+        <fieldset class="form-group">
+            <label for="contact-email">Email address</label>
+            <input type="email" class="form-control" id="contact-email" placeholder="Enter email" ng-control="email">
+            <small class="text-muted">We'll never share your email with anyone else.</small>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea class="form-control" id="contact-message" rows="3" ng-control="message"></textarea>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
