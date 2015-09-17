@@ -1,6 +1,7 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
 import {Component, View, Inject} from 'angular2/angular2';
 import {CategoriesService} from '../../services/categories';
+import {Gallery} from '../gallery/gallery';
 
 // Annotation section
 @Component({
@@ -8,7 +9,8 @@ import {CategoriesService} from '../../services/categories';
 })
 
 @View({
-  templateUrl: 'components/home/home.html'
+  templateUrl: 'components/home/home.html',
+  directives: [Gallery]
 })
 
 // Component controller

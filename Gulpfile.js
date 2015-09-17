@@ -16,6 +16,7 @@ var tasks = {
 	typeScript: 'TypeScript-Compile',
 	sass: 'Compile-SASS',
 	html: 'Copy-HTML',
+	copyIcons: 'Copy-FontAwesome-Icons',
 	copy: 'Copy-Compiled-JS',
 	cleanSrc: 'Clean-Source',
 	cleanPublic: 'Clean-Public',
@@ -32,6 +33,7 @@ gulp.task(tasks.default, function () {
 		tasks.sass,
 		tasks.html,
 		tasks.copy,
+		tasks.copyIcons,
 		tasks.cleanSrc,
 		tasks.startWebServer,
 		tasks.watch
@@ -77,7 +79,10 @@ gulp.task(tasks.sass, function (done) {
     return gulp.src('./src/assets/styles/main.scss')
         .pipe(
             sass({
-                style: 'compressed'
+                style: 'compressed',
+				includePaths:[
+                    './node_modules/font-awesome/scss'
+                ]
             }).on('error', sass.logError)
         )
         .pipe(gulp.dest('./build/assets/styles'));
@@ -91,6 +96,12 @@ gulp.task(tasks.copy, function () {
 		.pipe(gulp.dest('public'))
 		.pipe(connect.reload());
 });
+
+gulp.task(tasks.copyIcons, function() { 
+    return gulp.src('./node_modules/font-awesome/fonts/**.*') 
+        .pipe(gulp.dest('public/assets/fonts')); 
+});
+
 
 //  clean all generated/compiled files
 //	in both  and public/ directories
@@ -127,6 +138,7 @@ gulp.task(tasks.startWebServer, function () {
 			return [
 				modRewrite([
 					'^/api/(.*)$ http://localhost:8080/api/$1 [P]',
+					'^/static/(.*)$ http://localhost:8080/static/$1 [P]',
 				]),
 				historyApiFallback()
 			];

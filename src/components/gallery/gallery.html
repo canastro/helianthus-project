@@ -1,0 +1,41 @@
+<div class="gallery-container gallery-grid">
+
+    <figure class="effect-zoe" *ng-for="#photo of photos" (click)="expand(photo)" [class.expanded]="photo.isExpanded">
+		<img [src]="'/static/' + photo.name" alt="img01"/>
+		<figcaption>
+			<h2>{{photo.title}}</h2>
+            <p class="icon-links">
+                <a href="#"><i class="fa fa-facebook-square"></i></a>
+				<a href="#"><i class="fa fa-heart"></i></a>
+				<a href="#"><i class="fa fa-external-link"></i></a>
+			</p>
+			<p>{{photo.description}}</p>
+		</figcaption>
+	</figure>
+
+    <figure class="effect-zoe" *ng-for="#photo of photos">
+		<img [src]="'/static/' + photo.name" alt="img01"/>
+		<figcaption>
+			<h2>{{photo.title}}</h2>
+            <p class="icon-links">
+                <a href="#"><i class="fa fa-facebook-square"></i></a>
+				<a href="#"><i class="fa fa-heart"></i></a>
+				<a href="#"><i class="fa fa-external-link"></i></a>
+			</p>
+			<p>{{photo.description}}</p>
+		</figcaption>
+	</figure>
+
+    <figure class="effect-zoe" *ng-for="#photo of photos">
+		<img [src]="'/static/' + photo.name" alt="img01"/>
+		<figcaption>
+			<h2>{{photo.title}}</h2>
+            <p class="icon-links">
+                <a href="#"><i class="fa fa-facebook-square"></i></a>
+				<a href="#"><i class="fa fa-heart"></i></a>
+				<a href="#"><i class="fa fa-external-link"></i></a>
+			</p>
+			<p>{{photo.description}}</p>
+		</figcaption>
+	</figure>
+</div>

@@ -29,15 +29,9 @@ export class NavBar {
         var self = this;
 
         categoriesService.getAllCategories()
-            .toRx()
             .subscribe(result => {
                 self.categories = JSON.parse(result._body);
             });
-
-    }
-
-    getAllCategories() {
-        this.categoriesService.getAllCategories();
     }
 
     goToAdmin() {

@@ -31,6 +31,7 @@
         "./src/components/admin/upload-photo/upload-photo.ts",
         "./src/components/app/app.ts",
         "./src/components/contact/contact.ts",
+        "./src/components/gallery/gallery.ts",
         "./src/components/home/home.ts",
         "./src/components/navbar/navbar.ts",
         "./src/directives/uploader.ts",

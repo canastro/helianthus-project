@@ -15,7 +15,7 @@ export class PhotosService {
 		var self = this;
 		var path = '/api/photos';
 
-		return this.http.get(path);
+		return this.http.get(path).toRx();
 	}
 
 	//TODO: http://stackoverflow.com/questions/32423348/angular2-post-uploaded-file

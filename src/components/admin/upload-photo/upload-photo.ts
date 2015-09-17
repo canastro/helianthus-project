@@ -48,13 +48,11 @@ export class UploadPhoto {
         });
 
         categoriesService.getAllCategories()
-            .toRx()
             .subscribe(result => {
                 this.allCategories = JSON.parse(result._body);
             });
 
         tagsService.getAllTags()
-            .toRx()
             .subscribe(result => {
                 this.allTags = JSON.parse(result._body);
             });

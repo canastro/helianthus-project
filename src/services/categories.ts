@@ -19,7 +19,7 @@ export class CategoriesService {
 		var self = this;
 		var path = '/api/categories';
 
-		return this.http.get(path);
+		return this.http.get(path).toRx();
 	}
 
 	createCategory(params) : any {

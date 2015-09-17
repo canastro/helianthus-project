@@ -15,7 +15,7 @@ export class TagsService {
 		var self = this;
 		var path = '/api/tags';
 
-		return this.http.get(path);
+		return this.http.get(path).toRx();
 	}
 
 	createTag(params) : any {
