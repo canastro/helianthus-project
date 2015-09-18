@@ -1,0 +1,12 @@
+a.inline-comment {
+    border: 1px solid #FFFFFF;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    z-index: 100;
+}
+
+a.inline-comment-selected {
+    border-color: #FFFFFF;
+    z-index: 200;
+}

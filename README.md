@@ -59,3 +59,35 @@
 # Run
 
     gulp
+
+# To do
+
+    - Gallery
+        - FE: Paginate
+
+    - Photo:
+        - BE: Update model
+            - short description
+            - photography setup
+            - history (long description)
+            - number of likes (?)
+            - album
+        - BE: Update POST
+        - FE: Update upload photo form
+        - FE: Back button on photo/:id
+        - FE: Inline-comments (load, save, show)
+        - FE: Share on facebook
+
+    - Inline-Comments:
+        - BE: Create model
+        - BE: Create route to POST, DELETE
+
+    - Photography-Setups:
+        - BE: Create model
+        - BE: Create route to POST, GET, DELETE
+
+    - Album
+        - BE: Create model
+            - name
+            - description
+        - BE: Create Routes to POST, GET, DELETE, PUT

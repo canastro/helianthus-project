@@ -1,3 +1,4 @@
+/// <reference path="../../typings/angular2/angular2.d.ts" />
 import {Directive} from 'angular2/angular2';
 
 //TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax

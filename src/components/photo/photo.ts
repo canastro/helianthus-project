@@ -1,6 +1,7 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
 import {Component, View, Inject, NgFor, NgIf} from 'angular2/angular2';
 import {PhotosService} from '../../services/photos';
+import {InlineComment} from '../../directives/inline-comment';
 import {RouteParams} from 'angular2/router';
 
 // Annotation section
@@ -10,7 +11,7 @@ import {RouteParams} from 'angular2/router';
 
 @View({
   templateUrl: 'components/photo/photo.html',
-  directives: [NgFor, NgIf]
+  directives: [NgFor, NgIf, InlineComment]
 })
 
 // Component controller
@@ -23,7 +24,7 @@ export class Photo {
         private photosService: PhotosService
     ){
         var id = params.get('id');
-        
+
         photosService.find(id).subscribe(result => {
             this.photo = result;
         });
