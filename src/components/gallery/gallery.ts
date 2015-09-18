@@ -1,6 +1,7 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
 import {Component, View, Inject, NgFor} from 'angular2/angular2';
 import {PhotosService} from '../../services/photos';
+import {RouterLink} from 'angular2/router';
 
 // Annotation section
 @Component({
@@ -9,7 +10,7 @@ import {PhotosService} from '../../services/photos';
 
 @View({
   templateUrl: 'components/gallery/gallery.html',
-  directives: [NgFor]
+  directives: [RouterLink, NgFor]
 })
 
 // Component controller
@@ -24,11 +25,7 @@ export class Gallery {
     getPhotos() {
         this.photosService.getPhotos()
             .subscribe(result => {
-                this.photos = JSON.parse(result._body);
+                this.photos = result;
             });
-    }
-
-    expand(photo) {
-        photo.isExpanded = !photo.isExpanded;
     }
 }

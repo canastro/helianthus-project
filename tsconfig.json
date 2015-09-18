@@ -34,6 +34,7 @@
         "./src/components/gallery/gallery.ts",
         "./src/components/home/home.ts",
         "./src/components/navbar/navbar.ts",
+        "./src/components/photo/photo.ts",
         "./src/directives/uploader.ts",
         "./src/services/auth.ts",
         "./src/services/categories.ts",

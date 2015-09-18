@@ -1,0 +1,7 @@
+<div class="content-container photo-container">
+    <figure *ng-if="photo">
+        <h1>{{photo.title}}</h1>
+        <img [src]="'/static/' + photo.name" [alt]="photo.title"/>
+    </figure>
+    <div id="disqus_thread"></div>
+</div>

@@ -1,9 +1,12 @@
 import {Component, View, Injectable, Inject} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
 import {AuthService} from './auth';
+import * as Rx from 'rx';
 
 @Injectable()
 export class PhotosService {
+
+	photos: any;
 
 	constructor(
 		private http: Http,
@@ -11,11 +14,35 @@ export class PhotosService {
 	) {
 	}
 
+	find(id) {
+
+		var path = '/api/photo/' + id;
+
+		if (this.photos) {
+			var xs = Rx.Observable.create((observer) => {
+				observer.onNext(this.photos.find(photo => photo._id === id));
+				observer.onCompleted();
+			});
+		}
+
+		return this.http.get(path)
+			.toRx()
+			.selectMany(result => {
+				var photo = JSON.parse(result._body);
+				return Promise.resolve(photo);
+			});
+	}
+
 	getPhotos() : any {
-		var self = this;
+
 		var path = '/api/photos';
 
-		return this.http.get(path).toRx();
+		return this.http.get(path)
+			.toRx()
+			.selectMany(result => {
+				this.photos = JSON.parse(result._body);
+				return Promise.resolve(this.photos);
+			});
 	}
 
 	//TODO: http://stackoverflow.com/questions/32423348/angular2-post-uploaded-file
