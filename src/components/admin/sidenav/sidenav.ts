@@ -20,6 +20,9 @@ export class SideNav {
 
     constructor() {
         this.items = [{
+            name: 'Dashboard',
+            path: '/admin/dashboard'
+        }, {
             name: 'Categories',
             path: '/admin/categories'
         }, {

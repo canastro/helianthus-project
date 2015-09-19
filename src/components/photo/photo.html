@@ -1,9 +1,13 @@
-<div class="content-container photo-container">
-    <figure *ng-if="photo">
+<div class="content-container">
+
+    <figure class="figure-container" *ng-if="photo">
         <h1>{{photo.title}}</h1>
+
         <div class="photo-container" inline-comment>
-            <img [src]="'/static/' + photo.name" [alt]="photo.title"/>
+            <img class="photo-img" [src]="'/static/' + photo.name" [alt]="photo.title"/>
         </div>
     </figure>
+
     <div id="disqus_thread"></div>
+
 </div>

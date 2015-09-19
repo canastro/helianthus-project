@@ -21,6 +21,7 @@
         - http://tympanus.net/Development/ScatteredPolaroidsGallery/
         - http://tympanus.net/Development/CreativeLoadingEffects/
         - Modals: http://tympanus.net/codrops/2013/06/25/nifty-modal-window-effects/
+        - Dashboard: https://github.com/IronSummitMedia/startbootstrap-sb-admin-2
 
 # Features
 

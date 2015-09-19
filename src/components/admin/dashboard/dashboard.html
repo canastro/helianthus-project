@@ -1,7 +1,25 @@
 <ul class="dashboard-items-container">
-    <li *ng-for="#item of items" class="dashboard-item">
-        <a [router-link]="[item.path]">
-            <span class="dashboard-item-title">{{item.name}}</span>
-        </a>
-    </li>
+    <h1>Dashboard</h1>
+
+    <div class="card-deck-wrapper">
+        <div class="card-deck">
+            <div class="card card-block" style="width: 20rem;">
+                <h3 class="card-title">Special title treatment</h3>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+
+            <div class="card card-block" style="width: 20rem;">
+                <h3 class="card-title">Special title treatment</h3>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+
+            <div class="card card-block" style="width: 20rem;">
+                <h3 class="card-title">Special title treatment</h3>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
 </ul>
