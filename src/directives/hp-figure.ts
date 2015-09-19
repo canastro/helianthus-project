@@ -3,11 +3,13 @@
 /*global $, jQuery*/
 
 import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
+import {CommentsService} from '../services/comments';
 // import * as $ from 'jquery';
 
 //TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
 @Directive({
   selector: '[hp-figure]',
+  properties: ['photo: photo'],
   host: {
       '(mousedown)': 'onMouseDown($event)'
   },
@@ -16,10 +18,15 @@ import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
 
 export class HpFigure{
 
+    photo: any;
     tagAdded = new EventEmitter();
     $container: any;
 
-    constructor(private el: ElementRef){
+
+    constructor(
+        private el: ElementRef,
+        private commentsService: CommentsService
+    ){
         this.$container = $(this.el.nativeElement);
     }
 
@@ -28,6 +35,7 @@ export class HpFigure{
         var position;
         var tag;
         var promptResult;
+        var params;
 
         // The user is going to start drawing. Cancel
         // the default event to make sure the browser
@@ -39,10 +47,14 @@ export class HpFigure{
 
         promptResult = prompt("Message:");
 
-        this.tagAdded.next({
+        params = {
             message: promptResult,
             position: position
-        });
+        };
+
+        this.commentsService.commentPhoto(this.photo, params)
+
+        this.tagAdded.next(params);
     }
 
 

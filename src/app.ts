@@ -16,6 +16,7 @@ import {TagsService} from './services/tags';
 import {PhotosService} from './services/photos';
 import {AuthService} from './services/auth';
 import {ContactService} from './services/contact';
+import {CommentsService} from './services/comments';
 
 // Second parameter provides a set of additional bindings
 // that will be used by Component (in our case application)
@@ -27,5 +28,6 @@ bootstrap(App, [
     AuthService,
     TagsService,
     PhotosService,
-    ContactService
+    ContactService,
+    CommentsService
 ]);

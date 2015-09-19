@@ -4,7 +4,7 @@
         <h1>{{photo.title}}</h1>
 
         <div class="photo-container" >
-            <div class="photo-wrapper" hp-figure (tag-added)="tagAdded($event)">
+            <div class="photo-wrapper" hp-figure [photo]="photo" (tag-added)="tagAdded($event)">
                 <img class="photo-img" [src]="'/static/' + photo.name" [alt]="photo.title"/>
                 <div
                     hp-figure-tag-message

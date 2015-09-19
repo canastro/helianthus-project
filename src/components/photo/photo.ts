@@ -1,6 +1,7 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
 import {Component, View, Inject, NgFor, NgIf} from 'angular2/angular2';
 import {PhotosService} from '../../services/photos';
+import {CommentsService} from '../../services/comments';
 import {HpFigure} from '../../directives/hp-figure';
 import {HpFigureTag} from '../../directives/hp-figure-tag';
 import {HpFigureTagMessage} from '../../directives/hp-figure-tag-message';
@@ -26,7 +27,8 @@ export class Photo {
 
     constructor(
         params: RouteParams,
-        private photosService: PhotosService
+        private photosService: PhotosService,
+        private commentsService: CommentsService
     ){
         var id = params.get('id');
 
@@ -35,6 +37,19 @@ export class Photo {
         photosService.find(id).subscribe(result => {
             this.photo = result;
         });
+
+        commentsService.getCommentsByPhotoId(id)
+            .subscribe(result => {
+                this.figureTags = result.map((item) => {
+                    return {
+                        message: item.message,
+                        position: {
+                            left: item.positionX,
+                            top: item.positionY
+                        }
+                    };
+                });
+            });
 
         if (window["DISQUS"]) {
             window["DISQUS"].reset({

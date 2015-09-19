@@ -42,6 +42,7 @@
         "./src/directives/uploader.ts",
         "./src/services/auth.ts",
         "./src/services/categories.ts",
+        "./src/services/comments.ts",
         "./src/services/contact.ts",
         "./src/services/photos.ts",
         "./src/services/tags.ts",
