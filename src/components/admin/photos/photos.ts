@@ -42,9 +42,8 @@ export class Photos {
     ) {
 
         photosService.getPhotos()
-            .toRx()
             .subscribe(result => {
-                this.photos = JSON.parse(result._body);
+                this.photos = result;
             });
     }
 }

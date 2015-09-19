@@ -6,20 +6,24 @@
 @import "base/reset";
 @import "base/typography";
 
+// Themes
+@import "themes/theme";
+@import "themes/admin";
+
 // Layout related stylesheets
 @import "layout/header";
 @import "layout/footer";
+@import "layout/base";
 
 //Components
 @import "components/about";
 @import "components/gallery";
 @import "components/photo";
+@import "components/sidebar";
 
 // Page-specific stylesheets
 @import "pages/home";
 
-// Themes
-@import "themes/theme";
-@import "themes/admin";
+
 
 @import "font-awesome";

@@ -4,6 +4,7 @@ import {Component, View, Inject, NgIf} from 'angular2/angular2';
 import {Auth} from '../auth/auth';
 import {AuthService} from '../../../services/auth';
 
+import {SideNav} from '../sidenav/sidenav';
 import {Dashboard} from '../dashboard/dashboard';
 import {CreateCategory} from '../create-category/create-category';
 import {CreateTag} from '../create-tag/create-tag';
@@ -18,7 +19,7 @@ import {ROUTER_DIRECTIVES, Router, RouterOutlet, RouteConfig} from 'angular2/rou
 
 @View({
     templateUrl: 'components/admin/admin/admin.html',
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, SideNav]
 })
 
 @RouteConfig([
