@@ -1,11 +1,27 @@
 <div class="content-container">
 
-    <figure class="figure-container" *ng-if="photo">
+    <div class="figure-container" *ng-if="photo">
         <h1>{{photo.title}}</h1>
 
         <div class="photo-container" >
-            <div class="photo-wrapper" hp-figure [photo]="photo" (tag-added)="tagAdded($event)">
+            <figure class="photo-wrapper" hp-figure [photo]="photo" (tag-added)="tagAdded($event)">
                 <img class="photo-img" [src]="'/static/' + photo.name" [alt]="photo.title"/>
+
+                <div class="photo-controllers">
+                    <p class="icon-links">
+                        <div class="photo-controller">
+                            <i class="fa fa-toggle-off"></i>
+                        </div>
+                        <div class="photo-controller">
+                            <i class="fa fa-facebook-square"></i>
+                        </div>
+                        <div class="photo-controller">
+			                <i class="fa fa-heart"></i>
+                        </div>
+
+        			</p>
+        		</div>
+
                 <div
                     hp-figure-tag-message
                     [class.hidden]="[selectedTag]"
@@ -24,7 +40,7 @@
                 </a>
             </div>
         </div>
-    </figure>
+    </div>
 
     <div id="disqus_thread"></div>
 

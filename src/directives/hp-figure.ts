@@ -60,15 +60,18 @@ export class HpFigure{
 
     private getLocalPosition(mouseX, mouseY) {
 
+         // Get the current position of the container.
+        var containerOffset = this.$container.offset();
+
         // Adjust the client coordiates to acocunt for
         // the offset of the page and the position of the
         // container.
         var localPosition = {
             left: Math.floor(
-                mouseX + window.scrollX
+                mouseX - containerOffset.left + window.scrollX
             ),
             top: Math.floor(
-                mouseY + window.scrollY
+                mouseY - containerOffset.top + window.scrollY
             )
         };
 

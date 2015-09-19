@@ -66,15 +66,17 @@
 
     - Gallery
         - FE: Paginate
+        - Layout: the browsing of photos (group/filter by category/tag/name/setup)
 
     - Photo:
+        - FE: toggle on/off figure tags
         - FE: Update upload photo form
         - FE: Back button on photo/:id
-        - FE: Inline-comments (load, save, show)
         - FE: Share on facebook
+        - Layout: show tags, categories, setup, hide/show hp-figure-tags, etc.
 
     - Inline-Comments:
-        - BE: Create route to POST, DELETE
+        - BE: Create route to DELETE
 
     - Photography-Setups:
         - BE: Create route to POST, GET, DELETE

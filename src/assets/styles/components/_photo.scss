@@ -12,10 +12,6 @@ a.hp-figure-tag {
     opacity: 0.7;
 }
 
-.photo-wrapper {
-    display: inline-block;
-    // position: relative;
-}
 
 .photo-container {
     margin: 0;
@@ -23,5 +19,52 @@ a.hp-figure-tag {
 }
 
 .photo-img {
-    max-height: 500px;
+    height: 100%;
+}
+
+.photo-wrapper {
+    display: inline-block;
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+
+    &:hover {
+        .photo-controllers {
+            -webkit-transform: translate3d(0,0,0);
+        	transform: translate3d(0,0,0);
+        }
+    }
+}
+
+
+.photo-controllers {
+    position: absolute;
+	top: 0;
+	right: 0;
+    height: 100%;
+	padding: 1em;
+	background: #fff;
+	color: #3c4a50;
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+	-webkit-transform: translate3d(100%, 0, 0);
+	transform: translate3d(100%, 0, 0);
+    opacity: 0.75;
+    width: 50px;
+    font-size: 20px;
+    z-index: 2000;
+
+    ::before,
+    ::after {
+        pointer-events: none;
+    }
+}
+
+.photo-controller {
+    cursor: pointer;
+    height: 30px;
+
+    &:hover {
+        color: blue;
+    }
 }
