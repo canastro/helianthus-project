@@ -1,4 +1,4 @@
-a.inline-comment {
+a.hp-figure-tag {
     border: 1px solid #FFFFFF;
     height: 50px;
     position: absolute;
@@ -6,9 +6,9 @@ a.inline-comment {
     z-index: 100;
 }
 
-a.inline-comment-selected {
-    border-color: #FFFFFF;
-    z-index: 200;
+.photo-wrapper {
+    display: inline-block;
+    // position: relative;
 }
 
 .photo-container {

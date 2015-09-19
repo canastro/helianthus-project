@@ -3,8 +3,26 @@
     <figure class="figure-container" *ng-if="photo">
         <h1>{{photo.title}}</h1>
 
-        <div class="photo-container" inline-comment>
-            <img class="photo-img" [src]="'/static/' + photo.name" [alt]="photo.title"/>
+        <div class="photo-container" >
+            <div class="photo-wrapper" hp-figure (tag-added)="tagAdded($event)">
+                <img class="photo-img" [src]="'/static/' + photo.name" [alt]="photo.title"/>
+                <div
+                    hp-figure-tag-message
+                    [class.hidden]="selectedTag"
+                    [tag]="selectedTag"
+                    class='comment-inline-message'>
+                    <!-- {{selectedTag ? selectedTag.message : ''}} -->
+                </div>
+
+                <a class='hp-figure-tag'
+                    *ng-for="#figureTag of figureTags"
+                    [tag]="figureTag"
+                    hp-figure-tag
+                    (tag-over)="showTag($event)"
+                    (tag-out)="hideTag()">
+                    <br />
+                </a>
+            </div>
         </div>
     </figure>
 

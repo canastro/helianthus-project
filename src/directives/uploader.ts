@@ -20,8 +20,6 @@ export class Uploader{
 
     onChange($event){
 
-        debugger;
-
         if (!$event.target.files || !$event.target.files.length || !$event.target.files[0]) {
             return true;
         }
