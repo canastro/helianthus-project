@@ -8,10 +8,10 @@
                 <img class="photo-img" [src]="'/static/' + photo.name" [alt]="photo.title"/>
                 <div
                     hp-figure-tag-message
-                    [class.hidden]="selectedTag"
+                    [class.hidden]="[selectedTag]"
                     [tag]="selectedTag"
-                    class='comment-inline-message'>
-                    <!-- {{selectedTag ? selectedTag.message : ''}} -->
+                    class='hp-figure-tag-message'>
+                    {{selectedTagMessage}}
                 </div>
 
                 <a class='hp-figure-tag'

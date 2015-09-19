@@ -22,6 +22,7 @@ export class Photo {
     photo: Object;
     figureTags: Array<Object>;
     selectedTag: Object;
+    selectedTagMessage: String;
 
     constructor(
         params: RouteParams,
@@ -59,9 +60,11 @@ export class Photo {
 
     showTag(tag) {
         this.selectedTag = tag;
+        this.selectedTagMessage = tag.message;
     }
 
     hideTag(params) {
-        // this.selectedTag = null;
+        this.selectedTag = null;
+        this.selectedTagMessage = null;
     }
 }

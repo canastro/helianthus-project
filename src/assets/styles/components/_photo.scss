@@ -6,6 +6,12 @@ a.hp-figure-tag {
     z-index: 100;
 }
 
+.hp-figure-tag-message {
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.7;
+}
+
 .photo-wrapper {
     display: inline-block;
     // position: relative;

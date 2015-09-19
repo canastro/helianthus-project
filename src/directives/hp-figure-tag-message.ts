@@ -2,7 +2,7 @@
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 /*global $, jQuery*/
 
-import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
+import {Directive, ElementRef, EventEmitter, LifecycleEvent} from 'angular2/angular2';
 
 //TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
 @Directive({
@@ -20,8 +20,14 @@ export class HpFigureTagMessage{
 
     set tag(tag) {
         if (tag) {
-            this.$container.css(tag.position);
+            var position = $.extend(true, {}, tag.position);
+            position.top += 50;
+            this.$container.css(position);
         }
+    }
+
+    onChange() {
+        debugger;
     }
 
 }

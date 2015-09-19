@@ -18,7 +18,7 @@ import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
 export class HpFigureTag{
 
     $container: any;
-    message: String;
+    selectedTag: any;
 
     tagOver = new EventEmitter();
     tagOut = new EventEmitter();
@@ -29,10 +29,11 @@ export class HpFigureTag{
 
     set tag(tag) {
         this.$container.css(tag.position);
+        this.selectedTag = tag;
     }
 
     private onTagMouseOver($event) {
-        this.tagOver.next(this.tag);
+        this.tagOver.next(this.selectedTag);
     }
 
     private onTagMouseOut($event) {
