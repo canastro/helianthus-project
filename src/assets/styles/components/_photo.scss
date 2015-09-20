@@ -12,9 +12,32 @@ a.hp-figure-tag {
     opacity: 0.7;
 }
 
+.figure-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .figure-back {
+        display: inline-block;
+        cursor: pointer;
+        width: 60px;
+        font-size: 32px;
+
+        &:hover {
+            color: blue;
+        }
+    }
+
+    .figure-title {
+        width: 100%;
+        text-align: center;
+    }
+}
 
 .photo-container {
-    margin: 0;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0;
     text-align: center
 }
 
@@ -67,4 +90,65 @@ a.hp-figure-tag {
     &:hover {
         color: blue;
     }
+}
+
+.photo-details-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    width: 250px;
+    padding: 0 10px;
+
+    .photo-story {
+        text-align: left;
+    }
+}
+
+.photo-setup {
+    text-align: left;
+
+    .icon {
+    	font-family: 'camera-icons';
+    	speak: none;
+    	font-style: normal;
+    	font-weight: normal;
+    	font-variant: normal;
+    	text-transform: none;
+    	line-height: 1;
+    	display: inline-block;
+    	vertical-align: middle;
+    	/* Better Font Rendering =========== */
+    	-webkit-font-smoothing: antialiased;
+    	-moz-osx-font-smoothing: grayscale;
+    }
+
+    .icon + span {
+    	margin-left: 5px;
+    	vertical-align: middle;
+    }
+
+    .icon-focal_length:before {
+    	content: "\e600";
+    }
+
+    .icon-exposure_time:before {
+    	content: "\e601";
+    }
+
+    .icon-iso:before {
+    	content: "\e602";
+    }
+
+    .icon-camera:before {
+    	content: "\e603";
+    }
+
+    .icon-aperture:before {
+    	content: "\e604";
+    }
+}
+
+#disqus_thread {
+    margin-top: 30px;
 }

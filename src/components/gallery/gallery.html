@@ -1,16 +1,12 @@
 <div class="gallery-container gallery-grid">
 
-    <figure class="gallery-figure effect-zoe" *ng-for="#photo of photos">
+    <figure class="gallery-figure effect-zoe" *ng-for="#photo of photos" [router-link]="['/photo',{'id':photo._id}]">
 		<img [src]="'/static/' + photo.name" [alt]="photo.title"/>
 		<figcaption>
 			<h2>{{photo.title}}</h2>
             <p class="icon-links">
                 <a href="#"><i class="fa fa-facebook-square"></i></a>
 				<a href="#"><i class="fa fa-heart"></i></a>
-
-				<a [router-link]="['/photo',{'id':photo._id}]">
-                    <i class="fa fa-external-link"></i>
-                </a>
 			</p>
 			<p>{{photo.description}}</p>
 		</figcaption>

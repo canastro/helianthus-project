@@ -77,6 +77,9 @@
 
     - Inline-Comments:
         - BE: Create route to DELETE
+        - FE: Limit text
+        - FE: Add name / email to comments
+        - FE: Create a inline form
 
     - Photography-Setups:
         - BE: Create route to POST, GET, DELETE

@@ -16,6 +16,7 @@ var tasks = {
 	typeScript: 'TypeScript-Compile',
 	sass: 'Compile-SASS',
 	html: 'Copy-HTML',
+	copyFonts: 'Copy-Fonts',
 	copyIcons: 'Copy-FontAwesome-Icons',
 	copy: 'Copy-Compiled-JS',
 	cleanSrc: 'Clean-Source',
@@ -99,6 +100,11 @@ gulp.task(tasks.copy, function () {
 
 gulp.task(tasks.copyIcons, function() { 
     return gulp.src('./node_modules/font-awesome/fonts/**.*') 
+        .pipe(gulp.dest('public/assets/fonts')); 
+});
+
+gulp.task(tasks.copyFonts, function() { 
+    return gulp.src('./src/assets/fonts/**/*') 
         .pipe(gulp.dest('public/assets/fonts')); 
 });
 

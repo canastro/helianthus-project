@@ -5,7 +5,7 @@ import {CommentsService} from '../../services/comments';
 import {HpFigure} from '../../directives/hp-figure';
 import {HpFigureTag} from '../../directives/hp-figure-tag';
 import {HpFigureTagMessage} from '../../directives/hp-figure-tag-message';
-import {RouteParams} from 'angular2/router';
+import {RouteParams, Router} from 'angular2/router';
 
 // Annotation section
 @Component({
@@ -20,12 +20,14 @@ import {RouteParams} from 'angular2/router';
 // Component controller
 export class Photo {
 
+    tagsOn: boolean = false;
     photo: Object;
     figureTags: Array<Object>;
     selectedTag: Object;
     selectedTagMessage: String;
 
     constructor(
+        private router: Router,
         params: RouteParams,
         private photosService: PhotosService,
         private commentsService: CommentsService
@@ -81,5 +83,25 @@ export class Photo {
     hideTag(params) {
         this.selectedTag = null;
         this.selectedTagMessage = null;
+    }
+
+    toggleTags($event) {
+
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        this.tagsOn = !this.tagsOn;
+    }
+
+    navigateBack() {
+        /*
+            import {Location} from 'angular2/router';
+            export class Example {
+              location: Location;
+              constructor(location: Location) {
+                location.back();
+              }
+            }
+        */
     }
 }

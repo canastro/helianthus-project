@@ -1,7 +1,15 @@
 <div class="content-container">
 
     <div class="figure-container" *ng-if="photo">
-        <h1>{{photo.title}}</h1>
+
+        <div class="figure-header">
+            <div class="figure-back" (click)="navigateBack()">
+                <i class="fa fa-arrow-left"></i>
+            </div>
+            <div class="figure-title">
+                <h1>{{photo.title}}</h1>
+            </div>
+        </div>
 
         <div class="photo-container" >
             <figure class="photo-wrapper" hp-figure [photo]="photo" (tag-added)="tagAdded($event)">
@@ -10,7 +18,10 @@
                 <div class="photo-controllers">
                     <p class="icon-links">
                         <div class="photo-controller">
-                            <i class="fa fa-toggle-off"></i>
+                            <div class="figure-toggle-container" (click)="toggleTags($event)">
+                                <i *ng-if="tagsOn" class="fa fa-toggle-on"></i>
+                                <i *ng-if="!tagsOn" class="fa fa-toggle-off"></i>
+                            </div>
                         </div>
                         <div class="photo-controller">
                             <i class="fa fa-facebook-square"></i>
@@ -24,24 +35,58 @@
 
                 <div
                     hp-figure-tag-message
-                    [class.hidden]="[selectedTag]"
+                    [class.hidden]="!selectedTag"
                     [tag]="selectedTag"
                     class='hp-figure-tag-message'>
                     {{selectedTagMessage}}
                 </div>
 
-                <a class='hp-figure-tag'
-                    *ng-for="#figureTag of figureTags"
-                    [tag]="figureTag"
-                    hp-figure-tag
-                    (tag-over)="showTag($event)"
-                    (tag-out)="hideTag()">
-                    <br />
-                </a>
+                <div class="figure-tags-container" [class.hidden]="!tagsOn">
+                    <a class='hp-figure-tag'
+                        *ng-for="#figureTag of figureTags"
+                        [tag]="figureTag"
+                        hp-figure-tag
+                        (tag-over)="showTag($event)"
+                        (tag-out)="hideTag()">
+                        <br />
+                    </a>
+                </div>
+            </figure>
+
+            <!-- TODO: Add setup -->
+            <!-- TODO: Add description -->
+            <!-- TODO: Add story -->
+            <div class="photo-details-container">
+
+                <div class="photo-description" *ng-if="!photo.story">{{photo.description}}</div>
+                <div class="photo-story">{{photo.story}}</div>
+                <div class="photo-setup">
+                    <div class="photo-setup-item">
+                        <i class="icon icon-camera"></i>
+                        <span>{{photo.setup.machine}}<span>
+                    </div>
+                    <div class="photo-setup-item">
+                        <i class="icon icon-focal_length"></i>
+                        <span>{{photo.setup.focal_length}}</span>
+                    </div>
+                    <div class="photo-setup-item">
+                        <i class="icon icon-aperture"></i>
+                        <span>f/{{photo.setup.aperture}}</span>
+                    </div>
+                    <div class="photo-setup-item">
+                        <i class="icon icon-exposure_time"></i>
+                        <span>{{photo.setup.exposure_time}}</span>
+                    </div>
+                    <div class="photo-setup-item">
+                        <i class="icon icon-iso"></i>
+                        <span>{{photo.setup.iso}}</span>
+                    </div>
+                </div>
+
             </div>
         </div>
+
+
     </div>
-
     <div id="disqus_thread"></div>
-
 </div>

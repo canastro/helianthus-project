@@ -11,7 +11,7 @@ import {CommentsService} from '../services/comments';
   selector: '[hp-figure]',
   properties: ['photo: photo'],
   host: {
-      '(mousedown)': 'onMouseDown($event)'
+      '(click)': 'onMouseDown($event)'
   },
   events: ['tagAdded']
 })
