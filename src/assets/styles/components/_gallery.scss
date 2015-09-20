@@ -61,16 +61,16 @@
 	opacity: 0;
 }
 
-.gallery-grid figure h2 {
+.gallery-grid figure h4 {
 	word-spacing: -0.15em;
 	font-weight: 300;
 }
 
-.gallery-grid figure h2 span {
+.gallery-grid figure h4 span {
 	font-weight: 800;
 }
 
-.gallery-grid figure h2,
+.gallery-grid figure h4,
 .gallery-grid figure p {
 	margin: 0;
 }
@@ -96,8 +96,12 @@ figure.effect-zoe figcaption {
 	transform: translate3d(0,100%,0);
 }
 
-figure.effect-zoe h2 {
+figure.effect-zoe h4 {
 	float: left;
+}
+
+figure.effect-zoe p.icon-links {
+	float: right;
 }
 
 figure.effect-zoe p.icon-links a {
@@ -125,7 +129,7 @@ figure.effect-zoe p.description {
 	-webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
 }
 
-figure.effect-zoe h2,
+figure.effect-zoe h4,
 figure.effect-zoe p.icon-links a {
 	-webkit-transition: -webkit-transform 0.35s;
 	transition: transform 0.35s;
@@ -142,7 +146,7 @@ figure.effect-zoe p.icon-links a span::before {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-figure.effect-zoe h2 {
+figure.effect-zoe h4 {
 	display: inline-block;
 }
 
@@ -151,13 +155,13 @@ figure.effect-zoe:hover p.description {
 }
 
 figure.effect-zoe:hover figcaption,
-figure.effect-zoe:hover h2,
+figure.effect-zoe:hover h4,
 figure.effect-zoe:hover p.icon-links a {
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
 }
 
-figure.effect-zoe:hover h2 {
+figure.effect-zoe:hover h4 {
 	-webkit-transition-delay: 0.05s;
 	transition-delay: 0.05s;
 }
@@ -175,4 +179,9 @@ figure.effect-zoe:hover p.icon-links a:nth-child(2) {
 figure.effect-zoe:hover p.icon-links a:first-child {
 	-webkit-transition-delay: 0.2s;
 	transition-delay: 0.2s;
+}
+
+.gallery-item-description {
+	clear: both;
+	float: left;
 }
