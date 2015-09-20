@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
 import {Component, View, Inject, NgFor, NgIf} from 'angular2/angular2';
+
 import {PhotosService} from '../../services/photos';
 import {CommentsService} from '../../services/comments';
 

@@ -1,16 +1,16 @@
 
 body {
     background-color: #f8f8f8;
+    font-family: 'Lato', serif;
+}
+
+.content-container {
+    margin-top: 45px;
+    min-height: calc(100% - 45px);
 }
 
 .wrapper {
     width: 100%;
-}
-
-.page-wrapper {
-    padding: 0 15px;
-    min-height: calc(100% - 45px);
-    background-color: white;
 }
 
 @media(min-width:768px) {

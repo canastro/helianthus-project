@@ -1,6 +1,6 @@
 <div class="content-container">
 
-    <div class="figure-container" *ng-if="photo">
+    <div class="figure-top-container" *ng-if="photo">
 
         <div class="figure-header">
             <div class="figure-back" (click)="navigateBack()">
@@ -72,10 +72,7 @@
                 </div>
             </figure>
 
-            <!-- TODO: Add setup -->
-            <!-- TODO: Add description -->
-            <!-- TODO: Add story -->
-            <div class="photo-details-container">
+            <div class="photo-story-container">
 
                 <div class="photo-description" *ng-if="!photo.story">{{photo.description}}</div>
                 <div class="photo-story">{{photo.story}}</div>
@@ -100,12 +97,44 @@
                         <i class="icon icon-iso"></i>
                         <span>{{photo.setup.iso}}</span>
                     </div>
+
+                    <div class="photo-setup-item">
+                        <i class="icon" [class.icon-flash]="photo.setup.flash" [class.icon-noflash]="!photo.setup.flash"></i>
+                    </div>
                 </div>
 
             </div>
         </div>
 
-
     </div>
-    <div id="disqus_thread"></div>
+
+    <div class="figure-bottom-container container">
+        <div class="row">
+            <div id="disqus_thread" class="col-sm-8"></div>
+
+            <div class="figure-categorization col-sm-4"  *ng-if="photo">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Category:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="button" class="btn-sm btn-primary">{{photo.category.name}}</button>
+                    </div>
+                </div>
+
+                <div class="row tags-row">
+                    <div class="col-sm-12">
+                        <h3>Tags:</h3>
+                    </div>
+                </div>
+                <div class="row tags-buttons-row">
+                    <div class="col-sm-4" *ng-for="#tag of photo.tags">
+                        <button type="button" class="btn-sm btn-primary">{{tag.name}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,3 +1,10 @@
+.figure-top-container {
+    background-color: rgb(33, 33, 36);
+    color: white;
+    padding: 20px;
+}
+
+
 a.hp-figure-tag {
     border: 1px solid #FFFFFF;
     height: 50px;
@@ -7,6 +14,7 @@ a.hp-figure-tag {
 }
 
 .hp-figure-tag-message {
+    color: #000;
     position: absolute;
     background-color: #fff;
     opacity: 0.7;
@@ -91,7 +99,7 @@ a.hp-figure-tag {
     }
 }
 
-.photo-details-container {
+.photo-story-container {
     display: flex;
     flex-flow: column;
     justify-content: space-between;
@@ -108,7 +116,7 @@ a.hp-figure-tag {
     text-align: left;
 
     .icon {
-    	font-family: 'camera-icons';
+    	font-family: Flaticon;
     	speak: none;
     	font-style: normal;
     	font-weight: normal;
@@ -128,26 +136,58 @@ a.hp-figure-tag {
     }
 
     .icon-focal_length:before {
-    	content: "\e600";
+    	content: "\e005";
     }
 
     .icon-exposure_time:before {
-    	content: "\e601";
+    	content: "\e003";
     }
 
     .icon-iso:before {
-    	content: "\e602";
+    	content: "\e007";
     }
 
     .icon-camera:before {
-    	content: "\e603";
+        content: "\e002";
     }
 
     .icon-aperture:before {
-    	content: "\e604";
+    	content: "\e004";
     }
+
+    .icon-flash:before {
+    	content: "\e000";
+    }
+
+    .icon-noflash:before {
+    	content: "\e006";
+    }
+
+    /** macro: content: "\e001"; **/
 }
 
-#disqus_thread {
-    margin-top: 30px;
+.figure-bottom-container {
+    padding: 20px;
+
+    #disqus_thread {
+
+    }
+
+    .row {
+        margin-top: 10px;
+    }
+
+    .tags-row {
+        margin-top: 30px;
+    }
+
+    .tags-buttons-row {
+        button {
+            width: 100%;
+        }
+
+        .col-sm-4 {
+            margin-top: 10px;
+        }
+    }
 }
