@@ -19,8 +19,7 @@ var tasks = {
 	copyFonts: 'Copy-Fonts',
 	copyIcons: 'Copy-FontAwesome-Icons',
 	copy: 'Copy-Compiled-JS',
-	cleanSrc: 'Clean-Source',
-	cleanPublic: 'Clean-Public',
+	copyVendors: 'Copy-Vendors',
 	startWebServer: 'Start-WebServer',
 	watch: 'Watch',
 	watcherRebuild: 'Watcher-Rebuild'
@@ -35,7 +34,8 @@ gulp.task(tasks.default, function () {
 		tasks.html,
 		tasks.copy,
 		tasks.copyIcons,
-		tasks.cleanSrc,
+		tasks.copyFonts,
+		tasks.copyVendors,
 		tasks.startWebServer,
 		tasks.watch
     );
@@ -45,12 +45,14 @@ gulp.task(tasks.default, function () {
 // watcher will run the task bellow
 gulp.task(tasks.watcherRebuild, function (callback) {
 	runSequence(
-		tasks.cleanPublic,
+        tasks.cleanAll,
 		tasks.typeScript,
 		tasks.sass,
 		tasks.html,
+		tasks.copyVendors,
 		tasks.copy,
-		tasks.cleanSrc
+		tasks.copyIcons,
+		tasks.copyFonts
 	);
 	callback();
 });
@@ -108,23 +110,15 @@ gulp.task(tasks.copyFonts, function() { 
         .pipe(gulp.dest('public/assets/fonts')); 
 });
 
+gulp.task(tasks.copyVendors, function() { 
+    return gulp.src('./node_modules/tether/dist/js/tether.min.js') 
+        .pipe(gulp.dest('public/assets/vendors')); 
+});
 
 //  clean all generated/compiled files
 //	in both  and public/ directories
 gulp.task(tasks.cleanAll, function () {
-	return runSequence(tasks.cleanSrc, tasks.cleanPublic);
-});
-
-//  clean all generated/compiled files
-//	only in public/ directory
-gulp.task(tasks.cleanPublic, function () {
-	return del(['public/scripts']);
-});
-
-//  clean all generated/compiled files
-//	only in both  directory
-gulp.task(tasks.cleanSrc, function () {
-	return del(['build', 'maps']);
+	return del(['public/', 'build', 'maps']);
 });
 
 // watcher

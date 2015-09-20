@@ -18,16 +18,35 @@
                 <div class="photo-controllers">
                     <p class="icon-links">
                         <div class="photo-controller">
-                            <div class="figure-toggle-container" (click)="toggleTags($event)">
+                            <div class="figure-toggle-container"
+                                (click)="toggleTags($event)"
+                                hp-tooltip
+                                data-toggle="tooltip"
+                                data-placement="left"
+                                title="Toggle picture tags">
                                 <i *ng-if="tagsOn" class="fa fa-toggle-on"></i>
                                 <i *ng-if="!tagsOn" class="fa fa-toggle-off"></i>
                             </div>
                         </div>
                         <div class="photo-controller">
-                            <i class="fa fa-facebook-square"></i>
+                            <i class="fa fa-facebook-square"hp-tooltip
+                                data-toggle="tooltip"
+                                data-placement="left"
+                                title="Share on facebook"></i>
                         </div>
                         <div class="photo-controller">
-			                <i class="fa fa-heart"></i>
+			                <i class="fa fa-heart"
+                                hp-tooltip
+                                data-toggle="tooltip"
+                                data-placement="left"
+                                title="Like"></i>
+                        </div>
+                        <div class="photo-controller">
+			                <i class="fa fa-globe"
+                                hp-tooltip
+                                data-toggle="tooltip"
+                                data-placement="left"
+                                title="Location"></i>
                         </div>
 
         			</p>

@@ -69,7 +69,9 @@
         - Layout: the browsing of photos (group/filter by category/tag/name/setup)
 
     - Photo:
-        - FE: toggle on/off figure tags
+        - Update Model:
+            - Add date;
+        - FE: Add bootstrap tooltips
         - FE: Update upload photo form
         - FE: Back button on photo/:id
         - FE: Share on facebook

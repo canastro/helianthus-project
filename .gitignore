@@ -2,3 +2,5 @@ node_modules
 public
 typings
 src/**/*.js
+build
+maps

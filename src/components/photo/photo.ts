@@ -2,9 +2,12 @@
 import {Component, View, Inject, NgFor, NgIf} from 'angular2/angular2';
 import {PhotosService} from '../../services/photos';
 import {CommentsService} from '../../services/comments';
+
 import {HpFigure} from '../../directives/hp-figure';
 import {HpFigureTag} from '../../directives/hp-figure-tag';
 import {HpFigureTagMessage} from '../../directives/hp-figure-tag-message';
+import {HpTooltip} from '../../directives/hp-tooltip';
+
 import {RouteParams, Router} from 'angular2/router';
 
 // Annotation section
@@ -14,7 +17,7 @@ import {RouteParams, Router} from 'angular2/router';
 
 @View({
   templateUrl: 'components/photo/photo.html',
-  directives: [NgFor, NgIf, HpFigure, HpFigureTag, HpFigureTagMessage]
+  directives: [NgFor, NgIf, HpFigure, HpFigureTag, HpFigureTagMessage, HpTooltip]
 })
 
 // Component controller

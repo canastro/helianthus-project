@@ -39,6 +39,7 @@
         "./src/directives/hp-figure-tag-message.ts",
         "./src/directives/hp-figure-tag.ts",
         "./src/directives/hp-figure.ts",
+        "./src/directives/hp-tooltip.ts",
         "./src/directives/uploader.ts",
         "./src/services/auth.ts",
         "./src/services/categories.ts",
