@@ -36,6 +36,7 @@
         "./src/components/home/home.ts",
         "./src/components/navbar/navbar.ts",
         "./src/components/photo/photo.ts",
+        "./src/components/settings/settings.ts",
         "./src/directives/hp-figure-tag-message.ts",
         "./src/directives/hp-figure-tag.ts",
         "./src/directives/hp-figure.ts",

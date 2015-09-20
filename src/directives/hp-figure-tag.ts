@@ -23,7 +23,7 @@ export class HpFigureTag{
     tagOver = new EventEmitter();
     tagOut = new EventEmitter();
 
-    constructor(private el: ElementRef){
+    constructor(private el: ElementRef) {
         this.$container = $(this.el.nativeElement);
     }
 

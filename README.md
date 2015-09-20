@@ -64,18 +64,22 @@
 
 # To do
 
+    - Settings like http://tympanus.net/Development/ButtonComponentMorph/index7.html
+
     - Gallery
+        - Use packery or isotope
         - FE: Paginate
         - Layout: the browsing of photos (group/filter by category/tag/name/setup)
 
     - Photo:
-        - Update Model:
-            - Add date;
-        - FE: Add bootstrap tooltips
+        - FE: Next/previous photo
+        - FE: Add stats (views / likes / comments (?))
+        - FE: Open to fullscreen;
         - FE: Update upload photo form
         - FE: Back button on photo/:id
         - FE: Share on facebook
-        - Layout: show tags, categories, setup, hide/show hp-figure-tags, etc.
+        - BE/FE: On post new photo ask if wants to share to facebook, instagram, twitter, etc.
+        - Click on category/tag and show a list of filtered photos
 
     - Inline-Comments:
         - BE: Create route to DELETE
