@@ -35,6 +35,7 @@
         "./src/components/gallery/gallery.ts",
         "./src/components/home/home.ts",
         "./src/components/navbar/navbar.ts",
+        "./src/components/pagination/pagination.ts",
         "./src/components/photo/photo.ts",
         "./src/components/settings/settings.ts",
         "./src/directives/hp-figure-tag-message.ts",

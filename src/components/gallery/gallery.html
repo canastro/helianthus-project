@@ -1,14 +1,18 @@
-<div class="gallery-container gallery-grid">
+<div class="gallery-container">
 
-    <figure class="gallery-figure effect-zoe" *ng-for="#photo of photos" [router-link]="['/photo',{'id':photo._id}]">
-		<img [src]="'/static/' + photo.name" [alt]="photo.title"/>
-		<figcaption>
-			<h4>{{photo.title}}</h4>
-            <div class="icon-links">
-                <a href="#"><i class="fa fa-facebook-square"></i></a>
-				<a href="#"><i class="fa fa-heart"></i></a>
-			</div>
-			<p class="gallery-item-description">{{photo.description}}</p>
-		</figcaption>
-	</figure>
+    <div class="figures-container gallery-grid">
+        <figure class="gallery-figure effect-zoe" *ng-for="#photo of photos" [router-link]="['/photo',{'id':photo._id}]">
+    		<img [src]="'/static/' + photo.name" [alt]="photo.title"/>
+    		<figcaption>
+    			<h4>{{photo.title}}</h4>
+                <div class="icon-links">
+                    <a href="#"><i class="fa fa-facebook-square"></i></a>
+    				<a href="#"><i class="fa fa-heart"></i></a>
+    			</div>
+    			<p class="gallery-item-description">{{photo.description}}</p>
+    		</figcaption>
+    	</figure>
+    </div>
+
+    <pagination [pages]="nTotalPages" (page-selected)="pageSelected($event)"></pagination>
 </div>

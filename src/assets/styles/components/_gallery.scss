@@ -1,3 +1,12 @@
+.gallery-container {
+	display: flex;
+    flex-flow: column;
+}
+
+.figures-container {
+	height: 600px;
+}
+
 .gallery-grid {
 	position: relative;
 	margin: 0 auto;

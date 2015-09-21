@@ -4,6 +4,10 @@ body {
     font-family: 'Lato', serif;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 .content-container {
     margin-top: 45px;
     min-height: calc(100% - 45px);

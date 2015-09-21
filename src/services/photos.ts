@@ -33,15 +33,25 @@ export class PhotosService {
 			});
 	}
 
-	getPhotos() : any {
+	getPhotos(perPage, page) : any {
 
-		var path = '/api/photos';
+		var path = `/api/photos?per_page=${perPage}&page=${page}`;
 
 		return this.http.get(path)
 			.toRx()
 			.selectMany(result => {
 				this.photos = JSON.parse(result._body);
 				return Promise.resolve(this.photos);
+			});
+	}
+
+	getPhotosCount(): any {
+		var path = "/api/photos/count";
+
+		return this.http.get(path)
+			.toRx()
+			.selectMany(result => {
+				return Promise.resolve(JSON.parse(result._body));
 			});
 	}
 
