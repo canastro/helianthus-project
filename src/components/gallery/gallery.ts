@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
 import {Component, View, Inject, NgFor} from 'angular2/angular2';
 
-import {Pagination} from '../pagination/pagination';
+import {HpLoadMore} from '../../directives/hp-load-more';
 
 import {PhotosService} from '../../services/photos';
 import {RouterLink} from 'angular2/router';
@@ -13,42 +13,38 @@ import {RouterLink} from 'angular2/router';
 
 @View({
   templateUrl: 'components/gallery/gallery.html',
-  directives: [RouterLink, NgFor, Pagination]
+  directives: [RouterLink, NgFor, HpLoadMore]
 })
 
 // Component controller
 export class Gallery {
 
-    nTotalPages: number = 0;
-    perPage: number = 12;
-    page: number = 1;
-    hasMore: boolean = false;
-    photos: Array<any>;
+    hasMore: boolean = true;
+    photos: Array<any> = [];
 
     constructor(private photosService: PhotosService) {
-        this.getPhotosCount();
         this.getPhotos();
     }
 
     getPhotos() {
-        this.photosService.getPhotos(this.perPage, this.page)
+
+        this.photosService.getPhotos()
             .subscribe(result => {
-                this.photos = result.photos;
-                this.hasMore = result.hasMore;
+                this.photos = result;
+                // this.hasMore = result.hasMore;
             });
     }
 
-    getPhotosCount() {
+    loadMore() {
 
-        this.photosService.getPhotosCount()
+        if (!this.hasMore) {
+            return;
+        }
+
+        this.photosService.loadMore(null)
             .subscribe(result => {
-                this.nTotalPages = Math.ceil(result / this.perPage);
+                this.photos = result;
+                // this.hasMore = result.hasMore;
             });
-    }
-
-    pageSelected($event) {
-
-        this.page = $event;
-        this.getPhotos();
     }
 }

@@ -68,7 +68,6 @@
 
     - Gallery
         - Use packery or isotope
-        - FE: Paginate
         - Layout: the browsing of photos (group/filter by category/tag/name/setup)
 
     - Photo:
@@ -80,6 +79,9 @@
         - FE: Share on facebook
         - BE/FE: On post new photo ask if wants to share to facebook, instagram, twitter, etc.
         - Click on category/tag and show a list of filtered photos
+        - BE: Automatically add watermark to uploaded photos
+        - BE: Load comments
+        - BE: Automatically create thumbnails to uploaded photos
 
     - Inline-Comments:
         - BE: Create route to DELETE

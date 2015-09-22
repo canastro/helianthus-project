@@ -1,6 +1,6 @@
-<div class="gallery-container">
+<div class="gallery-container" hp-load-more (load-more)="loadMore()">
 
-    <div class="figures-container gallery-grid">
+    <div class="figures-container gallery-grid" >
         <figure class="gallery-figure effect-zoe" *ng-for="#photo of photos" [router-link]="['/photo',{'id':photo._id}]">
     		<img [src]="'/static/' + photo.name" [alt]="photo.title"/>
     		<figcaption>
@@ -13,6 +13,4 @@
     		</figcaption>
     	</figure>
     </div>
-
-    <pagination [pages]="nTotalPages" (page-selected)="pageSelected($event)"></pagination>
 </div>

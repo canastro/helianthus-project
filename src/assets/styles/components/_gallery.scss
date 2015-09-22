@@ -1,10 +1,9 @@
 .gallery-container {
 	display: flex;
     flex-flow: column;
-}
-
-.figures-container {
-	height: 600px;
+	height: 100%;
+	overflow: auto;
+	will-change: scroll-position;
 }
 
 .gallery-grid {

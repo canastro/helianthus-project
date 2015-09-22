@@ -6,7 +6,9 @@ import * as Rx from 'rx';
 @Injectable()
 export class PhotosService {
 
-	photos: any;
+	photos: any = [];
+	perPage: number = 20;
+    page: number = 1;
 
 	constructor(
 		private http: Http,
@@ -19,7 +21,7 @@ export class PhotosService {
 		var path = '/api/photo/' + id;
 
 		if (this.photos) {
-			var xs = Rx.Observable.create((observer) => {
+			return Rx.Observable.create((observer) => {
 				observer.onNext(this.photos.find(photo => photo._id === id));
 				observer.onCompleted();
 			});
@@ -33,14 +35,29 @@ export class PhotosService {
 			});
 	}
 
-	getPhotos(perPage, page) : any {
+	getPhotos() : any {
 
+		if (this.photos && this.photos.length > 0) {
+			return Rx.Observable.create((observer) => {
+				observer.onNext(this.photos);
+				observer.onCompleted();
+			});
+		}
+
+		return this.loadMore(1);
+	}
+
+	loadMore(page) : any {
+
+		var perPage = this.perPage;
+		var page = page || this.page + 1;
 		var path = `/api/photos?per_page=${perPage}&page=${page}`;
 
 		return this.http.get(path)
 			.toRx()
 			.selectMany(result => {
-				this.photos = JSON.parse(result._body);
+				Array.prototype.push.apply(this.photos, JSON.parse(result._body).photos);
+
 				return Promise.resolve(this.photos);
 			});
 	}
