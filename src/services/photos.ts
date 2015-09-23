@@ -24,7 +24,17 @@ export class PhotosService {
 		if (this.photos) {
 			return Rx.Observable.create((observer) => {
 
-				var photo = this.photos.some(photo => photo._id === id);
+				var photo;
+
+				this.photos.some((item) => {
+
+					if (item._id === id) {
+						photo = item;
+						return true;
+					}
+
+					return false;
+				});
 
 				observer.onNext(photo);
 				observer.onCompleted();
