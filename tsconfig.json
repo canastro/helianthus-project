@@ -56,7 +56,6 @@
         "./src/services/contact.ts",
         "./src/services/photos.ts",
         "./src/services/tags.ts",
-        "./src/shims/find.ts",
         "./typings/angular2/angular2.d.ts",
         "./typings/angular2/http.d.ts",
         "./typings/angular2/router.d.ts",

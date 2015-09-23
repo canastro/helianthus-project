@@ -5,6 +5,16 @@ body {
     overflow: hidden;
 }
 
+footer {
+    height: 75px;
+    line-height: 75px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+
+    margin-top: 75px;
+}
+
 a {
     text-decoration: none !important;
 }
