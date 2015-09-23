@@ -11,14 +11,14 @@ export class TagsService {
 	) {
 	}
 
-	getAllTags() : any {
+	getAllTags() : Rx.Observable<any> {
 		var self = this;
 		var path = '/api/tags';
 
 		return this.http.get(path).toRx();
 	}
 
-	createTag(params) : any {
+	createTag(params) : Rx.Observable<any> {
 
 		let path = '/api/admin/tags';
 		let options = {

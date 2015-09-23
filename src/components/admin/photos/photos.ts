@@ -36,15 +36,13 @@ import {UploadPhoto} from '../upload-photo/upload-photo';
 
 export class Photos {
 
-    perPage: number = 12;
-    page: number = 1;
     photos: Array<any>;
 
     constructor(
-        @Inject(PhotosService) private photosService: PhotosService
+        private photosService: PhotosService
     ) {
 
-        this.photosService.getPhotos(this.perPage, this.page)
+        this.photosService.getPhotos()
             .subscribe(result => {
                 this.photos = result;
             });

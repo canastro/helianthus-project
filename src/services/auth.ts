@@ -1,15 +1,16 @@
-import {Component, Injectable, Inject} from 'angular2/angular2';
+import {Component, Injectable, Inject, Observable, EventEmitter} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
+import {Authenticate} from '../interfaces/authenticate';
 import * as Rx from 'rx';
+
 
 @Injectable()
 export class AuthService {
 
-
 	constructor(private http: Http) {
 	}
 
-	authenticate(params) : any {
+	authenticate(params: Authenticate) : Rx.Observable<any> {
 
 		let path = '/api/admin/authenticate';
 		let options = {

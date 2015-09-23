@@ -1,5 +1,7 @@
 import {Component, View, Injectable, Inject} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
+import {Comment} from '../interfaces/comment';
+import {Photo} from '../interfaces/photo';
 import * as Rx from 'rx';
 
 @Injectable()
@@ -10,7 +12,7 @@ export class CommentsService {
 	) {
 	}
 
-	getCommentsByPhotoId(id) {
+	getCommentsByPhotoId(id : number) : Rx.Observable<any> {
 
 		var path = '/api/photo/' + id + '/comment';
 
@@ -22,7 +24,7 @@ export class CommentsService {
 			});
 	}
 
-	commentPhoto(photo, params) : any {
+	commentPhoto(photo: Photo, params: Comment) : Rx.Observable<any> {
 
         let parameters;
 		let path = '/api/photo/' + photo._id + '/comment';
@@ -31,12 +33,7 @@ export class CommentsService {
 		};
 		options.headers.append('Content-Type', 'application/json');
 
-        parameters = {
-            positionX: params.position.left,
-            positionY: params.position.top,
-            message: params.message,
-            photo: photo
-        };
+        params.photo = photo;
 
         return this.http.post(
             path,

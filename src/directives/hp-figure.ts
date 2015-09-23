@@ -49,7 +49,8 @@ export class HpFigure{
 
         params = {
             message: promptResult,
-            position: position
+            positionX: position.left,
+            positionY: position.top
         };
 
         this.commentsService.commentPhoto(this.photo, params)

@@ -1,5 +1,5 @@
 /// <reference path="../../../../typings/angular2/angular2.d.ts" />
-import {Component, View, Inject, NgFor} from 'angular2/angular2';
+import {Component, View, Inject, NgFor, NgIf} from 'angular2/angular2';
 
 import {ROUTER_DIRECTIVES, RouterLink} from 'angular2/router';
 
@@ -10,7 +10,7 @@ import {ROUTER_DIRECTIVES, RouterLink} from 'angular2/router';
 
 @View({
     templateUrl: 'components/admin/sidenav/sidenav.html',
-    directives: [NgFor, RouterLink]
+    directives: [NgFor, NgIf, RouterLink]
 })
 
 // Component controller
@@ -30,7 +30,20 @@ export class SideNav {
             path: '/admin/tags'
         }, {
             name: 'Photos',
+            items: [{
+                name: 'List',
+                path: '/admin/listPhotos'
+            }, {
+                name: 'Create',
+                path: 'admin/createPhoto'
+            }]
+        }, {
+            name: 'Setups',
             path: '/admin/photos'
         }];
+    }
+
+    onClick(item) {
+        console.log(item);
     }
 }

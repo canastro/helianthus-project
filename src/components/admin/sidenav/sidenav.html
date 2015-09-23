@@ -22,9 +22,15 @@
             </li>
 
             <li class="nav-item" *ng-for="#item of items">
-                <a class="nav-link" [router-link]="[item.path]">
+                <div class="nav-link" (click)="onClick(item)">
                     <i class="fa fa-dashboard fa-fw"></i> {{item.name}}
-                </a>
+                </div>
+
+                <!-- <div *ng-if="item.items"> -->
+                    <div class="nav-link inner-nav-link" *ng-for="#innerItem of item.items" (click)="onClick(innerItem)">
+                        <i class="fa fa-dashboard fa-fw"></i> {{innerItem.name}}
+                    </div>
+                <!-- </div> -->
             </li>
 
         </ul>

@@ -12,12 +12,6 @@
             <li class="nav-item">
                 <a class="nav-link" [router-link]="['/about']">About</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
-                <div class="dropdown-menu">
-                    <a *ng-for="#category of categories" class="dropdown-item" href="#">{{category.name}}</a>
-                </div>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" [router-link]="['/contact']">Contact</a>
             </li>

@@ -97,3 +97,7 @@
 
     - Admin
         - FE: Create dashboard like interface
+
+    - Refactoring
+        - FE: Add correct typings
+        - BE: Handle errors and return correct status codes

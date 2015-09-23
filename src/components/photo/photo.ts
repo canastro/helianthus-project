@@ -24,6 +24,7 @@ import {RouteParams, Router} from 'angular2/router';
 // Component controller
 export class Photo {
 
+    photoId: any;
     tagsOn: boolean = false;
     photo: Object;
     figureTags: Array<Object>;
@@ -36,15 +37,15 @@ export class Photo {
         private photosService: PhotosService,
         private commentsService: CommentsService
     ){
-        var id = params.get('id');
+        this.photoId = params.get('id');
 
         this.figureTags = [];
 
-        photosService.find(id).subscribe(result => {
+        photosService.find(this.photoId).subscribe(result => {
             this.photo = result;
         });
 
-        commentsService.getCommentsByPhotoId(id)
+        commentsService.getCommentsByPhotoId(this.photoId)
             .subscribe(result => {
                 this.figureTags = result.map((item) => {
                     return {
@@ -56,19 +57,22 @@ export class Photo {
                     };
                 });
             });
+    }
 
+    onInit() {
         if (window["DISQUS"]) {
             window["DISQUS"].reset({
                 reload: true,
                 config: function () {
-                    this.page.identifier = id;
+                    this.page.identifier = this.photoId;
+                    this.page.url = document.URL;
                 }
             });
             return;
         }
 
         window['disqus_shortname'] = 'helianthus-project';
-        window['disqus_identifier'] = id;
+        window['disqus_identifier'] = this.photoId;
 
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + window['disqus_shortname'] + '.disqus.com/embed.js';

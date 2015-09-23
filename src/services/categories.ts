@@ -1,6 +1,10 @@
-import {Component, View, Injectable, Inject} from 'angular2/angular2';
+import {Component, View, Injectable, Inject, EventEmitter} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
 import {AuthService} from './auth';
+import {Category} from '../interfaces/category';
+import * as Rx from 'rx';
+
+
 
 @Injectable()
 export class CategoriesService {
@@ -11,18 +15,16 @@ export class CategoriesService {
 		private http: Http,
 		@Inject(AuthService) private authService: AuthService
 	) {
-
-		//this.getAllCategories();
 	}
 
-	getAllCategories() : any {
+	getAllCategories() : Rx.Observable<any> {
 		var self = this;
 		var path = '/api/categories';
 
 		return this.http.get(path).toRx();
 	}
 
-	createCategory(params) : any {
+	createCategory(category: Category) : Rx.Observable<any> {
 
 		let path = '/api/admin/categories';
 		let options = {
@@ -33,7 +35,7 @@ export class CategoriesService {
 
 		return this.http.post(
 			path,
-			JSON.stringify(params),
+			JSON.stringify(category),
 			options
 		)
             .toRx();

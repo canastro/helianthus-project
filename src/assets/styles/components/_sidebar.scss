@@ -10,9 +10,14 @@
         height: 75px;
     }
 
+    .inner-nav-link {
+        display: block;
+        padding-left: 30px;
+    }
+
      ul li {
         border-bottom: 1px solid darken($gray-lightest, 6.5%);
-        height: 50px;
+        height: auto;
         line-height: 50px;
         padding-left: 10px;
 
