@@ -1,63 +1,5 @@
 .sidebar {
     padding: 0;
-
-    .input-group-addon {
-        width: 40px;
-    }
-
-    .sidebar-search {
-        padding: 15px;
-        height: 75px;
-    }
-
-    .inner-nav-link {
-        display: block;
-        padding-left: 30px;
-    }
-
-     ul li {
-        border-bottom: 1px solid darken($gray-lightest, 6.5%);
-        height: auto;
-        line-height: 50px;
-        padding-left: 10px;
-
-        &.active {
-            background-color: $gray-lighter;
-        }
-
-        &:hover {
-            background-color: $gray-lighter;
-        }
-
-        a {
-            display: block;
-        }
-    }
-
-    .arrow {
-        float: right;
-    }
-
-    .fa.arrow:before {
-        content: "\f104";
-    }
-
-    .active > a > .fa.arrow:before {
-        content: "\f107";
-    }
-
-    .nav-second-level li,
-    .nav-third-level li {
-        border-bottom: none !important;
-    }
-
-    .nav-second-level li a {
-        padding-left: 37px;
-    }
-
-    .nav-third-level li a {
-        padding-left: 52px;
-    }
 }
 
 @media(min-width:768px) {
@@ -72,4 +14,40 @@
     .navbar-top-links .dropdown-alerts {
         margin-left: auto;
     }
+}
+
+/*heading styles*/
+.sidebar-nav h3 {
+	font-size: 12px;
+	line-height: 34px;
+	padding: 0 10px;
+	cursor: pointer;
+}
+
+/*iconfont styles*/
+.sidebar-nav h3 span {
+	font-size: 16px;
+	margin-right: 10px;
+}
+
+/*links*/
+.sidebar-nav .sidenav-child-anchor {
+	text-decoration: none;
+	font-size: 11px;
+	line-height: 27px;
+	display: block;
+	padding: 0 15px;
+	/*transition for smooth hover animation*/
+	transition: all 0.15s;
+}
+/*hover effect on links*/
+.sidebar-nav ul ul li a:hover {
+	border-left: 5px solid lightgreen;
+}
+/*Lets hide the non active LIs by default*/
+.sidebar-nav ul ul {
+	display: none;
+}
+.sidebar-nav li.active ul {
+	display: block;
 }

@@ -29,11 +29,6 @@ import {UploadPhoto} from '../upload-photo/upload-photo';
   directives: [ROUTER_DIRECTIVES, RouterLink, NgFor]
 })
 
-
-@RouteConfig([
-    { path: '/create', as: 'create', component: UploadPhoto }
-])
-
 export class Photos {
 
     photos: Array<any>;

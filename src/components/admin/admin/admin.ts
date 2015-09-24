@@ -9,6 +9,7 @@ import {Dashboard} from '../dashboard/dashboard';
 import {CreateCategory} from '../create-category/create-category';
 import {CreateTag} from '../create-tag/create-tag';
 import {Photos} from '../photos/photos';
+import {UploadPhoto} from '../upload-photo/upload-photo';
 
 import {ROUTER_DIRECTIVES, Router, RouterOutlet, RouteConfig} from 'angular2/router';
 
@@ -28,7 +29,8 @@ import {ROUTER_DIRECTIVES, Router, RouterOutlet, RouteConfig} from 'angular2/rou
     { path: '/auth', as: 'auth', component: Auth },
     { path: '/categories', as: 'categories', component: CreateCategory },
     { path: '/tags', as: 'tags', component: CreateTag },
-    { path: '/photos/...', as: 'photos', component: Photos }
+    { path: '/listPhotos', as: 'listPhotos', component: Photos },
+    { path: '/uploadPhoto', as: 'uploadPhoto', component: UploadPhoto }
 ])
 
 // Component controller

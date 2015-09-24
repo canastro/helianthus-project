@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/angular2/angular2.d.ts" />
 import {Component, View, Inject, NgFor, NgIf} from 'angular2/angular2';
 
-import {ROUTER_DIRECTIVES, RouterLink} from 'angular2/router';
+import {ROUTER_DIRECTIVES, RouterLink, Router} from 'angular2/router';
 
 // Annotation section
 @Component({
@@ -16,34 +16,71 @@ import {ROUTER_DIRECTIVES, RouterLink} from 'angular2/router';
 // Component controller
 export class SideNav {
 
-    items: Array<Object>;
+    items: Array<any>;
 
-    constructor() {
+    constructor(private router: Router) {
         this.items = [{
+            active: true,
             name: 'Dashboard',
             path: '/admin/dashboard'
         }, {
-            name: 'Categories',
-            path: '/admin/categories'
-        }, {
-            name: 'Tags',
-            path: '/admin/tags'
-        }, {
             name: 'Photos',
-            items: [{
+            children: [{
+                name: 'List',
+                path: '/admin/listPhotos'
+            }, {
+                name: 'Upload',
+                path: '/admin/uploadPhoto'
+            }]
+        }, {
+            name: 'Album',
+            children: [{
                 name: 'List',
                 path: '/admin/listPhotos'
             }, {
                 name: 'Create',
-                path: 'admin/createPhoto'
+                path: '/admin/uploadPhoto'
+            }]
+        }, {
+            name: 'Categories',
+            children: [{
+                name: 'List',
+                path: '/admin/listPhotos'
+            }, {
+                name: 'Create',
+                path: '/admin/categories'
+            }]
+        }, {
+            name: 'Tags',
+            children: [{
+                name: 'List',
+                path: '/admin/listPhotos'
+            }, {
+                name: 'Create',
+                path: '/admin/tags'
             }]
         }, {
             name: 'Setups',
-            path: '/admin/photos'
+            children: [{
+                name: 'List',
+                path: '/admin/listPhotos'
+            }, {
+                name: 'Create',
+                path: '/admin/listPhotos'
+            }]
         }];
     }
 
     onClick(item) {
-        console.log(item);
+
+        this.items.forEach((it) => {
+            it.active = false;
+        });
+
+        item.active = true;
+
+        if (item.path) {
+            this.router.navigate(item.path);
+        }
     }
 }
