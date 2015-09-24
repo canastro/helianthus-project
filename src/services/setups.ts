@@ -1,15 +1,15 @@
 import {Component, View, Injectable, Inject, EventEmitter} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
 import {AuthService} from './auth';
-import {Category} from '../interfaces/category';
+import {Setup} from '../interfaces/setup';
 import * as Rx from 'rx';
 
 
 
 @Injectable()
-export class CategoriesService {
+export class SetupsService {
 
-	// categories: Array<any>;
+	// setups: Array<any>;
 
 	constructor(
 		private http: Http,
@@ -17,26 +17,15 @@ export class CategoriesService {
 	) {
 	}
 
-	getAllCategories() : Rx.Observable<any> {
-		var path = '/api/categories';
+	getAllSetups() : Rx.Observable<any> {
 
-		return this.http.get(path).toRx();
-	}
-
-	createCategory(category: Category) : Rx.Observable<any> {
-
-		let path = '/api/admin/categories';
+		let path = '/api/admin/setups';
 		let options = {
 			headers: new Headers()
 		};
 		options.headers.append('x-access-token', this.authService.getToken());
 		options.headers.append('Content-Type', 'application/json');
 
-		return this.http.post(
-			path,
-			JSON.stringify(category),
-			options
-		)
-            .toRx();
+		return this.http.get(path, options).toRx();
 	}
 }

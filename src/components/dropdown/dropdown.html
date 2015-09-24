@@ -1,0 +1,18 @@
+<div class="dropdown open">
+  <button
+    class="btn btn-secondary dropdown-toggle"
+    type="button"
+    data-toggle="dropdown">
+    {{title}}
+  </button>
+  <div class="dropdown-menu">
+    <div class="dropdown-item" *ng-for="#option of hpOptions" (click)="onClick(option)" [class.selected]="option.selected">
+        <ul>
+            <li *ng-for="#key of hpKeys">
+                <b>{{key.description}}: </b>
+                <span>{{option[key.key]}}</span>
+            </li>
+        <ul>
+    </div>
+  </div>
+</div>
