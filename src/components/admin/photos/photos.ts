@@ -15,6 +15,7 @@ import {ROUTER_DIRECTIVES, RouterLink, RouteConfig} from 'angular2/router';
 
 import {PhotosService} from '../../../services/photos';
 import {UploadPhoto} from '../upload-photo/upload-photo';
+import {HpLoadMore} from '../../../directives/hp-load-more';
 
 // Annotation section
 @Component({
@@ -26,7 +27,7 @@ import {UploadPhoto} from '../upload-photo/upload-photo';
 
 @View({
   templateUrl: 'components/admin/photos/photos.html',
-  directives: [ROUTER_DIRECTIVES, RouterLink, NgFor]
+  directives: [ROUTER_DIRECTIVES, RouterLink, NgFor, HpLoadMore]
 })
 
 export class Photos {
@@ -38,6 +39,14 @@ export class Photos {
     ) {
 
         this.photosService.getPhotos()
+            .subscribe(result => {
+                this.photos = result;
+            });
+    }
+
+    loadMore() {
+
+        this.photosService.loadMore(null)
             .subscribe(result => {
                 this.photos = result;
             });

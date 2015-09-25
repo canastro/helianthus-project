@@ -1,16 +1,33 @@
-<table class="table photo-list-container">
-    <thead class="thead-inverse">
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Category</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ng-for="#photo of photos">
-            <td>{{photo.title}}</td>
-            <td>{{photo.description}}</td>
-            <td>{{photo.category ? photo.category.name : ''}}</td>
-        </tr>
-    </tbody>
-</table>
+<div hp-load-more (load-more)="loadMore()">
+
+    <div class="row" *ng-for="#photo of photos">
+
+        <div class="col-md-3">
+    		<img class="admin-thumbnail" [src]="'/static/' + photo.name" [alt]="photo.title"/>
+    	</div>
+
+        <div class="col-md-8">
+            <ul>
+                <li>
+                    <span>Title:</span>
+                    <span>{{photo.title}}</span>
+                </li>
+                <li>
+                    <span>Description:</span>
+                    <span>{{photo.description}}</span>
+                </li>
+                <li>
+                    <span>Category:</span>
+                    <span>{{photo.category.name}}</span>
+                </li>
+                <li>
+                    <span>Tags:</span>
+                    <ul>
+                        <li *ng-for="#tag of photo.tags">{{tag.name}}</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

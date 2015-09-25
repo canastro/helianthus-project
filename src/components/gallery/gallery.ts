@@ -19,7 +19,6 @@ import {RouterLink} from 'angular2/router';
 // Component controller
 export class Gallery {
 
-    hasMore: boolean = true;
     photos: Array<any> = [];
 
     constructor(private photosService: PhotosService) {
@@ -31,20 +30,14 @@ export class Gallery {
         this.photosService.getPhotos()
             .subscribe(result => {
                 this.photos = result;
-                // this.hasMore = result.hasMore;
             });
     }
 
     loadMore() {
 
-        if (!this.hasMore) {
-            return;
-        }
-
         this.photosService.loadMore(null)
             .subscribe(result => {
                 this.photos = result;
-                // this.hasMore = result.hasMore;
             });
     }
 }

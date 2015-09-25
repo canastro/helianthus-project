@@ -74,13 +74,11 @@
         - FE: Next/previous photo
         - FE: Add stats (views / likes / comments (?))
         - FE: Open to fullscreen;
-        - FE: Update upload photo form
         - FE: Back button on photo/:id
         - FE: Share on facebook
         - BE/FE: On post new photo ask if wants to share to facebook, instagram, twitter, etc.
         - Click on category/tag and show a list of filtered photos
         - BE: Automatically add watermark to uploaded photos
-        - BE: Load comments
         - BE: Automatically create thumbnails to uploaded photos
 
     - Inline-Comments:
@@ -90,10 +88,16 @@
         - FE: Create a inline form
 
     - Photography-Setups:
-        - BE: Create route to POST, GET, DELETE
+        - BE: Create route to POST, DELETE
+        - FE: List view
+        - FE: Create / Update view
 
     - Album
         - BE: Create Routes to POST, GET, DELETE, PUT
+        - FE: Admin: List view
+        - FE: Admin: Create / Update view
+        - FE: Client: List view
+        - FE: Client: Browse photos of a album
 
     - Admin
         - FE: Create dashboard like interface
