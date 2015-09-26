@@ -3,7 +3,6 @@ import {Http, Headers} from 'angular2/http';
 import {IAuthenticate} from '../interfaces/authenticate';
 import * as Rx from 'rx';
 
-
 @Injectable()
 export class AuthService {
 

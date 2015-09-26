@@ -24,13 +24,15 @@ var tasks = {
 	copyVendors: 'Copy-Vendors',
 	startWebServer: 'Start-WebServer',
 	watch: 'Watch',
-	watcherRebuild: 'Watcher-Rebuild'
+	watcherRebuild: 'Watcher-Rebuild',
+    tslint: 'Check-tsLint'
 };
 
 // Main task
 gulp.task(tasks.default, function () {
 	runSequence(
         tasks.cleanAll,
+        tasks.tslint,
 		tasks.typeScript,
 		tasks.sass,
 		tasks.html,
@@ -48,6 +50,7 @@ gulp.task(tasks.default, function () {
 gulp.task(tasks.watcherRebuild, function (callback) {
 	runSequence(
         tasks.cleanAll,
+        tasks.tslint,
 		tasks.typeScript,
 		tasks.sass,
 		tasks.html,
@@ -149,7 +152,7 @@ gulp.task(tasks.startWebServer, function () {
 
 });
 
-gulp.task('tslint', function(){
+gulp.task(tasks.tslint, function(){
 	return gulp.src(['src/**/*.ts'])
 		// .pipe(debug({title: 'tslint:'}))
 		.pipe(tslint())

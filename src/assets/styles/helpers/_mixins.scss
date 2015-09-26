@@ -1,14 +1,117 @@
-@mixin ellipsis ($max-width){
-  display: inline-block;
-  max-width: $max-width;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 @mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+
+/**
+ * @usage:
+ * .page-wrap {
+ *      width: 75%;
+ *      @include breakpoint(large) { width: 60%; }
+ *      @include breakpoint(medium) { width: 80%; }
+ *      @include breakpoint(small) { width: 95%; }
+ *  }
+ */
+@mixin breakpoint($point) {
+    @if $point == large {
+        @media (min-width: 64.375em) { @content; }
+    }
+    @else if $point == medium {
+        @media (min-width: 50em) { @content; }
+    }
+    @else if $point == small {
+        @media (min-width: 37.5em)  { @content; }
+    }
+}
+
+/**
+ * @usage;
+ *  .article {
+ *     @include clearfix();
+ *  }
+ */
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/**
+ * @usage:
+ *  .footer-wrap {
+ *      width: 450px;
+ *      @include center-block;
+ *  }
+ */
+@mixin center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/**
+ * @usage:
+ *  *,
+ *  *:after,
+ *  *:before {
+ *      @include box-sizing(border-box);
+ *  }
+ */
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model; // Safari <= 5
+    -moz-box-sizing: $box-model; // Firefox <= 19
+    box-sizing: $box-model;
+}
+
+
+/**
+ * @usage:
+ *  .abs {
+ *      @include abs-pos(10px, 10px, 5px, 15px);
+ *  }
+ */
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    position: absolute;
+}
+
+
+/**
+ * @usage:
+ *  body {
+ *      @include font-size(16);
+ *  }
+ */
+@mixin font-size($sizeValue: 12 ){
+  font-size: $sizeValue + px; //fallback for old browsers
+  font-size: (0.125 * $sizeValue) + rem;
+}
+
+
+/**
+ * @usage:
+ *  body {
+ *      @include line-height (16);
+ *  }
+ */
+@mixin line-height($heightValue: 12 ){
+    line-height: $heightValue + px; //fallback for old browsers
+    line-height: (0.125 * $heightValue) + rem;
 }

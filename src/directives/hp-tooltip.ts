@@ -18,7 +18,6 @@ export class HpTooltip {
     // a function called tooltip
     $container: any;
 
-
     constructor(
         private el: ElementRef
     ) {

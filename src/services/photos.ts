@@ -1,3 +1,5 @@
+/// <reference path="../../typings/moment/moment.d.ts" />
+
 import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
 import {AuthService} from './auth';
@@ -21,7 +23,7 @@ export class PhotosService {
 
         let url = '/api/photo/' + id;
 
-        if (this.photos) {
+        if (this.photos && this.photos.length) {
             return Rx.Observable.create((observer) => {
 
                 let photo;
@@ -45,6 +47,7 @@ export class PhotosService {
             .toRx()
             .selectMany(result => {
                 let photo = JSON.parse(result._body);
+                photo.date = moment(photo.date).format('YYYY-MM-DD');
                 return Promise.resolve(photo);
             });
     }
@@ -73,7 +76,12 @@ export class PhotosService {
             .toRx()
             .selectMany(result => {
 
-                Array.prototype.push.apply(this.photos, JSON.parse(result._body).photos);
+                this.photos = JSON.parse(result._body).photos.map((photo) => {
+                    photo.date = moment(photo.date).format('L');
+                    return photo;
+                });
+
+                // Array.prototype.push.apply(this.photos, JSON.parse(result._body).photos);
                 return Promise.resolve(this.photos);
             });
     }

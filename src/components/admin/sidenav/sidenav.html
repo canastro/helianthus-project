@@ -10,7 +10,8 @@
 
                 <ul *ng-if="item.children">
                     <li *ng-for="#child of item.children">
-                        <a class="sidenav-child-anchor" [router-link]="[child.path]">{{child.name}}</a>
+                        <a *ng-if="child.params" class="sidenav-child-anchor" [router-link]="[child.path, child.params]">{{child.name}}</a>
+                        <a *ng-if="!child.params" class="sidenav-child-anchor" [router-link]="[child.path]">{{child.name}}</a>
                     </li>
                 </ul>
             </li>

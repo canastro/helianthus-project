@@ -45,7 +45,7 @@
             <fieldset class="form-group">
                 <h4 for="photo-category">Category</h4>
                 <select id="photo-category" class="form-control" ng-control="category">
-                   <option *ng-for="#category of allCategories" [value]="category._id">{{category.name}}</option>
+                   <option *ng-for="#category of categories" [value]="category._id">{{category.name}}</option>
                 </select>
             </fieldset>
         </div>
@@ -53,16 +53,6 @@
         <div class="col-sm-6">
             <fieldset class="form-group">
                 <h4 for="photo-setup">Setup</h4>
-                <!-- <select id="photo-setup" class="form-control" ng-control="setup">
-                   <option *ng-for="#setup of setups" [value]="setup._id">{{setup.machine}}</option>
-                </select> -->
-
-                <!-- <select class="c-select">
-                  <option selected><div>hello</div><b>teste</b></option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select> -->
 
                 <dropdown hp-title="Setup"
                     [hp-options]="setups"
@@ -79,7 +69,7 @@
 
                 <div class="row">
 
-                    <div class="col-md-3 tag-item" *ng-for="#tag of allTags">
+                    <div class="col-md-3 tag-item" *ng-for="#tag of tags">
                         <label>{{tag.name}}</label>
                         <input #checkbox type="checkbox" [checked]="tag.isSelected" (click)="addTag(tag, checkbox.value)"/>
                     </div>

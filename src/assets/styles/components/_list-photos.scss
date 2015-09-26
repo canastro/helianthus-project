@@ -1,3 +1,9 @@
+.admin-list-container {
+	height: 100%;
+	overflow: auto;
+	will-change: scroll-position;
+}
+
 .admin-thumbnail {
 	position: relative;
 	float: left;
@@ -10,4 +16,40 @@
 	background: #3085a3;
 	text-align: center;
 	cursor: pointer;
+}
+
+
+.admin-list-wrapper {
+
+    .photo-row {
+        cursor: pointer;
+        border-bottom: 1px solid #ccc;
+
+        &:hover {
+            background-color: #ccc;
+        }
+    }
+
+    .photo-details {
+        display: flex;
+        align-items: center;
+    }
+
+    .row-title {
+        font-weight: 700;
+    }
+
+    .row-value {
+        @include text-truncate();
+    }
+
+    .tag-container > ul,
+    .tag-container > span {
+        display: inline-block;
+    }
+
+    .tag-item {
+        display: inline-block;
+        margin-right: 10px;
+    }
 }

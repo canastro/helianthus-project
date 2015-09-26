@@ -33,6 +33,7 @@
     "typescript": "^1.6.0-beta"
   },
   "dependencies": {
+    "moment": "^2.10.6",
     "tether": "^1.1.0"
   }
 }

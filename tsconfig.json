@@ -27,7 +27,7 @@
         "./src/components/admin/create-category/create-category.ts",
         "./src/components/admin/create-tag/create-tag.ts",
         "./src/components/admin/dashboard/dashboard.ts",
-        "./src/components/admin/photos/photos.ts",
+        "./src/components/admin/list-photos/list-photos.ts",
         "./src/components/admin/sidenav/sidenav.ts",
         "./src/components/admin/upload-photo/upload-photo.ts",
         "./src/components/app/app.ts",

@@ -31,5 +31,4 @@ export class Settings {
         $('body').toggleClass('show-menu');
     }
 
-
 }

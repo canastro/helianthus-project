@@ -4,8 +4,6 @@ import {AuthService} from './auth';
 import {ICategory} from '../interfaces/category';
 import * as Rx from 'rx';
 
-
-
 @Injectable()
 export class CategoriesService {
 

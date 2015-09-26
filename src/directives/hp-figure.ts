@@ -22,7 +22,6 @@ export class HpFigure {
     tagAdded = new EventEmitter();
     $container: JQuery;
 
-
     constructor(
         private el: ElementRef,
         private commentsService: CommentsService
@@ -56,7 +55,6 @@ export class HpFigure {
 
         this.tagAdded.next(params);
     }
-
 
     private getLocalPosition(mouseX, mouseY) {
 

@@ -1,0 +1,44 @@
+<div class="admin-list-container" hp-load-more (load-more)="loadMore()">
+
+    <div class="admin-list-wrapper">
+
+        <div class="row photo-row" *ng-for="#photo of photos" (click)="selectPhoto(photo)">
+
+            <div class="col-md-3">
+        		<img class="admin-thumbnail" [src]="'/static/' + photo.name" [alt]="photo.title"/>
+        	</div>
+
+            <div class="col-md-8 photo-details">
+                <ul>
+                    <li>
+                        <span class="row-title">Title:</span>
+                        <span class="row-value">{{photo.title}}</span>
+                    </li>
+                    <li>
+                        <span class="row-title">Date:</span>
+                        <span class="row-value">{{photo.date}}</span>
+                    </li>
+                    <li>
+                        <span class="row-title">Description:</span>
+                        <span>{{photo.description}}</span>
+                    </li>
+                    <li>
+                        <span class="row-title">Story:</span>
+                        <span class="row-value">{{photo.story}}</span>
+                    </li>
+                    <li>
+                        <span class="row-title">Category:</span>
+                        <span class="row-value">{{photo.category.name}}</span>
+                    </li>
+                    <li class="tag-container">
+                        <span class="row-title">Tags:</span>
+                        <ul>
+                            <li class="tag-item" *ng-for="#tag of photo.tags">{{tag.name}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

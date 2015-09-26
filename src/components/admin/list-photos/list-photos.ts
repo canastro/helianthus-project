@@ -6,7 +6,7 @@ import {
     View,
     NgFor
 } from 'angular2/angular2';
-import {ROUTER_DIRECTIVES, RouterLink} from 'angular2/router';
+import {ROUTER_DIRECTIVES, RouterLink, Router} from 'angular2/router';
 
 import {IPhoto} from '../../../interfaces/photo';
 import {PhotosService} from '../../../services/photos';
@@ -22,15 +22,16 @@ import {HpLoadMore} from '../../../directives/hp-load-more';
 
 @View({
     directives: [ROUTER_DIRECTIVES, RouterLink, NgFor, HpLoadMore],
-    templateUrl: 'components/admin/photos/photos.html'
+    templateUrl: 'components/admin/list-photos/list-photos.html'
 })
 
-export class Photos {
+export class ListPhotos {
 
     photos: Array<IPhoto>;
 
     constructor(
-        private photosService: PhotosService
+        private photosService: PhotosService,
+        private router: Router
     ) {
 
         this.photosService.getPhotos()
@@ -45,5 +46,9 @@ export class Photos {
             .subscribe(result => {
                 this.photos = result;
             });
+    }
+
+    selectPhoto(photo: IPhoto) {
+        this.router.navigate(`/admin/uploadPhoto/${photo._id}`);
     }
 }

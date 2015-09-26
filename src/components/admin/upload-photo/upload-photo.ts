@@ -2,6 +2,7 @@
 import {
     FORM_DIRECTIVES,
     FormBuilder,
+    Validators,
     ControlGroup,
     Component,
     View,
@@ -11,6 +12,7 @@ import {
 import {ISetup} from '../../../interfaces/setup';
 import {ICategory} from '../../../interfaces/category';
 import {ITag} from '../../../interfaces/tag';
+import {IPhoto} from '../../../interfaces/photo';
 
 import {PhotosService} from '../../../services/photos';
 import {CategoriesService} from '../../../services/categories';
@@ -18,6 +20,8 @@ import {TagsService} from '../../../services/tags';
 import {SetupsService} from '../../../services/setups';
 
 import {Dropdown} from '../../dropdown/dropdown';
+
+import {RouteParams} from 'angular2/router';
 
 // annotation section
 @Component({
@@ -34,10 +38,11 @@ import {Dropdown} from '../../dropdown/dropdown';
 
 export class UploadPhoto {
 
+    photo: IPhoto;
     photoForm: ControlGroup;
     setups: Array<ISetup>;
-    allCategories: Array<ICategory>;
-    allTags: Array<ITag>;
+    categories: Array<ICategory>;
+    tags: Array<ITag>;
 
     setupDropdownKeys: Array<Object> = [{
         description: 'Machine',
@@ -64,23 +69,43 @@ export class UploadPhoto {
 
     constructor(
         private formBuilder: FormBuilder,
+        params: RouteParams,
         private photosService: PhotosService,
         private categoriesService: CategoriesService,
         private tagsService: TagsService,
         private setupsService: SetupsService
     ) {
+        let photoId = params.get('id');
+
+        console.log(photoId);
+
+        // @TODO: how to store setup here (custom dropdown)
+        // @TODO: how to store tags here (checkbox group)
         this.photoForm = formBuilder.group({
-            category: [''],
-            date: [''],
-            description: [''],
-            name: [''],
+            category: ['', Validators.required],
+            date: ['', Validators.required],
+            description: ['', Validators.required],
+            name: ['', Validators.required],
             story: [''],
-            title: ['']
+            title: ['', Validators.required]
         });
+
+        photosService.find(photoId)
+            .subscribe(result => {
+                this.photo = result;
+
+                this.photoForm.controls['category'].updateValue(this.photo.category._id);
+                this.photoForm.controls['date'].updateValue(this.photo.date);
+                this.photoForm.controls['description'].updateValue(this.photo.description);
+                this.photoForm.controls['name'].updateValue(this.photo.name);
+                this.photoForm.controls['story'].updateValue(this.photo.story);
+                this.photoForm.controls['title'].updateValue(this.photo.title);
+
+            });
 
         categoriesService.getAllCategories()
             .subscribe(result => {
-                this.allCategories = JSON.parse(result._body);
+                this.categories = JSON.parse(result._body);
             });
 
         setupsService.getAllSetups()
@@ -95,7 +120,7 @@ export class UploadPhoto {
 
         tagsService.getAllTags()
             .subscribe(result => {
-                this.allTags = JSON.parse(result._body);
+                this.tags = JSON.parse(result._body);
             });
     }
 
@@ -109,7 +134,7 @@ export class UploadPhoto {
 
         params.file = this.file;
 
-        params.tags = this.allTags
+        params.tags = this.tags
             .filter(tag => {
                 return tag.isSelected;
             })

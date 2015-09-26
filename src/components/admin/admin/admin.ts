@@ -11,7 +11,7 @@ import {SideNav} from '../sidenav/sidenav';
 import {Dashboard} from '../dashboard/dashboard';
 import {CreateCategory} from '../create-category/create-category';
 import {CreateTag} from '../create-tag/create-tag';
-import {Photos} from '../photos/photos';
+import {ListPhotos} from '../list-photos/list-photos';
 import {UploadPhoto} from '../upload-photo/upload-photo';
 
 import {ROUTER_DIRECTIVES, Router, RouteConfig} from 'angular2/router';
@@ -32,8 +32,8 @@ import {ROUTER_DIRECTIVES, Router, RouteConfig} from 'angular2/router';
     { path: '/auth', as: 'auth', component: Auth },
     { path: '/categories', as: 'categories', component: CreateCategory },
     { path: '/tags', as: 'tags', component: CreateTag },
-    { path: '/listPhotos', as: 'listPhotos', component: Photos },
-    { path: '/uploadPhoto', as: 'uploadPhoto', component: UploadPhoto }
+    { path: '/listPhotos', as: 'listPhotos', component: ListPhotos },
+    { path: '/uploadPhoto/:id', as: 'uploadPhoto', component: UploadPhoto }
 ])
 
 // Component controller

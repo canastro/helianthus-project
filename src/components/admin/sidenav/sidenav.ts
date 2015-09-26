@@ -5,6 +5,7 @@ import {RouterLink, Router} from 'angular2/router';
 interface IChild {
     name: String;
     path: String;
+    params?: Object;
 }
 
 interface IItem {
@@ -40,7 +41,10 @@ export class SideNav {
                 path: '/admin/listPhotos'
             }, {
                 name: 'Upload',
-                path: '/admin/uploadPhoto'
+                path: '/admin/uploadPhoto',
+                params: {
+                    id: null
+                }
             }],
             name: 'Photos',
             isActive: false
@@ -50,7 +54,7 @@ export class SideNav {
                 path: '/admin/listPhotos'
             }, {
                 name: 'Create',
-                path: '/admin/uploadPhoto'
+                path: '/admin/listPhotos'
             }],
             name: 'Album',
             isActive: false
