@@ -1,37 +1,37 @@
-import {Component, View, Injectable, Inject} from 'angular2/angular2';
+import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
 import {AuthService} from './auth';
 
 @Injectable()
 export class TagsService {
 
-	constructor(
-		private http: Http,
-		@Inject(AuthService) private authService: AuthService
-	) {
-	}
+    constructor(
+        private http: Http,
+        private authService: AuthService
+    ) {
+    }
 
-	getAllTags() : Rx.Observable<any> {
-		var self = this;
-		var path = '/api/tags';
+    getAllTags() : Rx.Observable<any> {
 
-		return this.http.get(path).toRx();
-	}
+        let url = '/api/tags';
 
-	createTag(params) : Rx.Observable<any> {
+        return this.http.get(url).toRx();
+    }
 
-		let path = '/api/admin/tags';
-		let options = {
-			headers: new Headers()
-		};
-		options.headers.append('x-access-token', this.authService.getToken());
-		options.headers.append('Content-Type', 'application/json');
+    createTag(params) : Rx.Observable<any> {
 
-		return this.http.post(
-			path,
-			JSON.stringify(params),
-			options
-		)
-            .toRx();
-	}
+        let url = '/api/admin/tags';
+        let options = {
+            headers: new Headers()
+        };
+
+        options.headers.append('x-access-token', this.authService.getToken());
+        options.headers.append('Content-Type', 'application/json');
+
+        return this.http.post(
+            url,
+            JSON.stringify(params),
+            options
+        ).toRx();
+    }
 }

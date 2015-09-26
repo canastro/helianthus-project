@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
-import {Component, View, Inject, NgFor} from 'angular2/angular2';
+import {Component, View, NgFor} from 'angular2/angular2';
 
 import {HpLoadMore} from '../../directives/hp-load-more';
 
@@ -8,12 +8,12 @@ import {RouterLink} from 'angular2/router';
 
 // Annotation section
 @Component({
-  selector: 'gallery'
+    selector: 'gallery'
 })
 
 @View({
-  templateUrl: 'components/gallery/gallery.html',
-  directives: [RouterLink, NgFor, HpLoadMore]
+    directives: [RouterLink, NgFor, HpLoadMore],
+    templateUrl: 'components/gallery/gallery.html'
 })
 
 // Component controller

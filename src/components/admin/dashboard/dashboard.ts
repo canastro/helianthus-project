@@ -2,17 +2,17 @@
 import {Component, View, NgFor} from 'angular2/angular2';
 import {RouterLink} from 'angular2/router';
 
-// Annotation section
+// annotation section
 @Component({
     selector: 'dashboard'
 })
 
 @View({
-  templateUrl: 'components/admin/dashboard/dashboard.html',
-  directives: [NgFor, RouterLink]
+    directives: [NgFor, RouterLink],
+    templateUrl: 'components/admin/dashboard/dashboard.html'
 })
 
-// Component controller
+// component controller
 export class Dashboard {
     items: Array<Object>;
 

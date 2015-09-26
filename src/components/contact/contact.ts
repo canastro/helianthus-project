@@ -3,12 +3,7 @@ import {
     FORM_DIRECTIVES,
     FormBuilder,
     Component,
-    View,
-    Validators,
-    ControlGroup,
-    Inject,
-    EventEmitter,
-    NgFor
+    View
 } from 'angular2/angular2';
 
 import {ContactService} from '../../services/contact';
@@ -22,8 +17,8 @@ import {ContactService} from '../../services/contact';
 })
 
 @View({
-  templateUrl: 'components/contact/contact.html',
-  directives: [FORM_DIRECTIVES]
+    directives: [FORM_DIRECTIVES],
+    templateUrl: 'components/contact/contact.html'
 })
 
 export class Contact {
@@ -31,8 +26,9 @@ export class Contact {
 
     constructor(
         private formBuilder: FormBuilder,
-        @Inject(ContactService) private contactService: ContactService
+        private contactService: ContactService
     ) {
+
         this.contactForm = formBuilder.group({
             email: [''],
             message: ['']
@@ -42,8 +38,6 @@ export class Contact {
     contact() {
 
         this.contactService.contact(this.contactForm.value)
-            .subscribe(result => {
-    			console.log(result);
-    		});
+            .subscribe(result => console.log(result));
     }
 }

@@ -1,19 +1,19 @@
 /// <reference path="../../../../typings/angular2/angular2.d.ts" />
-import {Component, View, Inject, NgFor, NgIf} from 'angular2/angular2';
+import {Component, View, NgFor, NgIf} from 'angular2/angular2';
 
-import {ROUTER_DIRECTIVES, RouterLink, Router} from 'angular2/router';
+import {RouterLink, Router} from 'angular2/router';
 
-// Annotation section
+// annotation section
 @Component({
     selector: 'side-nav'
 })
 
 @View({
-    templateUrl: 'components/admin/sidenav/sidenav.html',
-    directives: [NgFor, NgIf, RouterLink]
+    directives: [NgFor, NgIf, RouterLink],
+    templateUrl: 'components/admin/sidenav/sidenav.html'
 })
 
-// Component controller
+// component controller
 export class SideNav {
 
     items: Array<any>;
@@ -24,50 +24,50 @@ export class SideNav {
             name: 'Dashboard',
             path: '/admin/dashboard'
         }, {
-            name: 'Photos',
             children: [{
                 name: 'List',
                 path: '/admin/listPhotos'
             }, {
                 name: 'Upload',
                 path: '/admin/uploadPhoto'
-            }]
+            }],
+            name: 'Photos'
         }, {
-            name: 'Album',
             children: [{
                 name: 'List',
                 path: '/admin/listPhotos'
             }, {
                 name: 'Create',
                 path: '/admin/uploadPhoto'
-            }]
+            }],
+            name: 'Album'
         }, {
-            name: 'Categories',
             children: [{
                 name: 'List',
                 path: '/admin/listPhotos'
             }, {
                 name: 'Create',
                 path: '/admin/categories'
-            }]
+            }],
+            name: 'Categories'
         }, {
-            name: 'Tags',
             children: [{
                 name: 'List',
                 path: '/admin/listPhotos'
             }, {
                 name: 'Create',
                 path: '/admin/tags'
-            }]
+            }],
+            name: 'Tags'
         }, {
-            name: 'Setups',
             children: [{
                 name: 'List',
                 path: '/admin/listPhotos'
             }, {
                 name: 'Create',
                 path: '/admin/listPhotos'
-            }]
+            }],
+            name: 'Setups'
         }];
     }
 

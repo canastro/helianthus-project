@@ -1,11 +1,10 @@
 /// <reference path="../../typings/angular2/angular2.d.ts" />
 /// <reference path="../../typings/jquery/jquery.d.ts" />
-/*global $, jQuery*/
+/* global $, jQuery */
 
 import {Directive, ElementRef} from 'angular2/angular2';
-// import * as $ from 'jquery';
 
-//TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
+// TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
 @Directive({
   selector: '[hp-tooltip]',
   host: {
@@ -13,14 +12,14 @@ import {Directive, ElementRef} from 'angular2/angular2';
   }
 })
 
-export class HpTooltip{
+export class HpTooltip {
 
     $container: any;
 
 
     constructor(
         private el: ElementRef
-    ){
+    ) {
         this.$container = $(this.el.nativeElement);
     }
 

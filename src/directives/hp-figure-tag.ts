@@ -1,10 +1,10 @@
 /// <reference path="../../typings/angular2/angular2.d.ts" />
 /// <reference path="../../typings/jquery/jquery.d.ts" />
-/*global $, jQuery*/
+/* global $, jQuery */
 
 import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
 
-//TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
+// TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
 @Directive({
   selector: '[hp-figure-tag]',
   properties: ['tag: tag'],
@@ -15,7 +15,7 @@ import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
   events: ['tagOver', 'tagOut']
 })
 
-export class HpFigureTag{
+export class HpFigureTag {
 
     $container: any;
     selectedTag: any;
@@ -32,11 +32,11 @@ export class HpFigureTag{
         this.selectedTag = tag;
     }
 
-    private onTagMouseOver($event) {
+    onTagMouseOver($event) {
         this.tagOver.next(this.selectedTag);
     }
 
-    private onTagMouseOut($event) {
+    onTagMouseOut($event) {
         this.tagOut.next(null);
     }
 }

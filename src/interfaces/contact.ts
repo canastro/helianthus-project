@@ -1,4 +1,4 @@
 export interface Contact {
-    email: String,
-    message: String
+    email: String;
+    message: String;
 }

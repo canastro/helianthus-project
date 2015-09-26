@@ -1,12 +1,11 @@
-/// <reference path="../../typings/angular2/angular2.d.ts" />
-/// <reference path="../../typings/jquery/jquery.d.ts" />
-/*global $, jQuery*/
+/// <reference path='../../typings/angular2/angular2.d.ts' />
+/// <reference path='../../typings/jquery/jquery.d.ts' />
+/* global $, jQuery */
 
 import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
 import {CommentsService} from '../services/comments';
-// import * as $ from 'jquery';
 
-//TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
+// TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
 @Directive({
   selector: '[hp-figure]',
   properties: ['photo: photo'],
@@ -16,7 +15,7 @@ import {CommentsService} from '../services/comments';
   events: ['tagAdded']
 })
 
-export class HpFigure{
+export class HpFigure {
 
     photo: any;
     tagAdded = new EventEmitter();
@@ -26,16 +25,15 @@ export class HpFigure{
     constructor(
         private el: ElementRef,
         private commentsService: CommentsService
-    ){
+    ) {
         this.$container = $(this.el.nativeElement);
     }
 
-    onMouseDown($event){
+    onMouseDown($event) {
 
-        var position;
-        var tag;
-        var promptResult;
-        var params;
+        let position;
+        let promptResult;
+        let params;
 
         // The user is going to start drawing. Cancel
         // the default event to make sure the browser
@@ -45,7 +43,7 @@ export class HpFigure{
         // Add the pending tag to the container.
         position = this.getLocalPosition($event.clientX, $event.clientY);
 
-        promptResult = prompt("Message:");
+        promptResult = prompt('Message:');
 
         params = {
             message: promptResult,
@@ -53,7 +51,7 @@ export class HpFigure{
             positionY: position.top
         };
 
-        this.commentsService.commentPhoto(this.photo, params)
+        this.commentsService.commentPhoto(this.photo, params);
 
         this.tagAdded.next(params);
     }
@@ -62,12 +60,12 @@ export class HpFigure{
     private getLocalPosition(mouseX, mouseY) {
 
          // Get the current position of the container.
-        var containerOffset = this.$container.offset();
+        let containerOffset = this.$container.offset();
 
         // Adjust the client coordiates to acocunt for
         // the offset of the page and the position of the
         // container.
-        var localPosition = {
+        let localPosition = {
             left: Math.floor(
                 mouseX - containerOffset.left + window.scrollX
             ),

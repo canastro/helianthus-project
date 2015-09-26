@@ -1,27 +1,28 @@
-import {Component, Injectable, Inject} from 'angular2/angular2';
+import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
-import {Contact} from "../interfaces/contact";
+import {Contact} from '../interfaces/contact';
 import * as Rx from 'rx';
 
 @Injectable()
 export class ContactService {
 
-	constructor(private http: Http) {
-	}
+    constructor(private http: Http) {
+    }
 
-	contact(contact: Contact) : Rx.Observable<any> {
+    contact(contact: Contact) : Rx.Observable<any> {
 
-		let path = '/api/contact';
-		let options = {
-			headers: new Headers()
-		};
-		options.headers.append('Content-Type', 'application/json');
+        let path = '/api/contact';
+        let options = {
+            headers: new Headers()
+        };
 
-		return this.http.post(
-			path,
-			JSON.stringify(contact),
-			options
-		)
-            .toRx();
-	}
+        options.headers.append('Content-Type', 'application/json');
+
+        return this.http.post(
+            path,
+            JSON.stringify(contact),
+            options
+        )
+        .toRx();
+    }
 }

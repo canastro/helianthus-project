@@ -1,23 +1,17 @@
 /// <reference path="../../../../typings/angular2/angular2.d.ts" />
 
 import {
-    FORM_DIRECTIVES,
     FormBuilder,
     Component,
     View,
-    Validators,
-    ControlGroup,
-    Inject,
-    EventEmitter,
     NgFor
 } from 'angular2/angular2';
-import {ROUTER_DIRECTIVES, RouterLink, RouteConfig} from 'angular2/router';
+import {ROUTER_DIRECTIVES, RouterLink} from 'angular2/router';
 
 import {PhotosService} from '../../../services/photos';
-import {UploadPhoto} from '../upload-photo/upload-photo';
 import {HpLoadMore} from '../../../directives/hp-load-more';
 
-// Annotation section
+// annotation section
 @Component({
     selector: 'photos',
     viewBindings: [
@@ -26,8 +20,8 @@ import {HpLoadMore} from '../../../directives/hp-load-more';
 })
 
 @View({
-  templateUrl: 'components/admin/photos/photos.html',
-  directives: [ROUTER_DIRECTIVES, RouterLink, NgFor, HpLoadMore]
+    directives: [ROUTER_DIRECTIVES, RouterLink, NgFor, HpLoadMore],
+    templateUrl: 'components/admin/photos/photos.html'
 })
 
 export class Photos {

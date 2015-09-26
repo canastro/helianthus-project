@@ -9,6 +9,8 @@ var open = require('gulp-open');
 var sass = require('gulp-sass');
 var modRewrite = require('connect-modrewrite');
 var historyApiFallback = require('connect-history-api-fallback');
+var tslint = require('gulp-tslint');
+var debug = require('gulp-debug');
 
 var tasks = {
 	'default': 'default',
@@ -145,4 +147,13 @@ gulp.task(tasks.startWebServer, function () {
 		}
 	});
 
+});
+
+gulp.task('tslint', function(){
+	return gulp.src(['src/**/*.ts'])
+		// .pipe(debug({title: 'tslint:'}))
+		.pipe(tslint())
+		.pipe(tslint.report('prose', {
+          emitError: false
+        }));
 });

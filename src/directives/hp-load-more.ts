@@ -1,9 +1,8 @@
 /// <reference path="../../typings/angular2/angular2.d.ts" />
 /// <reference path="../../typings/jquery/jquery.d.ts" />
-/*global $, jQuery*/
+/* global $, jQuery */
 
 import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
-// import * as $ from 'jquery';
 
 @Directive({
   selector: '[hp-load-more]',
@@ -13,7 +12,7 @@ import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
   events: ['loadMore']
 })
 
-export class HpLoadMore{
+export class HpLoadMore {
 
     photo: any;
     loadMore = new EventEmitter();
@@ -21,7 +20,7 @@ export class HpLoadMore{
 
     constructor(
         private el: ElementRef
-    ){
+    ) {
         this.$container = $(this.el.nativeElement);
     }
 

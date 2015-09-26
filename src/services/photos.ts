@@ -1,4 +1,4 @@
-import {Component, View, Injectable, Inject} from 'angular2/angular2';
+import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
 import {AuthService} from './auth';
 import {Photo} from '../interfaces/photo';
@@ -7,115 +7,116 @@ import * as Rx from 'rx';
 @Injectable()
 export class PhotosService {
 
-	photos: Array<Photo> = [];
-	perPage: number = 20;
+    photos: Array<Photo> = [];
+    perPage: number = 20;
     page: number = 1;
 
-	constructor(
-		private http: Http,
-		@Inject(AuthService) private authService: AuthService
-	) {
-	}
+    constructor(
+        private http: Http,
+        private authService: AuthService
+    ) {
+    }
 
-	find(id: number) : Rx.Observable<any> {
+    find(id: number) : Rx.Observable<any> {
 
-		var path = '/api/photo/' + id;
+        let url = '/api/photo/' + id;
 
-		if (this.photos) {
-			return Rx.Observable.create((observer) => {
+        if (this.photos) {
+            return Rx.Observable.create((observer) => {
 
-				var photo;
+                let photo;
 
-				this.photos.some((item) => {
+                this.photos.some((item) => {
 
-					if (item._id === id) {
-						photo = item;
-						return true;
-					}
+                    if (item._id === id) {
+                        photo = item;
+                        return true;
+                    }
 
-					return false;
-				});
+                    return false;
+                });
 
-				observer.onNext(photo);
-				observer.onCompleted();
-			});
-		}
+                observer.onNext(photo);
+                observer.onCompleted();
+            });
+        }
 
-		return this.http.get(path)
-			.toRx()
-			.selectMany(result => {
-				var photo = JSON.parse(result._body);
-				return Promise.resolve(photo);
-			});
-	}
+        return this.http.get(url)
+            .toRx()
+            .selectMany(result => {
+                let photo = JSON.parse(result._body);
+                return Promise.resolve(photo);
+            });
+    }
 
-	getPhotos() : Rx.Observable<any> {
+    getPhotos() : Rx.Observable<any> {
 
-		if (this.photos && this.photos.length > 0) {
-			return Rx.Observable.create((observer) => {
-				observer.onNext(this.photos);
-				observer.onCompleted();
-			});
-		}
+        if (this.photos && this.photos.length > 0) {
+            return Rx.Observable.create((observer) => {
+                observer.onNext(this.photos);
+                observer.onCompleted();
+            });
+        }
 
-		return this.loadMore(1);
-	}
+        return this.loadMore(1);
+    }
 
-	loadMore(page: number): Rx.Observable<any> {
+    loadMore(page: number): Rx.Observable<any> {
 
-		var path;
+        let url;
 
-		this.page = page || this.page + 1;
+        this.page = page || this.page + 1;
 
-		path = `/api/photos?per_page=${this.perPage}&page=${this.page}`;
+        url = `/api/photos?per_page=${this.perPage}&page=${this.page}`;
 
-		return this.http.get(path)
-			.toRx()
-			.selectMany(result => {
-				Array.prototype.push.apply(this.photos, JSON.parse(result._body).photos);
+        return this.http.get(url)
+            .toRx()
+            .selectMany(result => {
 
-				return Promise.resolve(this.photos);
-			});
-	}
+                Array.prototype.push.apply(this.photos, JSON.parse(result._body).photos);
+                return Promise.resolve(this.photos);
+            });
+    }
 
-	getPhotosCount(): Rx.Observable<any> {
-		var path = "/api/photos/count";
+    getPhotosCount(): Rx.Observable<any> {
 
-		return this.http.get(path)
-			.toRx()
-			.selectMany(result => {
-				return Promise.resolve(JSON.parse(result._body));
-			});
-	}
+        let url = '/api/photos/count';
 
-	//TODO: http://stackoverflow.com/questions/32423348/angular2-post-uploaded-file
-	//https://github.com/angular/angular/issues/2803
-	uploadPhoto(photo: Photo): Rx.Observable<any> {
+        return this.http.get(url)
+            .toRx()
+            .selectMany(result => {
+                return Promise.resolve(JSON.parse(result._body));
+            });
+    }
 
-		// let formData = new FormData();
-		let path = '/api/admin/photos';
-		let options = {
-			headers: new Headers()
-		};
-		options.headers.append('x-access-token', this.authService.getToken());
-		options.headers.append('Content-Type', 'application/json');
+    // TODO: http://stackoverflow.com/questions/32423348/angular2-post-uploaded-file
+    // TODO: https://github.com/angular/angular/issues/2803
+    uploadPhoto(photo: Photo): Rx.Observable<any> {
 
-		// options.headers.append('x-access-token', this.authService.getToken());
-		// options.headers.append('Content-Type', 'multipart/form-data');
-		//
-		// Object.keys(params).forEach(key => {
-		//
-		// 	if (key === 'file') {
-		// 		formData.append(key, params[key], key + '.png');
-		// 	}
-		//     formData.append(key, params[key]);
-		// });
+        // let formData = new FormData();
+        let url = '/api/admin/photos';
+        let options = {
+            headers: new Headers()
+        };
+        options.headers.append('x-access-token', this.authService.getToken());
+        options.headers.append('Content-Type', 'application/json');
 
-		return this.http.post(
-			path,
-			JSON.stringify(photo),
-			options
-		)
-            .toRx();
-	}
+        // options.headers.append('x-access-token', this.authService.getToken());
+        // options.headers.append('Content-Type', 'multipart/form-data');
+        //
+        // Object.keys(params).forEach(key => {
+        //
+        // 	if (key === 'file') {
+        // 		formData.append(key, params[key], key + '.png');
+        // 	}
+        //     formData.append(key, params[key]);
+        // });
+
+        return this.http.post(
+            url,
+            JSON.stringify(photo),
+            options
+        )
+        .toRx();
+    }
 }

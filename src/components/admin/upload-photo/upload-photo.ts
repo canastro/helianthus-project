@@ -4,10 +4,6 @@ import {
     FormBuilder,
     Component,
     View,
-    Validators,
-    ControlGroup,
-    Inject,
-    EventEmitter,
     NgFor
 } from 'angular2/angular2';
 
@@ -20,7 +16,7 @@ import {SetupsService} from '../../../services/setups';
 
 import {Dropdown} from '../../dropdown/dropdown';
 
-// Annotation section
+// annotation section
 @Component({
     selector: 'upload-photo',
     viewBindings: [
@@ -29,8 +25,8 @@ import {Dropdown} from '../../dropdown/dropdown';
 })
 
 @View({
-  templateUrl: 'components/admin/upload-photo/upload-photo.html',
-  directives: [FORM_DIRECTIVES, NgFor, Dropdown]
+    directives: [Dropdown, FORM_DIRECTIVES, NgFor],
+    templateUrl: 'components/admin/upload-photo/upload-photo.html'
 })
 
 export class UploadPhoto {
@@ -69,12 +65,12 @@ export class UploadPhoto {
         private setupsService: SetupsService
     ) {
         this.photoForm = formBuilder.group({
-            name: [''],
-            title: [''],
+            category: [''],
             date: [''],
             description: [''],
-            category: [''],
+            name: [''],
             story: [''],
+            title: ['']
         });
 
         categoriesService.getAllCategories()
@@ -99,13 +95,13 @@ export class UploadPhoto {
     }
 
     addTag(tag, value) {
-        tag.selected = value === "on";
+        tag.selected = value === 'on';
     }
 
     uploadPhoto() {
 
-        var params = this.photoForm.value;
-        
+        let params = this.photoForm.value;
+
         params.file = this.file;
 
         params.tags = this.allTags
@@ -113,15 +109,15 @@ export class UploadPhoto {
                 return tag.selected;
             })
             .map(tag => {
-                return tag._id
+                return tag._id;
             });
 
         params.setup = this.setup;
 
         this.photosService.uploadPhoto(params)
             .subscribe(result => {
-    			console.log(result);
-    		});
+                console.log(result);
+            });
     }
 
     setupSelected(setup) {

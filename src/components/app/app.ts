@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
-import {Component, View, bootstrap} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
 import {NavBar} from '../navbar/navbar';
 import {Home} from '../home/home';
 import {About} from '../about/about';
@@ -28,7 +28,4 @@ import {RouteConfig, RouterOutlet} from 'angular2/router';
 
 // Component controller
 export class App {
-
-    constructor() {
-    }
 }

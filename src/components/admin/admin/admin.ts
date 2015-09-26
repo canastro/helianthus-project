@@ -1,5 +1,8 @@
 /// <reference path="../../../../typings/angular2/angular2.d.ts" />
-import {Component, View, Inject, NgIf} from 'angular2/angular2';
+import {
+    Component,
+    View
+} from 'angular2/angular2';
 
 import {Auth} from '../auth/auth';
 import {AuthService} from '../../../services/auth';
@@ -11,7 +14,7 @@ import {CreateTag} from '../create-tag/create-tag';
 import {Photos} from '../photos/photos';
 import {UploadPhoto} from '../upload-photo/upload-photo';
 
-import {ROUTER_DIRECTIVES, Router, RouterOutlet, RouteConfig} from 'angular2/router';
+import {ROUTER_DIRECTIVES, Router, RouteConfig} from 'angular2/router';
 
 // Annotation section
 @Component({
@@ -19,8 +22,8 @@ import {ROUTER_DIRECTIVES, Router, RouterOutlet, RouteConfig} from 'angular2/rou
 })
 
 @View({
-    templateUrl: 'components/admin/admin/admin.html',
-    directives: [ROUTER_DIRECTIVES, SideNav]
+    directives: [ROUTER_DIRECTIVES, SideNav],
+    templateUrl: 'components/admin/admin/admin.html'
 })
 
 @RouteConfig([

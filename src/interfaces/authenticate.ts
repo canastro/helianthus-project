@@ -1,4 +1,4 @@
 export interface Authenticate {
-	username: String,
-	password: String
+    username: String;
+    password: String;
 }

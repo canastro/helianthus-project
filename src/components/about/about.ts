@@ -3,16 +3,14 @@ import {Component, View} from 'angular2/angular2';
 
 // Annotation section
 @Component({
-  selector: 'about'
+    selector: 'about'
 })
 
 @View({
-  templateUrl: 'components/about/about.html'
+    templateUrl: 'components/about/about.html'
 })
 
 // Component controller
 export class About {
 
-    constructor() {
-    }
 }

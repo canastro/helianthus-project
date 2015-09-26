@@ -1,5 +1,5 @@
-/// <reference path="../../../typings/angular2/angular2.d.ts" />
-import {Component, View, Inject, NgFor, NgIf} from 'angular2/angular2';
+/// <reference path='../../../typings/angular2/angular2.d.ts' />
+import {Component, View, NgFor, NgIf} from 'angular2/angular2';
 
 import {PhotosService} from '../../services/photos';
 import {CommentsService} from '../../services/comments';
@@ -13,12 +13,12 @@ import {RouteParams, Router} from 'angular2/router';
 
 // Annotation section
 @Component({
-  selector: 'photo'
+    selector: 'photo'
 })
 
 @View({
-  templateUrl: 'components/photo/photo.html',
-  directives: [NgFor, NgIf, HpFigure, HpFigureTag, HpFigureTagMessage, HpTooltip]
+    directives: [NgFor, NgIf, HpFigure, HpFigureTag, HpFigureTagMessage, HpTooltip],
+    templateUrl: 'components/photo/photo.html'
 })
 
 // Component controller
@@ -36,7 +36,7 @@ export class Photo {
         params: RouteParams,
         private photosService: PhotosService,
         private commentsService: CommentsService
-    ){
+    ) {
         this.photoId = params.get('id');
 
         this.figureTags = [];
@@ -60,8 +60,9 @@ export class Photo {
     }
 
     onInit() {
-        if (window["DISQUS"]) {
-            window["DISQUS"].reset({
+
+        if (window['DISQUS']) {
+            window['DISQUS'].reset({
                 reload: true,
                 config: function () {
                     this.page.identifier = this.photoId;
@@ -74,9 +75,12 @@ export class Photo {
         window['disqus_shortname'] = 'helianthus-project';
         window['disqus_identifier'] = this.photoId;
 
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        let dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
         dsq.src = '//' + window['disqus_shortname'] + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
     }
 
     tagAdded(tag) {

@@ -2,7 +2,6 @@
 import {
     Component,
     View,
-    Inject,
     EventEmitter,
     NgFor
 } from 'angular2/angular2';
@@ -28,10 +27,6 @@ export class Dropdown {
     hpOptions: Array<any>;
     hpOptionSelected = new EventEmitter();
 
-    constructor() {
-
-    }
-
     set hpTitle(value) {
         this.title = value;
         this.originalTitle = value;
@@ -39,11 +34,11 @@ export class Dropdown {
 
     onClick(option) {
 
-        this.hpOptions.forEach(option => {
-            option.selected = false;
+        this.hpOptions.forEach(opt => {
+            opt.isSelected = false;
         });
 
-        option.selected = true;
+        option.isSelected = true;
 
         this.title = option.index;
 

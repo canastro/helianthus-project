@@ -1,20 +1,20 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
-/*global $, jQuery*/
+/* global $, jQuery */
 
 import {Component, View, ElementRef} from 'angular2/angular2';
 
 // Annotation section
 @Component({
-  selector: 'settings'
+    selector: 'settings'
 })
 
 @View({
-  templateUrl: 'components/settings/settings.html'
+    templateUrl: 'components/settings/settings.html'
 })
 
-//TODO: https://github.com/codrops/ButtonComponentMorph/blob/master/index7.html
-//TODO: https://github.com/codrops/ButtonComponentMorph/blob/master/js/uiMorphingButton_fixed.js
-//TODO: remove classie dependency because I already have jquery
+// TODO: https://github.com/codrops/ButtonComponentMorph/blob/master/index7.html
+// TODO: https://github.com/codrops/ButtonComponentMorph/blob/master/js/uiMorphingButton_fixed.js
+// TODO: remove classie dependency because I already have jquery
 // Component controller
 export class Settings {
 
@@ -26,7 +26,7 @@ export class Settings {
     }
 
     toggleMenu() {
-		this.isOpen = !this.isOpen;
+        this.isOpen = !this.isOpen;
 
         $('body').toggleClass('show-menu');
     }
