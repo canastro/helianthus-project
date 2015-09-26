@@ -25,6 +25,7 @@
         "./src/components/admin/admin/admin.ts",
         "./src/components/admin/auth/auth.ts",
         "./src/components/admin/create-category/create-category.ts",
+        "./src/components/admin/create-setup/create-setup.ts",
         "./src/components/admin/create-tag/create-tag.ts",
         "./src/components/admin/dashboard/dashboard.ts",
         "./src/components/admin/list-categories/list-categories.ts",

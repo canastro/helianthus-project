@@ -27,6 +27,22 @@ export class SetupsService {
         return this.http.get(path, options).toRx();
     }
 
+    create(setup: ISetup) : Rx.Observable<any> {
+
+        let url = '/api/admin/setups';
+        let options = {
+            headers: new Headers()
+        };
+        options.headers.append('x-access-token', this.authService.getToken());
+        options.headers.append('Content-Type', 'application/json');
+
+        return this.http.post(
+            url,
+            JSON.stringify(setup),
+            options
+        ).toRx();
+    }
+
     delete(setup: ISetup): Rx.Observable<any> {
 
         let url = `/api/admin/setups/${setup._id}`;

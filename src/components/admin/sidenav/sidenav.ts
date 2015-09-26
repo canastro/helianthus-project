@@ -84,7 +84,7 @@ export class SideNav {
                 path: '/admin/listSetups'
             }, {
                 name: 'Create',
-                path: '/admin/listPhotos'
+                path: '/admin/createSetup'
             }],
             name: 'Setups',
             isActive: false
