@@ -14,7 +14,7 @@ import {HpLoadMore} from '../../../directives/hp-load-more';
 
 // annotation section
 @Component({
-    selector: 'photos',
+    selector: 'list-photos',
     viewBindings: [
         FormBuilder
     ]

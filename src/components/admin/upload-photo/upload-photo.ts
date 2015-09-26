@@ -6,7 +6,8 @@ import {
     ControlGroup,
     Component,
     View,
-    NgFor
+    NgFor,
+    NgIf
 } from 'angular2/angular2';
 
 import {ISetup} from '../../../interfaces/setup';
@@ -23,6 +24,11 @@ import {Dropdown} from '../../dropdown/dropdown';
 
 import {RouteParams} from 'angular2/router';
 
+enum Mode {
+    EDIT,
+    CREATE
+}
+
 // annotation section
 @Component({
     selector: 'upload-photo',
@@ -32,12 +38,13 @@ import {RouteParams} from 'angular2/router';
 })
 
 @View({
-    directives: [Dropdown, FORM_DIRECTIVES, NgFor],
+    directives: [Dropdown, FORM_DIRECTIVES, NgFor, NgIf],
     templateUrl: 'components/admin/upload-photo/upload-photo.html'
 })
 
 export class UploadPhoto {
 
+    mode: Mode = Mode.CREATE;
     photo: IPhoto;
     photoForm: ControlGroup;
     setups: Array<ISetup>;
@@ -77,8 +84,6 @@ export class UploadPhoto {
     ) {
         let photoId = params.get('id');
 
-        console.log(photoId);
-
         // @TODO: how to store setup here (custom dropdown)
         // @TODO: how to store tags here (checkbox group)
         this.photoForm = formBuilder.group({
@@ -90,18 +95,23 @@ export class UploadPhoto {
             title: ['', Validators.required]
         });
 
-        photosService.find(photoId)
-            .subscribe(result => {
-                this.photo = result;
+        if (photoId) {
 
-                this.photoForm.controls['category'].updateValue(this.photo.category._id);
-                this.photoForm.controls['date'].updateValue(this.photo.date);
-                this.photoForm.controls['description'].updateValue(this.photo.description);
-                this.photoForm.controls['name'].updateValue(this.photo.name);
-                this.photoForm.controls['story'].updateValue(this.photo.story);
-                this.photoForm.controls['title'].updateValue(this.photo.title);
+            this.mode = Mode.EDIT;
 
-            });
+            photosService.find(photoId)
+                .subscribe(result => {
+                    this.photo = result;
+
+                    this.photoForm.controls['category'].updateValue(this.photo.category._id);
+                    this.photoForm.controls['date'].updateValue(this.photo.date);
+                    this.photoForm.controls['description'].updateValue(this.photo.description);
+                    this.photoForm.controls['name'].updateValue(this.photo.name);
+                    this.photoForm.controls['story'].updateValue(this.photo.story);
+                    this.photoForm.controls['title'].updateValue(this.photo.title);
+
+                });
+        }
 
         categoriesService.getAllCategories()
             .subscribe(result => {

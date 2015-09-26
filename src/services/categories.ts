@@ -36,4 +36,16 @@ export class CategoriesService {
             options
         ).toRx();
     }
+
+    delete(category: ICategory): Rx.Observable<any> {
+
+        let url = `/api/admin/categories/${category._id}`;
+        let options = {
+            headers: new Headers()
+        };
+        options.headers.append('x-access-token', this.authService.getToken());
+        options.headers.append('Content-Type', 'application/json');
+
+        return this.http.delete(url, options).toRx();
+    }
 }

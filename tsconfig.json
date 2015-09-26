@@ -27,6 +27,7 @@
         "./src/components/admin/create-category/create-category.ts",
         "./src/components/admin/create-tag/create-tag.ts",
         "./src/components/admin/dashboard/dashboard.ts",
+        "./src/components/admin/list-categories/list-categories.ts",
         "./src/components/admin/list-photos/list-photos.ts",
         "./src/components/admin/sidenav/sidenav.ts",
         "./src/components/admin/upload-photo/upload-photo.ts",
@@ -63,6 +64,8 @@
         "./typings/angular2/router.d.ts",
         "./typings/es6-promise/es6-promise.d.ts",
         "./typings/jquery/jquery.d.ts",
+        "./typings/moment/moment-node.d.ts",
+        "./typings/moment/moment.d.ts",
         "./typings/rx/rx-lite.d.ts",
         "./typings/rx/rx.d.ts",
         "./typings/tsd.d.ts"

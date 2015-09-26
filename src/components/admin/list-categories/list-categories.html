@@ -1,0 +1,18 @@
+<table class="table">
+    <thead class="thead-inverse table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ng-for="#category of categories">
+            <td>{{category.name}}</td>
+            <td>
+                <button type="button" class="btn btn-danger" (click)="delete(category)">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -8,7 +8,7 @@ export interface IPhoto {
     title: String;
     description: String;
     story?: String;
-    date: Date;
+    date: String;
     likes?: Number;
     views?: Number;
     local?: String;

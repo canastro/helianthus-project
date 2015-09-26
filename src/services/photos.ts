@@ -76,12 +76,18 @@ export class PhotosService {
             .toRx()
             .selectMany(result => {
 
-                this.photos = JSON.parse(result._body).photos.map((photo) => {
+                // this.photos = JSON.parse(result._body).photos.map((photo) => {
+                //     photo.date = moment(photo.date).format('L');
+                //     return photo;
+                // });
+
+                let tempPhotos = JSON.parse(result._body).photos;
+                tempPhotos.forEach(photo => {
                     photo.date = moment(photo.date).format('L');
-                    return photo;
                 });
 
-                // Array.prototype.push.apply(this.photos, JSON.parse(result._body).photos);
+                Array.prototype.push.apply(this.photos, tempPhotos);
+
                 return Promise.resolve(this.photos);
             });
     }

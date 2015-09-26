@@ -9,6 +9,7 @@ import {AuthService} from '../../../services/auth';
 
 import {SideNav} from '../sidenav/sidenav';
 import {Dashboard} from '../dashboard/dashboard';
+import {ListCategories} from '../list-categories/list-categories';
 import {CreateCategory} from '../create-category/create-category';
 import {CreateTag} from '../create-tag/create-tag';
 import {ListPhotos} from '../list-photos/list-photos';
@@ -30,6 +31,7 @@ import {ROUTER_DIRECTIVES, Router, RouteConfig} from 'angular2/router';
     { path: '/', redirectTo: '/admin' },
     { path: '/dashboard', as: 'dashboard', component: Dashboard },
     { path: '/auth', as: 'auth', component: Auth },
+    { path: '/listCategories', as: 'listCategories', component: ListCategories },
     { path: '/categories', as: 'categories', component: CreateCategory },
     { path: '/tags', as: 'tags', component: CreateTag },
     { path: '/listPhotos', as: 'listPhotos', component: ListPhotos },

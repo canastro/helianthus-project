@@ -61,7 +61,7 @@ export class SideNav {
         }, {
             children: [{
                 name: 'List',
-                path: '/admin/listPhotos'
+                path: '/admin/listCategories'
             }, {
                 name: 'Create',
                 path: '/admin/categories'
