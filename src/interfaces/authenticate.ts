@@ -1,4 +1,4 @@
-export interface Authenticate {
+export interface IAuthenticate {
     username: String;
     password: String;
 }

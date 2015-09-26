@@ -2,7 +2,7 @@
     <div class="sidebar-nav navbar-collapse">
         <ul>
 
-            <li *ng-for="#item of items" [class.active]="item.active">
+            <li *ng-for="#item of items" [class.active]="item.isActive">
                 <h3>
                     <i class="fa fa-dashboard fa-fw"></i>
                     <span (click)="onClick(item)">{{item.name}}</span>

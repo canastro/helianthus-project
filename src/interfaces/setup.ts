@@ -1,5 +1,6 @@
-export interface Setup {
-    _id?: number;
+export interface ISetup {
+    _id?: String;
+    index?: Number;
     machine: String;
     focal_length: String;
     aperture: String;

@@ -8,6 +8,7 @@ import {
 } from 'angular2/angular2';
 import {ROUTER_DIRECTIVES, RouterLink} from 'angular2/router';
 
+import {IPhoto} from '../../../interfaces/photo';
 import {PhotosService} from '../../../services/photos';
 import {HpLoadMore} from '../../../directives/hp-load-more';
 
@@ -26,7 +27,7 @@ import {HpLoadMore} from '../../../directives/hp-load-more';
 
 export class Photos {
 
-    photos: Array<any>;
+    photos: Array<IPhoto>;
 
     constructor(
         private photosService: PhotosService

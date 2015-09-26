@@ -14,9 +14,8 @@ import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
 
 export class HpLoadMore {
 
-    photo: any;
     loadMore = new EventEmitter();
-    $container: any;
+    $container: JQuery;
 
     constructor(
         private el: ElementRef

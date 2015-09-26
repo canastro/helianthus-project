@@ -14,6 +14,8 @@ import {Directive, ElementRef} from 'angular2/angular2';
 
 export class HpTooltip {
 
+    // @TODO: cant set $container: JQuery because it says JQuery does not container
+    // a function called tooltip
     $container: any;
 
 

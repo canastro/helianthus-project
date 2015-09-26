@@ -1,9 +1,9 @@
-import {Category} from './category';
-import {Setup} from './setup';
-import {Tag} from './tag';
+import {ICategory} from './category';
+import {ISetup} from './setup';
+import {ITag} from './tag';
 
-export interface Photo {
-    _id?: number;
+export interface IPhoto {
+    _id?: String;
     name: String;
     title: String;
     description: String;
@@ -11,8 +11,8 @@ export interface Photo {
     date: Date;
     likes?: Number;
     views?: Number;
-    local?: any;
-    category?: Category;
-    setup?: Setup;
-    tags?: Array<Tag>;
+    local?: String;
+    category?: ICategory;
+    setup?: ISetup;
+    tags?: Array<ITag>;
 };

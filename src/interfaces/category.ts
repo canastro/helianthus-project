@@ -1,4 +1,4 @@
-export interface Category {
-    _id?: number;
+export interface ICategory {
+    _id?: String;
     name: String;
 }

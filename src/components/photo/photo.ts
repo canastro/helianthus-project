@@ -24,7 +24,7 @@ import {RouteParams, Router} from 'angular2/router';
 // Component controller
 export class Photo {
 
-    photoId: any;
+    photoId: String;
     tagsOn: boolean = false;
     photo: Object;
     figureTags: Array<Object>;

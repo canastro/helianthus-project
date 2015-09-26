@@ -12,7 +12,7 @@ import {Directive, ElementRef} from 'angular2/angular2';
 
 export class HpFigureTagMessage {
 
-    $container: any;
+    $container: JQuery;
 
     constructor(private el: ElementRef) {
         this.$container = $(this.el.nativeElement);

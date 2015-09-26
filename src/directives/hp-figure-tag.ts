@@ -17,7 +17,7 @@ import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
 
 export class HpFigureTag {
 
-    $container: any;
+    $container: JQuery;
     selectedTag: any;
 
     tagOver = new EventEmitter();

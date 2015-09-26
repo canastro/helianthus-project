@@ -19,7 +19,7 @@ import {Component, View, ElementRef} from 'angular2/angular2';
 export class Settings {
 
     isOpen: boolean = false;
-    $container: any;
+    $container: JQuery;
 
     constructor(private el: ElementRef) {
         this.$container = $(this.el.nativeElement);

@@ -2,6 +2,7 @@
 import {
     FORM_DIRECTIVES,
     FormBuilder,
+    ControlGroup,
     Component,
     View
 } from 'angular2/angular2';
@@ -22,7 +23,7 @@ import {CategoriesService} from '../../../services/categories';
 
 // component controller
 export class CreateCategory {
-    categoryForm: any;
+    categoryForm: ControlGroup;
 
     // TODO: https://github.com/auth0/angular2-authentication-sample/blob/master/src/login/login.ts
     // TODO; https://github.com/sitepoint-editors/PinYourAchievements-Angular2-TypeScript/blob/master/scripts/src/components/add/add.ts

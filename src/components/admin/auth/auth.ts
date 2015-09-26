@@ -2,6 +2,7 @@
 import {
     FORM_DIRECTIVES,
     FormBuilder,
+    ControlGroup,
     Component,
     View
 } from 'angular2/angular2';
@@ -22,7 +23,7 @@ import {AuthService} from '../../../services/auth';
 
 // Component controller
 export class Auth {
-    authForm: any;
+    authForm: ControlGroup;
 
     // TODO: https://github.com/auth0/angular2-authentication-sample/blob/master/src/login/login.ts
     // TODO; https://github.com/sitepoint-editors/PinYourAchievements-Angular2-TypeScript/blob/master/scripts/src/components/add/add.ts

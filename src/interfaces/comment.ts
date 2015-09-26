@@ -1,10 +1,10 @@
-import {Photo} from './photo';
+import {IPhoto} from './photo';
 
-export interface Comment {
-    _id?: number;
+export interface IComment {
+    _id?: String;
     name: String;
     message: String;
     positionX: Number;
     positionY: Number;
-    photo?: Photo;
+    photo?: IPhoto;
 }

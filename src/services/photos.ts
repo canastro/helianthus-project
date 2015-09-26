@@ -1,13 +1,13 @@
 import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
 import {AuthService} from './auth';
-import {Photo} from '../interfaces/photo';
+import {IPhoto} from '../interfaces/photo';
 import * as Rx from 'rx';
 
 @Injectable()
 export class PhotosService {
 
-    photos: Array<Photo> = [];
+    photos: Array<IPhoto> = [];
     perPage: number = 20;
     page: number = 1;
 
@@ -17,7 +17,7 @@ export class PhotosService {
     ) {
     }
 
-    find(id: number) : Rx.Observable<any> {
+    find(id: String) : Rx.Observable<any> {
 
         let url = '/api/photo/' + id;
 
@@ -91,7 +91,7 @@ export class PhotosService {
 
     // TODO: http://stackoverflow.com/questions/32423348/angular2-post-uploaded-file
     // TODO: https://github.com/angular/angular/issues/2803
-    uploadPhoto(photo: Photo): Rx.Observable<any> {
+    uploadPhoto(photo: IPhoto): Rx.Observable<any> {
 
         // let formData = new FormData();
         let url = '/api/admin/photos';

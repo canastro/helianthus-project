@@ -2,6 +2,7 @@
 import {
     FORM_DIRECTIVES,
     FormBuilder,
+    ControlGroup,
     Component,
     View
 } from 'angular2/angular2';
@@ -22,7 +23,7 @@ import {TagsService} from '../../../services/tags';
 
 // component controller
 export class CreateTag {
-    taskForm: any;
+    taskForm: ControlGroup;
 
     // TODO: https://github.com/auth0/angular2-authentication-sample/blob/master/src/login/login.ts
     // TODO; https://github.com/sitepoint-editors/PinYourAchievements-Angular2-TypeScript/blob/master/scripts/src/components/add/add.ts

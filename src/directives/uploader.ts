@@ -11,12 +11,9 @@ import {Directive} from 'angular2/angular2';
 })
 
 export class Uploader {
-    value: string;
-    file: Object;
 
-    constructor() {
-        this.value = '';
-    }
+    value: String;
+    file: Object;
 
     onChange($event) {
 

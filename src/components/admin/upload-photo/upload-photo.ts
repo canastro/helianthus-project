@@ -2,12 +2,15 @@
 import {
     FORM_DIRECTIVES,
     FormBuilder,
+    ControlGroup,
     Component,
     View,
     NgFor
 } from 'angular2/angular2';
 
-import {Setup} from '../../../interfaces/setup';
+import {ISetup} from '../../../interfaces/setup';
+import {ICategory} from '../../../interfaces/category';
+import {ITag} from '../../../interfaces/tag';
 
 import {PhotosService} from '../../../services/photos';
 import {CategoriesService} from '../../../services/categories';
@@ -30,11 +33,13 @@ import {Dropdown} from '../../dropdown/dropdown';
 })
 
 export class UploadPhoto {
-    photoForm: any;
-    setups: Array<any>;
-    allCategories: Array<any>;
-    allTags: Array<any>;
-    setupDropdownKeys: Array<any> = [{
+
+    photoForm: ControlGroup;
+    setups: Array<ISetup>;
+    allCategories: Array<ICategory>;
+    allTags: Array<ITag>;
+
+    setupDropdownKeys: Array<Object> = [{
         description: 'Machine',
         key: 'machine'
     }, {
@@ -55,7 +60,7 @@ export class UploadPhoto {
     }];
 
     file: Object;
-    setup: Setup;
+    setup: ISetup;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -95,7 +100,7 @@ export class UploadPhoto {
     }
 
     addTag(tag, value) {
-        tag.selected = value === 'on';
+        tag.isSelected = value === 'on';
     }
 
     uploadPhoto() {
@@ -106,7 +111,7 @@ export class UploadPhoto {
 
         params.tags = this.allTags
             .filter(tag => {
-                return tag.selected;
+                return tag.isSelected;
             })
             .map(tag => {
                 return tag._id;

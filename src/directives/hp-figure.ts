@@ -4,6 +4,7 @@
 
 import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
 import {CommentsService} from '../services/comments';
+import {IPhoto} from '../interfaces/photo';
 
 // TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
 @Directive({
@@ -17,9 +18,9 @@ import {CommentsService} from '../services/comments';
 
 export class HpFigure {
 
-    photo: any;
+    photo: IPhoto;
     tagAdded = new EventEmitter();
-    $container: any;
+    $container: JQuery;
 
 
     constructor(

@@ -2,6 +2,7 @@
 import {
     FORM_DIRECTIVES,
     FormBuilder,
+    ControlGroup,
     Component,
     View
 } from 'angular2/angular2';
@@ -22,7 +23,8 @@ import {ContactService} from '../../services/contact';
 })
 
 export class Contact {
-    contactForm: any;
+
+    contactForm: ControlGroup;
 
     constructor(
         private formBuilder: FormBuilder,

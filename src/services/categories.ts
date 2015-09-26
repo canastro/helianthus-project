@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
 import {AuthService} from './auth';
-import {Category} from '../interfaces/category';
+import {ICategory} from '../interfaces/category';
 import * as Rx from 'rx';
 
 
@@ -23,7 +23,7 @@ export class CategoriesService {
         return this.http.get(url).toRx();
     }
 
-    createCategory(category: Category) : Rx.Observable<any> {
+    createCategory(category: ICategory) : Rx.Observable<any> {
 
         let url = '/api/admin/categories';
         let options = {

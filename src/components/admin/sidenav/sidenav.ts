@@ -1,7 +1,18 @@
 /// <reference path="../../../../typings/angular2/angular2.d.ts" />
 import {Component, View, NgFor, NgIf} from 'angular2/angular2';
-
 import {RouterLink, Router} from 'angular2/router';
+
+interface IChild {
+    name: String;
+    path: String;
+}
+
+interface IItem {
+    isActive: boolean;
+    name: String;
+    path?: String;
+    children?: Array<IChild>;
+}
 
 // annotation section
 @Component({
@@ -16,11 +27,11 @@ import {RouterLink, Router} from 'angular2/router';
 // component controller
 export class SideNav {
 
-    items: Array<any>;
+    items: Array<IItem>;
 
     constructor(private router: Router) {
         this.items = [{
-            active: true,
+            isActive: true,
             name: 'Dashboard',
             path: '/admin/dashboard'
         }, {
@@ -31,7 +42,8 @@ export class SideNav {
                 name: 'Upload',
                 path: '/admin/uploadPhoto'
             }],
-            name: 'Photos'
+            name: 'Photos',
+            isActive: false
         }, {
             children: [{
                 name: 'List',
@@ -40,7 +52,8 @@ export class SideNav {
                 name: 'Create',
                 path: '/admin/uploadPhoto'
             }],
-            name: 'Album'
+            name: 'Album',
+            isActive: false
         }, {
             children: [{
                 name: 'List',
@@ -49,7 +62,8 @@ export class SideNav {
                 name: 'Create',
                 path: '/admin/categories'
             }],
-            name: 'Categories'
+            name: 'Categories',
+            isActive: false
         }, {
             children: [{
                 name: 'List',
@@ -58,7 +72,8 @@ export class SideNav {
                 name: 'Create',
                 path: '/admin/tags'
             }],
-            name: 'Tags'
+            name: 'Tags',
+            isActive: false
         }, {
             children: [{
                 name: 'List',
@@ -67,17 +82,18 @@ export class SideNav {
                 name: 'Create',
                 path: '/admin/listPhotos'
             }],
-            name: 'Setups'
+            name: 'Setups',
+            isActive: false
         }];
     }
 
     onClick(item) {
 
-        this.items.forEach((it) => {
-            it.active = false;
+        this.items.forEach((it: IItem) => {
+            it.isActive = false;
         });
 
-        item.active = true;
+        item.isActive = true;
 
         if (item.path) {
             this.router.navigate(item.path);

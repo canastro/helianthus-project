@@ -2,6 +2,7 @@
 import {Component, View, NgFor} from 'angular2/angular2';
 
 import {HpLoadMore} from '../../directives/hp-load-more';
+import {IPhoto} from '../../interfaces/photo';
 
 import {PhotosService} from '../../services/photos';
 import {RouterLink} from 'angular2/router';
@@ -19,7 +20,7 @@ import {RouterLink} from 'angular2/router';
 // Component controller
 export class Gallery {
 
-    photos: Array<any> = [];
+    photos: Array<IPhoto> = [];
 
     constructor(private photosService: PhotosService) {
         this.getPhotos();

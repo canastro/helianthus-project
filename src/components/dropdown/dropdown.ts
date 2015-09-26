@@ -6,6 +6,15 @@ import {
     NgFor
 } from 'angular2/angular2';
 
+interface IHpKeys {
+    description: String;
+    key: String;
+}
+
+interface IHpOtions {
+    isSelected: boolean;
+}
+
 // Annotation section
 @Component({
     selector: 'dropdown',
@@ -23,8 +32,8 @@ export class Dropdown {
     title: String;
     originalTitle: String;
 
-    hpKeys: Array<any>;
-    hpOptions: Array<any>;
+    hpKeys: Array<IHpKeys>;
+    hpOptions: Array<IHpOtions>;
     hpOptionSelected = new EventEmitter();
 
     set hpTitle(value) {
