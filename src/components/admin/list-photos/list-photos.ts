@@ -33,8 +33,11 @@ export class ListPhotos {
         private photosService: PhotosService,
         private router: Router
     ) {
+        this.get(false);
+    }
 
-        this.photosService.getPhotos()
+    get(force? : boolean) {
+        this.photosService.getPhotos(force)
             .subscribe(result => {
                 this.photos = result;
             });
@@ -50,5 +53,16 @@ export class ListPhotos {
 
     selectPhoto(photo: IPhoto) {
         this.router.navigate(`/admin/uploadPhoto/${photo._id}`);
+    }
+
+    delete($event, photo: IPhoto) {
+
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        this.photosService.delete(photo)
+            .subscribe(() => {
+                this.get(true);
+            });
     }
 }

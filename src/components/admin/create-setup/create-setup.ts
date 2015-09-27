@@ -10,7 +10,6 @@ import {
     NgIf
 } from 'angular2/angular2';
 
-import {ISetup} from '../../../interfaces/setup';
 import {SetupsService} from '../../../services/setups';
 
 import {RouteParams} from 'angular2/router';
@@ -43,7 +42,7 @@ export class CreateSetup {
             focal_length: ['', Validators.required],
             aperture: ['', Validators.required],
             exposure_time: ['', Validators.required],
-            flash: ['', Validators.required],
+            flash: [true, Validators.required],
             iso: ['', Validators.required]
         });
 

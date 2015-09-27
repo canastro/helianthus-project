@@ -52,14 +52,16 @@ export class PhotosService {
             });
     }
 
-    getPhotos() : Rx.Observable<any> {
+    getPhotos(force? : boolean) : Rx.Observable<any> {
 
-        if (this.photos && this.photos.length > 0) {
+        if (!force && this.photos && this.photos.length > 0) {
             return Rx.Observable.create((observer) => {
                 observer.onNext(this.photos);
                 observer.onCompleted();
             });
         }
+
+        this.photos = [];
 
         return this.loadMore(1);
     }
@@ -76,11 +78,6 @@ export class PhotosService {
             .toRx()
             .selectMany(result => {
 
-                // this.photos = JSON.parse(result._body).photos.map((photo) => {
-                //     photo.date = moment(photo.date).format('L');
-                //     return photo;
-                // });
-
                 let tempPhotos = JSON.parse(result._body).photos;
                 tempPhotos.forEach(photo => {
                     photo.date = moment(photo.date).format('L');
@@ -90,6 +87,18 @@ export class PhotosService {
 
                 return Promise.resolve(this.photos);
             });
+    }
+
+    delete(photo: IPhoto): Rx.Observable<any> {
+
+        let url = `/api/admin/photos/${photo._id}`;
+        let options = {
+            headers: new Headers()
+        };
+        options.headers.append('x-access-token', this.authService.getToken());
+        options.headers.append('Content-Type', 'application/json');
+
+        return this.http.delete(url, options).toRx();
     }
 
     getPhotosCount(): Rx.Observable<any> {
