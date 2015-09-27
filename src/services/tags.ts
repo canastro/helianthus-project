@@ -1,7 +1,8 @@
 import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
-import {AuthService} from './auth';
 
+import {AuthService} from './auth';
+import {TAGS, ADMIN_TAGS} from '../config/env';
 import {ITag} from '../interfaces/tag';
 
 @Injectable()
@@ -15,14 +16,11 @@ export class TagsService {
 
     getAllTags() : Rx.Observable<any> {
 
-        let url = '/api/tags';
-
-        return this.http.get(url).toRx();
+        return this.http.get(TAGS).toRx();
     }
 
     createTag(params) : Rx.Observable<any> {
 
-        let url = '/api/admin/tags';
         let options = {
             headers: new Headers()
         };
@@ -31,7 +29,7 @@ export class TagsService {
         options.headers.append('Content-Type', 'application/json');
 
         return this.http.post(
-            url,
+            ADMIN_TAGS,
             JSON.stringify(params),
             options
         ).toRx();
@@ -39,7 +37,7 @@ export class TagsService {
 
     delete(tag: ITag): Rx.Observable<any> {
 
-        let url = `/api/admin/tags/${tag._id}`;
+        let url = `${ADMIN_TAGS}/${tag._id}`;
         let options = {
             headers: new Headers()
         };

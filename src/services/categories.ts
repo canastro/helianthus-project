@@ -1,8 +1,10 @@
 import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
+import * as Rx from 'rx';
+
 import {AuthService} from './auth';
 import {ICategory} from '../interfaces/category';
-import * as Rx from 'rx';
+import {CATEGORIES, ADMIN_CATEGORIES} from '../config/env';
 
 @Injectable()
 export class CategoriesService {
@@ -17,13 +19,11 @@ export class CategoriesService {
 
     getAllCategories() : Rx.Observable<any> {
 
-        let url = '/api/categories';
-        return this.http.get(url).toRx();
+        return this.http.get(CATEGORIES).toRx();
     }
 
     createCategory(category: ICategory) : Rx.Observable<any> {
 
-        let url = '/api/admin/categories';
         let options = {
             headers: new Headers()
         };
@@ -31,7 +31,7 @@ export class CategoriesService {
         options.headers.append('Content-Type', 'application/json');
 
         return this.http.post(
-            url,
+            ADMIN_CATEGORIES,
             JSON.stringify(category),
             options
         ).toRx();
@@ -39,7 +39,7 @@ export class CategoriesService {
 
     delete(category: ICategory): Rx.Observable<any> {
 
-        let url = `/api/admin/categories/${category._id}`;
+        let url = `${ADMIN_CATEGORIES}/${category._id}`;
         let options = {
             headers: new Headers()
         };

@@ -1,7 +1,9 @@
 import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
-import {IContact} from '../interfaces/contact';
 import * as Rx from 'rx';
+
+import {IContact} from '../interfaces/contact';
+import {CONTACT} from '../config/env';
 
 @Injectable()
 export class ContactService {
@@ -11,7 +13,6 @@ export class ContactService {
 
     contact(contact: IContact) : Rx.Observable<any> {
 
-        let path = '/api/contact';
         let options = {
             headers: new Headers()
         };
@@ -19,7 +20,7 @@ export class ContactService {
         options.headers.append('Content-Type', 'application/json');
 
         return this.http.post(
-            path,
+            CONTACT,
             JSON.stringify(contact),
             options
         )

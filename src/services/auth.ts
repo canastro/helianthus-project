@@ -1,6 +1,9 @@
 import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
+
 import {IAuthenticate} from '../interfaces/authenticate';
+import {ADMIN_AUTHENTICATE} from '../config/env';
+
 import * as Rx from 'rx';
 
 @Injectable()
@@ -11,14 +14,13 @@ export class AuthService {
 
     authenticate(params: IAuthenticate) : Rx.Observable<any> {
 
-        let path = '/api/admin/authenticate';
         let options = {
             headers: new Headers()
         };
 
         options.headers.append('Content-Type', 'application/json');
 
-        return this.http.post(path, JSON.stringify(params), options)
+        return this.http.post(ADMIN_AUTHENTICATE, JSON.stringify(params), options)
             .toRx()
             .selectMany(result => {
                 let response = JSON.parse(result._body);

@@ -2,9 +2,11 @@
 
 import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
+import * as Rx from 'rx';
+
 import {AuthService} from './auth';
 import {IPhoto} from '../interfaces/photo';
-import * as Rx from 'rx';
+import {PHOTOS, ADMIN_PHOTOS} from '../config/env';
 
 @Injectable()
 export class PhotosService {
@@ -21,7 +23,7 @@ export class PhotosService {
 
     find(id: String) : Rx.Observable<any> {
 
-        let url = '/api/photo/' + id;
+        let url = `${PHOTOS}/${id}`;
 
         if (this.photos && this.photos.length) {
             return Rx.Observable.create((observer) => {
@@ -72,7 +74,7 @@ export class PhotosService {
 
         this.page = page || this.page + 1;
 
-        url = `/api/photos?per_page=${this.perPage}&page=${this.page}`;
+        url = `${PHOTOS}?per_page=${this.perPage}&page=${this.page}`;
 
         return this.http.get(url)
             .toRx()
@@ -91,7 +93,7 @@ export class PhotosService {
 
     delete(photo: IPhoto): Rx.Observable<any> {
 
-        let url = `/api/admin/photos/${photo._id}`;
+        let url = `${ADMIN_PHOTOS}/${photo._id}`;
         let options = {
             headers: new Headers()
         };
@@ -103,7 +105,7 @@ export class PhotosService {
 
     getPhotosCount(): Rx.Observable<any> {
 
-        let url = '/api/photos/count';
+        let url = `${PHOTOS}/count`;
 
         return this.http.get(url)
             .toRx()
@@ -117,7 +119,6 @@ export class PhotosService {
     uploadPhoto(photo: IPhoto): Rx.Observable<any> {
 
         // let formData = new FormData();
-        let url = '/api/admin/photos';
         let options = {
             headers: new Headers()
         };
@@ -136,7 +137,7 @@ export class PhotosService {
         // });
 
         return this.http.post(
-            url,
+            ADMIN_PHOTOS,
             JSON.stringify(photo),
             options
         )

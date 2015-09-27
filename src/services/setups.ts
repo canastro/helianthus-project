@@ -1,9 +1,10 @@
 import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
-import {AuthService} from './auth';
 import * as Rx from 'rx';
 
+import {AuthService} from './auth';
 import {ISetup} from '../interfaces/setup';
+import {ADMIN_SETUPS} from '../config/env';
 
 @Injectable()
 export class SetupsService {
@@ -16,7 +17,6 @@ export class SetupsService {
 
     getAllSetups() : Rx.Observable<any> {
 
-        let path = '/api/admin/setups';
         let options = {
             headers: new Headers()
         };
@@ -24,12 +24,11 @@ export class SetupsService {
         options.headers.append('x-access-token', this.authService.getToken());
         options.headers.append('Content-Type', 'application/json');
 
-        return this.http.get(path, options).toRx();
+        return this.http.get(ADMIN_SETUPS, options).toRx();
     }
 
     create(setup: ISetup) : Rx.Observable<any> {
 
-        let url = '/api/admin/setups';
         let options = {
             headers: new Headers()
         };
@@ -37,7 +36,7 @@ export class SetupsService {
         options.headers.append('Content-Type', 'application/json');
 
         return this.http.post(
-            url,
+            ADMIN_SETUPS,
             JSON.stringify(setup),
             options
         ).toRx();
@@ -45,7 +44,7 @@ export class SetupsService {
 
     delete(setup: ISetup): Rx.Observable<any> {
 
-        let url = `/api/admin/setups/${setup._id}`;
+        let url = `${ADMIN_SETUPS}/${setup._id}`;
         let options = {
             headers: new Headers()
         };
