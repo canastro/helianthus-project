@@ -2,9 +2,15 @@
 
     <div class="admin-list-wrapper">
 
+        <div class="row row-header">
+            <div class="col-md-3">Photo</div>
+            <div class="col-md-7">Details</div>
+            <div class="col-md-1">Actions</div>
+        </div>
+
         <div class="row photo-row" *ng-for="#photo of photos" (click)="selectPhoto(photo)">
 
-            <div class="col-md-3">
+            <div class="col-md-3 photo-col">
         		<img class="admin-thumbnail" [src]="'/static/' + photo.name" [alt]="photo.title"/>
         	</div>
 
@@ -24,7 +30,7 @@
                     </li>
                     <li>
                         <span class="row-title">Story:</span>
-                        <span class="row-value">{{photo.story}}</span>
+                        <span class="row-value row-story-value">{{photo.story}}</span>
                     </li>
                     <li>
                         <span class="row-title">Category:</span>
@@ -38,7 +44,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-1 col-actions">
                 <button type="button" class="btn btn-danger" (click)="delete($event, photo)">
                     <i class="fa fa-times"></i>
                 </button>

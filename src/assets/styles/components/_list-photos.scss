@@ -16,10 +16,21 @@
 	background: #3085a3;
 	text-align: center;
 	cursor: pointer;
+    margin: auto;
 }
 
 
 .admin-list-wrapper {
+
+    .row-header {
+        color: #fff;
+        background-color: #373a3c;
+        vertical-align: bottom;
+        border-bottom: 2px solid #eceeef;
+        padding: .75rem;
+        line-height: 1.5;
+        border-top: 1px solid #eceeef;
+    }
 
     .photo-row {
         cursor: pointer;
@@ -30,9 +41,20 @@
         }
     }
 
-    .photo-details {
+    .photo-col {
         display: flex;
         align-items: center;
+    }
+
+    .photo-details {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+
+        ul {
+            padding: 10px 0;
+            width: 100%;
+        }
     }
 
     .row-title {
@@ -41,6 +63,16 @@
 
     .row-value {
         @include text-truncate();
+    }
+
+    .row-story-value {
+        float: left;
+        width: 100%;
+    }
+
+    .col-actions {
+        display: flex;
+        align-items: center;
     }
 
     .tag-container > ul,
