@@ -64,6 +64,9 @@
 
 # To do
 
+    - DEPLOY: https://github.com/weed/angular-seed-heroku-p140814/blob/master/package.json
+    https://dashboard.heroku.com/apps/helianthus-project/resources
+
     - Settings like http://tympanus.net/Development/ButtonComponentMorph/index7.html
 
     - Gallery
@@ -76,10 +79,7 @@
         - FE: Open to fullscreen;
         - FE: Back button on photo/:id
         - FE: Share on facebook
-        - BE/FE: On post new photo ask if wants to share to facebook, instagram, twitter, etc.
         - Click on category/tag and show a list of filtered photos
-        - BE: Automatically add watermark to uploaded photos
-        - BE: Automatically create thumbnails to uploaded photos
 
     - Inline-Comments:
         - BE: Create route to DELETE
@@ -88,9 +88,8 @@
         - FE: Create a inline form
 
     - Photography-Setups:
-        - BE: Create route to POST, DELETE
-        - FE: List view
-        - FE: Create / Update view
+        - FE: Edit view
+        - BE: PUT route
 
     - Album
         - BE: Create Routes to POST, GET, DELETE, PUT
@@ -100,8 +99,19 @@
         - FE: Client: Browse photos of a album
 
     - Admin
+        - Integrate with Google Analytics
+        - Integrate with Google Maps
         - FE: Create dashboard like interface
+        - Photos:
+            - BE: Automatically add watermark to uploaded photos
+            - BE: Automatically create thumbnails to uploaded photos
+            - FE: Show thumbnail of photo on edit page
+            - FE: Allow identify location where the photo was taken
+            - FE: Show comments in edit page
+            - BE/FE: On post new photo ask if wants to share to facebook, instagram, twitter, etc.
 
-    - Refactoring
-        - FE: Add correct typings
-        - BE: Handle errors and return correct status codes
+# DEPLOY
+    - https://github.com/ddollar/heroku-buildpack-multi
+    - https://github.com/dpiddy/heroku-buildpack-runit
+
+    - Or this: https://github.com/beanieboi/nginx-buildpack ? 

@@ -14,6 +14,7 @@ var debug = require('gulp-debug');
 
 var tasks = {
 	'default': 'default',
+    build: 'Build',
 	cleanAll : 'Clean-All',
 	typeScript: 'TypeScript-Compile',
 	sass: 'Compile-SASS',
@@ -61,6 +62,21 @@ gulp.task(tasks.watcherRebuild, function (callback) {
 	);
 	callback();
 });
+
+gulp.task(tasks.build, function () {
+	runSequence(
+        tasks.cleanAll,
+        tasks.tslint,
+		tasks.typeScript,
+		tasks.sass,
+		tasks.html,
+		tasks.copy,
+		tasks.copyIcons,
+		tasks.copyFonts,
+		tasks.copyVendors
+    );
+});
+
 
 // compiles *.ts files by tsconfig.json file and creates sourcemap filse
 gulp.task(tasks.typeScript, function () {
@@ -136,7 +152,7 @@ gulp.task(tasks.startWebServer, function () {
 
 	connect.server({
 		root: 'public',
-		port: 8000,
+		port: process.env.PORT || 8000,
 		host: '0.0.0.0',
 		livereload: true,
 		middleware: function() {

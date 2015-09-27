@@ -4,3 +4,4 @@ typings
 src/**/*.js
 build
 maps
+npm-debug.log
