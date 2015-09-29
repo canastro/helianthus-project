@@ -4,7 +4,7 @@ export interface IComment {
     _id?: String;
     name: String;
     message: String;
-    positionX: Number;
-    positionY: Number;
+    left: Number;
+    top: Number;
     photo?: IPhoto;
 }

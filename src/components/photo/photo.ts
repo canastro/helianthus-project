@@ -46,17 +46,7 @@ export class Photo {
         });
 
         commentsService.getCommentsByPhotoId(this.photoId)
-            .subscribe(result => {
-                this.figureTags = result.map((item) => {
-                    return {
-                        message: item.message,
-                        position: {
-                            left: item.positionX,
-                            top: item.positionY
-                        }
-                    };
-                });
-            });
+            .subscribe(result => this.figureTags = result);
     }
 
     onInit() {

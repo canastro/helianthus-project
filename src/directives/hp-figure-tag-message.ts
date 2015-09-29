@@ -22,11 +22,18 @@ export class HpFigureTagMessage {
 
         let position;
 
-        if (tag) {
-            position = $.extend(true, {}, tag.position);
-            position.top += 50;
-            this.$container.css(position);
+        if (!tag) {
+            return;
         }
+
+        position = {
+            left: tag.left,
+            top: tag.top
+        };
+
+        position.top += 50;
+
+        this.$container.css(position);
     }
 
 }

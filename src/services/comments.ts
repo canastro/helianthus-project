@@ -27,9 +27,8 @@ export class CommentsService {
             });
     }
 
-    commentPhoto(photo: IPhoto, params: IComment) : Rx.Observable<any> {
+    commentPhoto(photo: IPhoto, parameters: IComment) : Rx.Observable<any> {
 
-        let parameters;
         let path = `${PHOTOS}/${photo._id}/comment`;
         let options = {
             headers: new Headers()
@@ -37,7 +36,7 @@ export class CommentsService {
 
         options.headers.append('Content-Type', 'application/json');
 
-        params.photo = photo;
+        parameters.photo = photo;
 
         return this.http.post(
             path,

@@ -25,7 +25,10 @@ export class HpLoadMore {
 
     onScroll($event) {
 
-        if (this.$container[0].offsetHeight + this.$container[0].scrollTop >= this.$container[0].scrollHeight) {
+        let currentPosition = this.$container[0].offsetHeight + this.$container[0].scrollTop;
+        currentPosition *= 1.10;
+
+        if (currentPosition >= this.$container[0].scrollHeight) {
             this.loadMore.next(null);
         }
     }

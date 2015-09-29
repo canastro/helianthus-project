@@ -28,7 +28,11 @@ export class HpFigureTag {
     }
 
     set tag(tag) {
-        this.$container.css(tag.position);
+
+        this.$container.css({
+            left: tag.left,
+            top: tag.top
+        });
         this.selectedTag = tag;
     }
 
