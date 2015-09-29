@@ -30,6 +30,7 @@
         "./src/components/admin/create-tag/create-tag.ts",
         "./src/components/admin/dashboard/dashboard.ts",
         "./src/components/admin/list-categories/list-categories.ts",
+        "./src/components/admin/list-comments/list-comments.ts",
         "./src/components/admin/list-photos/list-photos.ts",
         "./src/components/admin/list-setups/list-setups.ts",
         "./src/components/admin/list-tags/list-tags.ts",

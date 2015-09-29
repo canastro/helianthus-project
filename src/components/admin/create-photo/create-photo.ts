@@ -14,14 +14,13 @@ import {ISetup} from '../../../interfaces/setup';
 import {ICategory} from '../../../interfaces/category';
 import {ITag} from '../../../interfaces/tag';
 import {IPhoto} from '../../../interfaces/photo';
-import {IComment} from '../../../interfaces/comment';
 
 import {PhotosService} from '../../../services/photos';
 import {CategoriesService} from '../../../services/categories';
 import {TagsService} from '../../../services/tags';
 import {SetupsService} from '../../../services/setups';
-import {CommentsService} from '../../../services/comments';
 
+import {ListComments} from '../list-comments/list-comments';
 import {Dropdown} from '../../dropdown/dropdown';
 
 import {RouteParams} from 'angular2/router';
@@ -40,7 +39,7 @@ enum Mode {
 })
 
 @View({
-    directives: [Dropdown, FORM_DIRECTIVES, NgFor, NgIf],
+    directives: [Dropdown, FORM_DIRECTIVES, NgFor, NgIf, ListComments],
     templateUrl: 'components/admin/create-photo/create-photo.html'
 })
 
@@ -52,7 +51,6 @@ export class CreatePhoto {
     setups: Array<ISetup>;
     categories: Array<ICategory>;
     tags: Array<ITag>;
-    comments: Array<IComment>;
 
     setupDropdownKeys: Array<Object> = [{
         description: 'Machine',
@@ -81,7 +79,6 @@ export class CreatePhoto {
         private formBuilder: FormBuilder,
         params: RouteParams,
         private photosService: PhotosService,
-        private commentsService: CommentsService,
         private categoriesService: CategoriesService,
         private tagsService: TagsService,
         private setupsService: SetupsService
@@ -121,9 +118,6 @@ export class CreatePhoto {
                 this.photoForm.controls['title'].updateValue(this.photo.title);
 
             });
-
-        this.commentsService.getCommentsByPhotoId(id)
-            .subscribe(result => this.comments = result);
     }
 
     loadDataSources() {

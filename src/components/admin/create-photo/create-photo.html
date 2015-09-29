@@ -6,26 +6,7 @@
             <img class="photo-img" [src]="'/static/' + photo.name" [alt]="photo.title"/>
         </div>
         <div class="col-md-6">
-
-             <table class="table" *ng-if="comments">
-                 <thead class="thead-inverse table-striped">
-                     <tr>
-                         <th>Name</th>
-                         <th>Message</th>
-                         <th>PositionX</th>
-                         <th>PositionY</th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                     <tr *ng-for="#comment of comments">
-                         <td>{{comment.name}}</td>
-                         <td>{{comment.message}}</td>
-                         <td>{{comment.left}}</td>
-                         <td>{{comment.top}}</td>
-                     </tr>
-                 </tbody>
-             </table>
-
+            <list-comments [photo]="photo"></list-comments>
         </div>
     </div>
 
