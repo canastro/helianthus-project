@@ -16,7 +16,7 @@ import {CreateTag} from '../create-tag/create-tag';
 import {CreateSetup} from '../create-setup/create-setup';
 import {ListSetups} from '../list-setups/list-setups';
 import {ListPhotos} from '../list-photos/list-photos';
-import {UploadPhoto} from '../upload-photo/upload-photo';
+import {CreatePhoto} from '../create-photo/create-photo';
 
 import {ROUTER_DIRECTIVES, Router, RouteConfig} from 'angular2/router';
 
@@ -41,7 +41,7 @@ import {ROUTER_DIRECTIVES, Router, RouteConfig} from 'angular2/router';
     { path: '/listSetups', as: 'listSetups', component: ListSetups },
     { path: '/createSetup', as: 'createSetup', component: CreateSetup },
     { path: '/listPhotos', as: 'listPhotos', component: ListPhotos },
-    { path: '/uploadPhoto/:id', as: 'uploadPhoto', component: UploadPhoto }
+    { path: '/createPhoto/:id', as: 'createPhoto', component: CreatePhoto }
 ])
 
 // Component controller

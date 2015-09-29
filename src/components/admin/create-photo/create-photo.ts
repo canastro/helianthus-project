@@ -14,11 +14,13 @@ import {ISetup} from '../../../interfaces/setup';
 import {ICategory} from '../../../interfaces/category';
 import {ITag} from '../../../interfaces/tag';
 import {IPhoto} from '../../../interfaces/photo';
+import {IComment} from '../../../interfaces/comment';
 
 import {PhotosService} from '../../../services/photos';
 import {CategoriesService} from '../../../services/categories';
 import {TagsService} from '../../../services/tags';
 import {SetupsService} from '../../../services/setups';
+import {CommentsService} from '../../../services/comments';
 
 import {Dropdown} from '../../dropdown/dropdown';
 
@@ -39,10 +41,10 @@ enum Mode {
 
 @View({
     directives: [Dropdown, FORM_DIRECTIVES, NgFor, NgIf],
-    templateUrl: 'components/admin/upload-photo/upload-photo.html'
+    templateUrl: 'components/admin/create-photo/create-photo.html'
 })
 
-export class UploadPhoto {
+export class CreatePhoto {
 
     mode: Mode = Mode.CREATE;
     photo: IPhoto;
@@ -50,6 +52,7 @@ export class UploadPhoto {
     setups: Array<ISetup>;
     categories: Array<ICategory>;
     tags: Array<ITag>;
+    comments: Array<IComment>;
 
     setupDropdownKeys: Array<Object> = [{
         description: 'Machine',
@@ -78,6 +81,7 @@ export class UploadPhoto {
         private formBuilder: FormBuilder,
         params: RouteParams,
         private photosService: PhotosService,
+        private commentsService: CommentsService,
         private categoriesService: CategoriesService,
         private tagsService: TagsService,
         private setupsService: SetupsService
@@ -96,29 +100,39 @@ export class UploadPhoto {
         });
 
         if (photoId) {
-
             this.mode = Mode.EDIT;
 
-            photosService.find(photoId)
-                .subscribe(result => {
-                    this.photo = result;
-
-                    this.photoForm.controls['category'].updateValue(this.photo.category._id);
-                    this.photoForm.controls['date'].updateValue(this.photo.date);
-                    this.photoForm.controls['description'].updateValue(this.photo.description);
-                    this.photoForm.controls['name'].updateValue(this.photo.name);
-                    this.photoForm.controls['story'].updateValue(this.photo.story);
-                    this.photoForm.controls['title'].updateValue(this.photo.title);
-
-                });
+            this.loadPhoto(photoId);
         }
 
-        categoriesService.getAllCategories()
+        this.loadDataSources();
+    }
+
+    loadPhoto(id: String) {
+        this.photosService.find(id)
+            .subscribe(result => {
+                this.photo = result;
+
+                this.photoForm.controls['category'].updateValue(this.photo.category._id);
+                this.photoForm.controls['date'].updateValue(this.photo.date);
+                this.photoForm.controls['description'].updateValue(this.photo.description);
+                this.photoForm.controls['name'].updateValue(this.photo.name);
+                this.photoForm.controls['story'].updateValue(this.photo.story);
+                this.photoForm.controls['title'].updateValue(this.photo.title);
+
+            });
+
+        this.commentsService.getCommentsByPhotoId(id)
+            .subscribe(result => this.comments = result);
+    }
+
+    loadDataSources() {
+        this.categoriesService.getAllCategories()
             .subscribe(result => {
                 this.categories = JSON.parse(result._body);
             });
 
-        setupsService.getAllSetups()
+        this.setupsService.getAllSetups()
             .subscribe(result => {
 
                 this.setups = JSON.parse(result._body);
@@ -128,7 +142,7 @@ export class UploadPhoto {
                 });
             });
 
-        tagsService.getAllTags()
+        this.tagsService.getAllTags()
             .subscribe(result => {
                 this.tags = JSON.parse(result._body);
             });

@@ -41,7 +41,7 @@ export class SideNav {
                 path: '/admin/listPhotos'
             }, {
                 name: 'Upload',
-                path: '/admin/uploadPhoto',
+                path: '/admin/createPhoto',
                 params: {
                     id: null
                 }

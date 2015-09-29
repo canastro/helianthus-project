@@ -52,7 +52,7 @@ export class ListPhotos {
     }
 
     selectPhoto(photo: IPhoto) {
-        this.router.navigate(`/admin/uploadPhoto/${photo._id}`);
+        this.router.navigate(`/admin/createPhoto/${photo._id}`);
     }
 
     delete($event, photo: IPhoto) {

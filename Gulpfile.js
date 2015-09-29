@@ -152,7 +152,7 @@ gulp.task(tasks.startWebServer, function () {
 
 	connect.server({
 		root: 'public',
-		port: process.env.PORT || 8000,
+		port: 8000,
 		host: '0.0.0.0',
 		livereload: true,
 		middleware: function() {
