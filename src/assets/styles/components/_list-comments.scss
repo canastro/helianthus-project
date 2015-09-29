@@ -1,0 +1,13 @@
+.list-comments-table {
+    tbody {
+        height: 300px;
+        overflow: auto;
+        display: block;
+    }
+
+    tr {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+    }
+}
