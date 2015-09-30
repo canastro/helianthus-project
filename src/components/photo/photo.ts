@@ -4,6 +4,8 @@ import {Component, View, NgFor, NgIf} from 'angular2/angular2';
 import {PhotosService} from '../../services/photos';
 import {CommentsService} from '../../services/comments';
 
+import {FigureTagForm} from '../figure-tag-form/figure-tag-form';
+
 import {HpFigure} from '../../directives/hp-figure';
 import {HpFigureTag} from '../../directives/hp-figure-tag';
 import {HpFigureTagMessage} from '../../directives/hp-figure-tag-message';
@@ -17,12 +19,16 @@ import {RouteParams, Router} from 'angular2/router';
 })
 
 @View({
-    directives: [NgFor, NgIf, HpFigure, HpFigureTag, HpFigureTagMessage, HpTooltip],
+    directives: [NgFor, NgIf, HpFigure, HpFigureTag, HpFigureTagMessage, HpTooltip, FigureTagForm],
     templateUrl: 'components/photo/photo.html'
 })
 
 // Component controller
 export class Photo {
+
+    tempMessage: Object;
+    tempTagPosition: Object;
+    isCommenting: boolean = false;
 
     photoId: String;
     tagsOn: boolean = false;
@@ -73,8 +79,19 @@ export class Photo {
 
     }
 
+    startTagForm($event) {
+        this.tempMessage = null;
+        this.isCommenting = true;
+        this.tempTagPosition = $event;
+    }
+
+    onMessageSubmited($event) {
+        this.tempMessage = $event;
+    }
+
     tagAdded(tag) {
         this.figureTags.push(tag);
+        this.isCommenting = false;
     }
 
     showTag(tag) {

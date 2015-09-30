@@ -38,6 +38,7 @@
         "./src/components/app/app.ts",
         "./src/components/contact/contact.ts",
         "./src/components/dropdown/dropdown.ts",
+        "./src/components/figure-tag-form/figure-tag-form.ts",
         "./src/components/gallery/gallery.ts",
         "./src/components/home/home.ts",
         "./src/components/navbar/navbar.ts",

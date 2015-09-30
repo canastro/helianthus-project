@@ -1,0 +1,20 @@
+.figure-tag-form-container {
+    position: absolute;
+    z-index: 2000;
+    color: #fff;
+}
+
+.figure-tag-form {
+    border-radius: 4px;
+
+    background-color: #000;
+    opacity: 0.9;
+
+    padding: 10px;
+}
+
+.figure-temp-tag {
+    border: 1px solid #FFFFFF;
+    height: 50px;
+    width: 50px;
+}

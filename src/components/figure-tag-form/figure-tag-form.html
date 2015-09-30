@@ -1,0 +1,36 @@
+<div class="figure-tag-form-container">
+    <div class="figure-temp-tag"><br/></div>
+    <form class="figure-tag-form" [ng-form-model]="figureTagForm">
+
+
+        <div class="row">
+
+            <div class="col-sm-12">
+                <fieldset class="form-group">
+                    <input id="tag-name"
+                        type="text"
+                        class="form-control"
+                        ng-control="name"
+                        placeholder="Name"
+                        (keydown)="onMessageKeyDown($event)"/>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-12">
+                <fieldset class="form-group">
+                    <input id="tag-message"
+                        type="text"
+                        class="form-control"
+                        ng-control="message"
+                        placeholder="Message"
+                        (keydown)="onMessageKeyDown($event)"/>
+                    <small class="text-muted">{{charactersLeft}} characters left...</small>
+                </fieldset>
+            </div>
+        </div>
+
+    </form>
+</div>

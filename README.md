@@ -82,7 +82,6 @@
         - Click on category/tag and show a list of filtered photos
 
     - Inline-Comments:
-        - BE: Create route to DELETE
         - FE: Limit text
         - FE: Add name / email to comments
         - FE: Create a inline form
@@ -107,11 +106,10 @@
             - BE: Automatically create thumbnails to uploaded photos
             - FE: Show thumbnail of photo on edit page
             - FE: Allow identify location where the photo was taken
-            - FE: Show comments in edit page
             - BE/FE: On post new photo ask if wants to share to facebook, instagram, twitter, etc.
 
 # DEPLOY
     - https://github.com/ddollar/heroku-buildpack-multi
     - https://github.com/dpiddy/heroku-buildpack-runit
 
-    - Or this: https://github.com/beanieboi/nginx-buildpack ? 
+    - Or this: https://github.com/beanieboi/nginx-buildpack ?

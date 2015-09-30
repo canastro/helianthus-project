@@ -12,7 +12,13 @@
         </div>
 
         <div class="photo-container" >
-            <figure class="photo-wrapper" hp-figure [photo]="photo" (tag-added)="tagAdded($event)">
+            <figure class="photo-wrapper"
+                hp-figure
+                [message]="tempMessage"
+                [photo]="photo"
+                (tag-added)="tagAdded($event)"
+                (start-tag)="startTagForm($event)">
+
                 <img class="photo-img" [src]="'/static/' + photo.name" [alt]="photo.title"/>
 
                 <div class="photo-controllers">
@@ -51,6 +57,10 @@
 
         			</p>
         		</div>
+
+                <figure-tag-form [class.hidden]="!isCommenting"
+                    [position]="tempTagPosition"
+                    (on-message-submited)="onMessageSubmited($event)"></figure-tag-form>
 
                 <div
                     hp-figure-tag-message

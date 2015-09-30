@@ -6,20 +6,29 @@ import {Directive, ElementRef, EventEmitter} from 'angular2/angular2';
 import {CommentsService} from '../services/comments';
 import {IPhoto} from '../interfaces/photo';
 
-// TODO: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
 @Directive({
   selector: '[hp-figure]',
-  properties: ['photo: photo'],
+  properties: [
+      'photo: photo',
+      'message: message'
+  ],
   host: {
       '(click)': 'onMouseDown($event)'
   },
-  events: ['tagAdded']
+  events: [
+      'tagAdded',
+      'startTag'
+  ]
 })
 
 export class HpFigure {
 
-    photo: IPhoto;
+    position: any;
+
     tagAdded = new EventEmitter();
+    startTag = new EventEmitter();
+
+    photo: IPhoto;
     $container: JQuery;
 
     constructor(
@@ -31,9 +40,9 @@ export class HpFigure {
 
     onMouseDown($event) {
 
-        let position;
-        let promptResult;
-        let params;
+        if (!$($event.target).hasClass('photo-img')) {
+            return;
+        }
 
         // The user is going to start drawing. Cancel
         // the default event to make sure the browser
@@ -41,19 +50,23 @@ export class HpFigure {
         $event.preventDefault();
 
         // Add the pending tag to the container.
-        position = this.getLocalPosition($event.clientX, $event.clientY);
+        this.position = this.getLocalPosition($event.clientX, $event.clientY);
 
-        promptResult = prompt('Message:');
+        this.startTag.next(this.position);
+    }
 
-        params = {
-            message: promptResult,
-            left: position.left,
-            top: position.top
-        };
+    set message(item) {
 
-        this.commentsService.commentPhoto(this.photo, params);
+        if (!item) {
+            return;
+        }
 
-        this.tagAdded.next(params);
+        item.left = this.position.left;
+        item.top = this.position.top;
+
+        this.commentsService.commentPhoto(this.photo, item);
+
+        this.tagAdded.next(item);
     }
 
     private getLocalPosition(mouseX, mouseY) {
