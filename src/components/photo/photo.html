@@ -66,8 +66,10 @@
                     hp-figure-tag-message
                     [class.hidden]="!selectedTag"
                     [tag]="selectedTag"
-                    class='hp-figure-tag-message'>
-                    {{selectedTagMessage}}
+                    class='hp-figure-tag-message'
+                    *ng-if="selectedTag">
+                    <strong>{{selectedTag.name}}:<strong>
+                    <span> {{selectedTag.message}}<span>
                 </div>
 
                 <div class="figure-tags-container" [class.hidden]="!tagsOn">

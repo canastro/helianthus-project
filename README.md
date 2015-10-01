@@ -82,9 +82,7 @@
         - Click on category/tag and show a list of filtered photos
 
     - Inline-Comments:
-        - FE: Limit text
-        - FE: Add name / email to comments
-        - FE: Create a inline form
+        - Show form on different position accordingly with available space
 
     - Photography-Setups:
         - FE: Edit view
