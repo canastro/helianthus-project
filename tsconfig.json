@@ -24,6 +24,7 @@
         "./src/components/about/about.ts",
         "./src/components/admin/admin/admin.ts",
         "./src/components/admin/auth/auth.ts",
+        "./src/components/admin/create-album/create-album.ts",
         "./src/components/admin/create-category/create-category.ts",
         "./src/components/admin/create-photo/create-photo.ts",
         "./src/components/admin/create-setup/create-setup.ts",

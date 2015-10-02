@@ -51,10 +51,10 @@ export class SideNav {
         }, {
             children: [{
                 name: 'List',
-                path: '/admin/listPhotos'
+                path: '/admin/listAlbums'
             }, {
                 name: 'Create',
-                path: '/admin/listPhotos'
+                path: '/admin/createAlbum'
             }],
             name: 'Album',
             isActive: false

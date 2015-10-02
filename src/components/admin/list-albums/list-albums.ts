@@ -13,7 +13,7 @@ import {AlbumsService} from '../../../services/albums';
 
 // annotation section
 @Component({
-    selector: 'list-photos',
+    selector: 'list-albums',
     viewBindings: [
         FormBuilder
     ]
@@ -43,6 +43,6 @@ export class ListAlbums {
     }
 
     delete() {
-        
+        console.log('delete');
     }
 }

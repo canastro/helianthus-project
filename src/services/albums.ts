@@ -1,8 +1,7 @@
 import {Injectable} from 'angular2/angular2';
 import {Http, Headers} from 'angular2/http';
 
-import {IAlbum} from '../interfaces/album';
-import {ALBUMS, ADMIN_ALBUMS} from '../config/env';
+import {ALBUMS} from '../config/env';
 
 import * as Rx from 'rx';
 
@@ -20,7 +19,12 @@ export class AlbumsService {
 
         options.headers.append('Content-Type', 'application/json');
 
-        return this.http.get(ALBUMS, options).toRx();
+        return this.http.get(ALBUMS, options)
+            .toRx()
+            .selectMany(result => {
+                let albums = JSON.parse(result._body);
+                return Promise.resolve(albums);
+            });
     }
 
 }

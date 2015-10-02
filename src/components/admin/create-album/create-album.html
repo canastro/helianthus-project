@@ -1,0 +1,40 @@
+
+<form (ng-submit)="create()" [ng-form-model]="albumForm">
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <fieldset class="form-group">
+                <h4 for="album-name">Name</h4>
+                <input id="album-name" type="text" class="form-control" ng-control="name" placeholder="Name"/>
+            </fieldset>
+        </div>
+        <div class="col-sm-6">
+            <fieldset class="form-group">
+                <h4 for="album-title">Title</h4>
+                <input id="album-title" type="text" class="form-control" ng-control="title" placeholder="Title"/>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <fieldset class="form-group">
+                <h4 for="album-description">Description</h4>
+                <textarea class="form-control" id="album-description" rows="5" ng-control="description"></textarea>
+            </fieldset>
+        </div>
+
+        <div class="col-sm-6">
+            <fieldset class="form-group">
+                <h4 for="album-story">Story</h4>
+                <textarea class="form-control" id="album-story" rows="5" ng-control="story"></textarea>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="row">
+        <button type="submit" value="click" class="btn btn-primary">Submit</button>
+    </div>
+</form>

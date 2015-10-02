@@ -23,6 +23,7 @@ var tasks = {
 	copyIcons: 'Copy-FontAwesome-Icons',
 	copy: 'Copy-Compiled-JS',
 	copyVendors: 'Copy-Vendors',
+    copyImages: 'Copy-Images',
 	startWebServer: 'Start-WebServer',
 	watch: 'Watch',
 	watcherRebuild: 'Watcher-Rebuild',
@@ -40,6 +41,7 @@ gulp.task(tasks.default, function () {
 		tasks.copy,
 		tasks.copyIcons,
 		tasks.copyFonts,
+		tasks.copyImages,
 		tasks.copyVendors,
 		tasks.startWebServer,
 		tasks.watch
@@ -58,7 +60,8 @@ gulp.task(tasks.watcherRebuild, function (callback) {
 		tasks.copyVendors,
 		tasks.copy,
 		tasks.copyIcons,
-		tasks.copyFonts
+		tasks.copyFonts,
+        tasks.copyImages
 	);
 	callback();
 });
@@ -73,7 +76,8 @@ gulp.task(tasks.build, function () {
 		tasks.copy,
 		tasks.copyIcons,
 		tasks.copyFonts,
-		tasks.copyVendors
+		tasks.copyVendors,
+        tasks.copyImages
     );
 });
 
@@ -129,6 +133,11 @@ gulp.task(tasks.copyIcons, function() { 
 gulp.task(tasks.copyFonts, function() { 
     return gulp.src('./src/assets/fonts/**/*') 
         .pipe(gulp.dest('public/assets/fonts')); 
+});
+
+gulp.task(tasks.copyImages, function() { 
+    return gulp.src('./src/assets/images/**/*') 
+        .pipe(gulp.dest('public/assets/images')); 
 });
 
 gulp.task(tasks.copyVendors, function() { 
