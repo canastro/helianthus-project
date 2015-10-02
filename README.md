@@ -69,6 +69,13 @@
 
     - Settings like http://tympanus.net/Development/ButtonComponentMorph/index7.html
 
+    - Tech:
+        - API: Add eslintrc and jscs
+        - API: Add unit-tests (this should have been done with TDD :(  )
+        - FE: Add unit tests
+        - FE: Reestructure files into a different organization... components folder is too vague
+        -
+
     - Gallery
         - Use packery or isotope
         - Layout: the browsing of photos (group/filter by category/tag/name/setup)
@@ -80,16 +87,18 @@
         - FE: Back button on photo/:id
         - FE: Share on facebook
         - Click on category/tag and show a list of filtered photos
+        - FE/BE: Bulk delete
 
     - Inline-Comments:
         - Show form on different position accordingly with available space
+        - Add close icon on top left corner
 
     - Photography-Setups:
         - FE: Edit view
         - BE: PUT route
 
     - Album
-        - BE: Create Routes to POST, GET, DELETE, PUT
+        - BE: Create Routes to DELETE
         - FE: Admin: List view
         - FE: Admin: Create / Update view
         - FE: Client: List view

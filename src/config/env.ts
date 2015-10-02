@@ -12,4 +12,7 @@ export const ADMIN_SETUPS = '/api/admin/setups';
 export const TAGS = '/api/tags';
 export const ADMIN_TAGS = '/api/admin/tags';
 
+export const ALBUMS = '/api/albums';
+export const ADMIN_ALBUMS = '/api/admin/albums';
+
 export const CONTACT = 'api/contact';

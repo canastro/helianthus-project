@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/angular2/angular2.d.ts" />
 import {Component, View} from 'angular2/angular2';
+import {Contact} from '../contact/contact';
 
 // Annotation section
 @Component({
@@ -7,7 +8,8 @@ import {Component, View} from 'angular2/angular2';
 })
 
 @View({
-    templateUrl: 'components/about/about.html'
+    templateUrl: 'components/about/about.html',
+    directives: [Contact]
 })
 
 // Component controller
