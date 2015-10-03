@@ -77,8 +77,8 @@
         -
 
     - Gallery
-        - Use packery or isotope
         - Layout: the browsing of photos (group/filter by category/tag/name/setup)
+        - FE/BE: Show only active photos
 
     - Photo:
         - FE: Next/previous photo
@@ -87,7 +87,6 @@
         - FE: Back button on photo/:id
         - FE: Share on facebook
         - Click on category/tag and show a list of filtered photos
-        - FE/BE: Bulk delete
 
     - Inline-Comments:
         - Show form on different position accordingly with available space

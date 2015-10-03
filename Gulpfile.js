@@ -1,187 +1,93 @@
+"use strict";
+
+// Gulp dev.
 var gulp = require('gulp');
-var ts = require('gulp-typescript');
-var typescript = require('typescript');
-var del = require('del');
+var plugins = require('gulp-load-plugins')();
+var shell = require('gulp-shell');
 var runSequence = require('run-sequence');
-var sourcemaps = require('gulp-sourcemaps');
-var connect = require('gulp-connect');
-var open = require('gulp-open');
-var sass = require('gulp-sass');
-var modRewrite = require('connect-modrewrite');
-var historyApiFallback = require('connect-history-api-fallback');
-var tslint = require('gulp-tslint');
-var debug = require('gulp-debug');
+var utils = require('./tools/utils');
 
-var tasks = {
-	'default': 'default',
-    build: 'Build',
-	cleanAll : 'Clean-All',
-	typeScript: 'TypeScript-Compile',
-	sass: 'Compile-SASS',
-	html: 'Copy-HTML',
-	copyFonts: 'Copy-Fonts',
-	copyIcons: 'Copy-FontAwesome-Icons',
-	copy: 'Copy-Compiled-JS',
-	copyVendors: 'Copy-Vendors',
-    copyImages: 'Copy-Images',
-	startWebServer: 'Start-WebServer',
-	watch: 'Watch',
-	watcherRebuild: 'Watcher-Rebuild',
-    tslint: 'Check-tsLint'
-};
+// Gulp prod.
+// var concat = require('gulp-concat');
+// var filter = require('gulp-filter');
+// var minifyCSS = require('gulp-minify-css');
+// var minifyHTML = require('gulp-minify-html');
+// var uglify = require('gulp-uglify');
 
-// Main task
-gulp.task(tasks.default, function () {
-	runSequence(
-        tasks.cleanAll,
-        tasks.tslint,
-		tasks.typeScript,
-		tasks.sass,
-		tasks.html,
-		tasks.copy,
-		tasks.copyIcons,
-		tasks.copyFonts,
-		tasks.copyImages,
-		tasks.copyVendors,
-		tasks.startWebServer,
-		tasks.watch
-    );
+function tasks(task, options) {
+    return require('./tools/tasks/' + task)(gulp, plugins, options);
+}
+
+
+// --------------
+// Clean.
+gulp.task('clean', tasks('clean', 'clean'));
+gulp.task('clean.dev', tasks('clean', 'clean.dev'));
+gulp.task('clean.app.dev', tasks('clean', 'clean.app.dev'));
+gulp.task('clean.test', tasks('clean', 'test'));
+gulp.task('clean.tsd_typings', tasks('clean', 'tsd_typings'));
+
+
+// --------------
+// Build dev.
+gulp.task('build.lib.dev', tasks('build.lib.dev'));
+gulp.task('build.js.dev', tasks('build.js.dev'));
+gulp.task('build.assets.dev', ['build.js.dev'], tasks('build.assets.dev'));
+gulp.task('build.sass.dev', tasks('build.sass.dev'));
+gulp.task('build.fonts.dev', tasks('build.fonts.dev'));
+
+gulp.task('build.index.dev', tasks('build.index.dev'));
+gulp.task('build.app.dev', function (done) {
+  runSequence('clean.app.dev', 'build.assets.dev', 'build.fonts.dev', 'build.sass.dev', 'build.index.dev', done);
 });
-
-// default task starts watcher. in order not to start it each change
-// watcher will run the task bellow
-gulp.task(tasks.watcherRebuild, function (callback) {
-	runSequence(
-        tasks.cleanAll,
-        tasks.tslint,
-		tasks.typeScript,
-		tasks.sass,
-		tasks.html,
-		tasks.copyVendors,
-		tasks.copy,
-		tasks.copyIcons,
-		tasks.copyFonts,
-        tasks.copyImages
-	);
-	callback();
-});
-
-gulp.task(tasks.build, function () {
-	runSequence(
-        tasks.cleanAll,
-        tasks.tslint,
-		tasks.typeScript,
-		tasks.sass,
-		tasks.html,
-		tasks.copy,
-		tasks.copyIcons,
-		tasks.copyFonts,
-		tasks.copyVendors,
-        tasks.copyImages
-    );
+gulp.task('build.dev', function (done) {
+  runSequence('clean.dev', 'build.lib.dev', 'build.app.dev', done);
 });
 
 
-// compiles *.ts files by tsconfig.json file and creates sourcemap filse
-gulp.task(tasks.typeScript, function () {
-	var tsProject = ts.createProject('tsconfig.json', {
-		typescript: typescript
-	});
+// --------------
+// Build prod.
 
-	return gulp.src(['typings/**/**.ts', 'src/**/**.ts'])
-		.pipe(sourcemaps.init())
-        .pipe(ts(tsProject))
-		.pipe(sourcemaps.write('../maps', { includeContent: false, sourceRoot: '/src' }))
-        .pipe(gulp.dest('build'));
-});
+// To be implemented (https://github.com/mgechev/angular2-seed/issues/58)
 
-// copy *.html files (templates of components)
-// to apropriate directory under public/scripts
-gulp.task(tasks.html, function () {
-	return gulp.src(['src/**/**.html'])
-        .pipe(gulp.dest('build'));
-});
 
-gulp.task(tasks.sass, function (done) {
+// --------------
+// Test.
+gulp.task('build.test', tasks('build.test'));
+gulp.task('karma.start', ['build.test'], tasks('karma.start'));
+gulp.task('test-dev', ['build.test'], tasks('test-dev'));
+gulp.task('test', ['karma.start'], tasks('test'));
 
-    return gulp.src('./src/assets/styles/main.scss')
-        .pipe(
-            sass({
-                style: 'compressed',
-				includePaths:[
-                    './node_modules/font-awesome/scss'
-                ]
-            }).on('error', sass.logError)
-        )
-        .pipe(gulp.dest('./build/assets/styles'));
+
+// --------------
+// Post install
+gulp.task('install.typings', ['clean.tsd_typings'], shell.task([
+  'npm prune',
+  'tsd reinstall --overwrite',
+  'tsd link',
+  'tsd rebundle'
+]));
+
+gulp.task('postinstall', function (done) {
+  runSequence(['clean', 'clean.test'], 'install.typings', done);
 });
 
 
-// copy generated/compiled files
-// from  directory to public/scripts directory
-gulp.task(tasks.copy, function () {
-	return gulp.src(['build/**/*.*'], { base: "build" })
-		.pipe(gulp.dest('public'))
-		.pipe(connect.reload());
-});
-
-gulp.task(tasks.copyIcons, function() { 
-    return gulp.src('./node_modules/font-awesome/fonts/**.*') 
-        .pipe(gulp.dest('public/assets/fonts')); 
-});
-
-gulp.task(tasks.copyFonts, function() { 
-    return gulp.src('./src/assets/fonts/**/*') 
-        .pipe(gulp.dest('public/assets/fonts')); 
-});
-
-gulp.task(tasks.copyImages, function() { 
-    return gulp.src('./src/assets/images/**/*') 
-        .pipe(gulp.dest('public/assets/images')); 
-});
-
-gulp.task(tasks.copyVendors, function() { 
-    return gulp.src('./node_modules/tether/dist/js/tether.min.js') 
-        .pipe(gulp.dest('public/assets/vendors')); 
-});
-
-//  clean all generated/compiled files
-//	in both  and public/ directories
-gulp.task(tasks.cleanAll, function () {
-	return del(['public/', 'build', 'maps']);
-});
-
-// watcher
-gulp.task(tasks.watch, function () {
-	gulp.watch(['src/**/**.ts', 'src/**/**.html', 'src/**/*.scss'], [tasks.watcherRebuild]);
-});
+// --------------
+// Serve dev.
+// gulp.task('serve.dev', ['build.dev', 'livereload'], tasks('serve.dev'));
 
 // starts web server
-gulp.task(tasks.startWebServer, function () {
+gulp.task('serve.dev', ['build.dev'], tasks('serve.dev'));
 
-	connect.server({
-		root: 'public',
-		port: 8000,
-		host: '0.0.0.0',
-		livereload: true,
-		middleware: function() {
-			return [
-				modRewrite([
-					'^/api/(.*)$ http://localhost:8080/api/$1 [P]',
-					'^/static/(.*)$ http://localhost:8080/static/$1 [P]',
-				]),
-				historyApiFallback()
-			];
-		}
-	});
+// --------------
+// Serve prod.
 
-});
+// To be implemented (https://github.com/mgechev/angular2-seed/issues/58)
 
-gulp.task(tasks.tslint, function(){
-	return gulp.src(['src/**/*.ts'])
-		// .pipe(debug({title: 'tslint:'}))
-		.pipe(tslint())
-		.pipe(tslint.report('prose', {
-          emitError: false
-        }));
+
+// --------------
+// Livereload.
+gulp.task('livereload', function() {
+    utils.livereload();
 });
