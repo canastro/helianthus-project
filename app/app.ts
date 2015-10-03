@@ -16,10 +16,10 @@ import {AlbumsService} from './services/albums';
 
 
 import {NavBar} from './components/navbar/navbar';
-import {Home} from './components/home/home';
-import {About} from './components/about/about';
-import {Photo} from './components/photo/photo';
-import {Admin} from './components/admin/admin/admin';
+import {Home} from './components/home/index/index';
+import {About} from './components/about/index/index';
+import {Photo} from './components/photo/index/index';
+import {Admin} from './components/admin/index/index';
 
 // Annotation section
 @Component({
