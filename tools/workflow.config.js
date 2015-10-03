@@ -39,6 +39,7 @@ var PATH = {
             require.resolve('systemjs/dist/system.src.js'),
             require.resolve('jquery/dist/jquery.min.js'),
             require.resolve('jquery/dist/jquery.min.map'),
+            require.resolve('tether/dist/js/tether.js'),
             require.resolve('moment/moment.js'),
             APP_SRC + '/system.config.js',
             ANGULAR_BUNDLES + '/angular2.dev.js',

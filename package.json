@@ -60,8 +60,9 @@
     "gulp-sass": "^2.0.4",
     "jquery": "^2.1.4",
     "moment": "^2.10.6",
+    "r": "^1.1.0",
     "reflect-metadata": "0.1.0",
     "systemjs": "^0.18.17",
-    "r": "^1.1.0"
+    "tether": "^1.1.0"
   }
 }
