@@ -42,7 +42,17 @@ export class ListAlbums {
             });
     }
 
-    delete() {
-        console.log('delete');
+    delete(album: IAlbum) {
+        this.albumsService.delete(album)
+            .subscribe(() => {
+                this.get();
+            });
+    }
+
+    toggleActivateState(album: IAlbum) {
+        this.albumsService.toggleActivateState(album)
+            .subscribe(() => {
+                this.get();
+            });
     }
 }

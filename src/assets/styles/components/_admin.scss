@@ -1,0 +1,32 @@
+.state-col {
+    display: flex;
+    align-items: center;
+}
+
+.state {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin: auto;
+
+    &.state-inactive {
+        background-color: red;
+    }
+
+    &.state-active {
+        background-color: green;
+    }
+}
+
+.admin-action-button {
+    height: 16px;
+    width: 16px;
+    float: left;
+    margin-right: 5px;
+
+    cursor: pointer;
+
+    &:hover {
+        color: blue;
+    }
+}

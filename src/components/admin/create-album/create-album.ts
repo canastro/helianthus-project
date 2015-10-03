@@ -38,6 +38,7 @@ export class CreateAlbum {
     }
 
     create() {
-        console.log('create');
+        this.albumsService.create(this.albumForm.value)
+            .subscribe(result => console.log(result));
     }
 }
