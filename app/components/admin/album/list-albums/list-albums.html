@@ -19,6 +19,11 @@
             <td>{{album.description}}</td>
             <td>{{album.story}}</td>
             <td>
+
+                <div class="admin-action-button" (click)="edit(album)">
+                    <i class="fa fa-pencil"></i>
+                </div>
+
                 <div class="admin-action-button" (click)="delete(album)">
                     <i class="fa fa-times"></i>
                 </div>

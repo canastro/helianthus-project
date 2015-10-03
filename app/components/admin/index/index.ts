@@ -45,7 +45,7 @@ import {ROUTER_DIRECTIVES, Router, RouteConfig} from 'angular2/router';
     { path: '/listPhotos', as: 'listPhotos', component: ListPhotos },
     { path: '/createPhoto/:id', as: 'createPhoto', component: CreatePhoto },
     { path: '/listAbums', as: 'listAlbums', component: ListAlbums },
-    { path: '/createAlbum', as: 'createAlbum', component: CreateAlbum }
+    { path: '/createAlbum/:id', as: 'createAlbum', component: CreateAlbum }
 ])
 
 // Component controller

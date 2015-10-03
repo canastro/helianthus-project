@@ -90,6 +90,7 @@
 
     - Inline-Comments:
         - Show form on different position accordingly with available space
+        - Change directives into components
 
     - Photography-Setups:
         - FE: Edit view

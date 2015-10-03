@@ -16,6 +16,18 @@ export class AlbumsService {
     ) {
     }
 
+    find(id: String) : Rx.Observable<any> {
+
+        let url = `${ALBUMS}/${id}`;
+
+        return this.http.get(url)
+            .toRx()
+            .selectMany(result => {
+                let album = JSON.parse(result._body);
+                return Promise.resolve(album);
+            });
+    }
+
     get() : Rx.Observable<any> {
 
         let options = {

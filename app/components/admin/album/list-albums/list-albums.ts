@@ -49,6 +49,10 @@ export class ListAlbums {
             });
     }
 
+    edit(album: IAlbum) {
+        this.router.navigate(`/admin/createAlbum/${album._id}`);
+    }
+
     toggleActivateState(album: IAlbum) {
         this.albumsService.toggleActivateState(album)
             .subscribe(() => {
