@@ -53,27 +53,36 @@ export class PhotosService {
             });
     }
 
-    getPhotos(force? : boolean) : Rx.Observable<any> {
+    getPhotos(force: boolean = false, showHidden: boolean = false) : Rx.Observable<any> {
 
         if (!force && this.photos && this.photos.length > 0) {
             return Rx.Observable.create((observer) => {
-                observer.onNext(this.photos);
+
+                let results = this.photos;
+
+                if (!showHidden) {
+                    results = this.photos.filter(item => {
+                        return item.isActive;
+                    });
+                }
+
+                observer.onNext(results);
                 observer.onCompleted();
             });
         }
 
         this.photos = [];
 
-        return this.loadMore(1);
+        return this.loadMore(1, showHidden);
     }
 
-    loadMore(page: number): Rx.Observable<any> {
+    loadMore(page: number, showHidden: boolean = false): Rx.Observable<any> {
 
         let url;
 
         this.page = page || this.page + 1;
 
-        url = `${PHOTOS}?per_page=${this.perPage}&page=${this.page}`;
+        url = `${PHOTOS}?per_page=${this.perPage}&page=${this.page}&show_hidden=${showHidden}`;
 
         return this.http.get(url)
             .toRx()

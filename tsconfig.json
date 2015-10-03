@@ -62,7 +62,6 @@
         "./app/services/setups.ts",
         "./app/services/tags.ts",
         "./app/typings/_custom.d.ts",
-        "./app/typings/ng2_test.d.ts",
         "./tsd_typings/jasmine/jasmine.d.ts",
         "./tsd_typings/jquery/jquery.d.ts",
         "./tsd_typings/moment/moment-node.d.ts",

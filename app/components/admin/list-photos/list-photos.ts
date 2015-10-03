@@ -33,11 +33,11 @@ export class ListPhotos {
         private photosService: PhotosService,
         private router: Router
     ) {
-        this.get(false);
+        this.get();
     }
 
-    get(force? : boolean) {
-        this.photosService.getPhotos(force)
+    get() {
+        this.photosService.getPhotos(true, true)
             .subscribe(result => {
                 this.photos = result;
             });
@@ -59,7 +59,7 @@ export class ListPhotos {
 
         this.photosService.delete(photo)
             .subscribe(() => {
-                this.get(true);
+                this.get();
             });
     }
 
@@ -67,7 +67,7 @@ export class ListPhotos {
 
         this.photosService.toggleActivateState(photo)
             .subscribe(() => {
-                this.get(true);
+                this.get();
             });
     }
 }

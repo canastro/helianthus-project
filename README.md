@@ -78,7 +78,6 @@
 
     - Gallery
         - Layout: the browsing of photos (group/filter by category/tag/name/setup)
-        - FE/BE: Show only active photos
         - Fix scroll for load more
 
     - Photo:
