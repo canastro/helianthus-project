@@ -1,7 +1,8 @@
 node_modules
-public
 typings
-src/**/*.js
+dist
+app/**/*.js
+!app/system.config.js
 build
 maps
 npm-debug.log
