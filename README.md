@@ -90,16 +90,14 @@
 
     - Inline-Comments:
         - Show form on different position accordingly with available space
-        - Add close icon on top left corner
 
     - Photography-Setups:
         - FE: Edit view
         - BE: PUT route
 
     - Album
-        - BE: Create Routes to DELETE
-        - FE: Admin: List view
-        - FE: Admin: Create / Update view
+        - BE: PUT route
+        - FE: Admin: Update view
         - FE: Client: List view
         - FE: Client: Browse photos of a album
 

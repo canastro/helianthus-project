@@ -89,6 +89,10 @@ export class Photo {
         this.tempMessage = $event;
     }
 
+    onClose() {
+        this.isCommenting = false;
+    }
+
     tagAdded(tag) {
         this.figureTags.push(tag);
         this.isCommenting = false;

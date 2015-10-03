@@ -24,7 +24,8 @@ import {
         '(onMouseDown)': 'onMouseDown($event)'
     },
     events: [
-        'onMessageSubmited'
+        'onMessageSubmited',
+        'onClose'
     ]
 })
 
@@ -38,6 +39,7 @@ export class FigureTagForm {
     $container: JQuery;
     charactersLeft: number = 140;
     onMessageSubmited = new EventEmitter();
+    onClose = new EventEmitter();
     figureTagForm: ControlGroup;
 
     private maxLength: number = 140;
@@ -65,6 +67,10 @@ export class FigureTagForm {
 
         this.figureTagForm.controls['name'].updateValue('');
         this.figureTagForm.controls['message'].updateValue('');
+    }
+
+    close() {
+        this.onClose.next(null);
     }
 
     onMouseDown($event) {
