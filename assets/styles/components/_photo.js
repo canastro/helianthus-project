@@ -1,0 +1,3 @@
+.inline-comment {
+    positon: absolute;
+}
