@@ -55,12 +55,17 @@ export class ListPhotos {
         this.router.navigate(`/admin/createPhoto/${photo._id}`);
     }
 
-    delete($event, photo: IPhoto) {
-
-        $event.preventDefault();
-        $event.stopPropagation();
+    delete(photo: IPhoto) {
 
         this.photosService.delete(photo)
+            .subscribe(() => {
+                this.get(true);
+            });
+    }
+
+    toggleActivateState(photo: IPhoto) {
+
+        this.photosService.toggleActivateState(photo)
             .subscribe(() => {
                 this.get(true);
             });

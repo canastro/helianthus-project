@@ -15,4 +15,5 @@ export interface IPhoto {
     category?: ICategory;
     setup?: ISetup;
     tags?: Array<ITag>;
+    isActive: Boolean;
 };

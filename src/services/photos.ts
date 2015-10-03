@@ -143,4 +143,16 @@ export class PhotosService {
         )
         .toRx();
     }
+
+    toggleActivateState(photo: IPhoto): Rx.Observable<any> {
+
+        let url = `${ADMIN_PHOTOS}/${photo._id}/toggleActivateState`;
+        let options = {
+            headers: new Headers()
+        };
+        options.headers.append('x-access-token', this.authService.getToken());
+        options.headers.append('Content-Type', 'application/json');
+
+        return this.http.put(url, null, options).toRx();
+    }
 }

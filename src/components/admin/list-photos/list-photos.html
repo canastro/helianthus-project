@@ -3,18 +3,23 @@
     <div class="admin-list-wrapper">
 
         <div class="row row-header">
+            <div class="col-md-1">Status</div>
             <div class="col-md-3">Photo</div>
-            <div class="col-md-7">Details</div>
+            <div class="col-md-6">Details</div>
             <div class="col-md-1">Actions</div>
         </div>
 
-        <div class="row photo-row" *ng-for="#photo of photos" (click)="selectPhoto(photo)">
+        <div class="row" *ng-for="#photo of photos">
+
+            <div class="col-md-1 state-col">
+                <div class="state" [class.state-active]="photo.isActive" [class.state-inactive]="!photo.isActive"></div>
+            </div>
 
             <div class="col-md-3 photo-col">
         		<img class="admin-thumbnail" [src]="'/static/' + photo.name" [alt]="photo.title"/>
         	</div>
 
-            <div class="col-md-7 photo-details">
+            <div class="col-md-6 photo-details">
                 <ul>
                     <li>
                         <span class="row-title">Title:</span>
@@ -45,9 +50,19 @@
                 </ul>
             </div>
             <div class="col-md-1 col-actions">
-                <button type="button" class="btn btn-danger" (click)="delete($event, photo)">
+
+                <div class="admin-action-button" (click)="selectPhoto(photo)"">
+                    <i class="fa fa-pencil"></i>
+                </div>
+
+                <div class="admin-action-button" (click)="toggleActivateState(photo)">
+                    <i class="fa" [class.fa-toggle-off]="!photo.isActive" [class.fa-toggle-on]="photo.isActive"></i>
+                </div>
+
+                <div class="admin-action-button" (click)="delete(photo)">
                     <i class="fa fa-times"></i>
-                </button>
+                </div>
+
             </div>
         </div>
     </div>
