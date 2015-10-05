@@ -18,6 +18,7 @@
         "./app/components/about/index/index.ts",
         "./app/components/admin/album/create-album/create-album.ts",
         "./app/components/admin/album/list-albums/list-albums.ts",
+        "./app/components/admin/album/photos-thumbnails/photos-thumbnails.ts",
         "./app/components/admin/auth/auth.ts",
         "./app/components/admin/category/create-category/create-category.ts",
         "./app/components/admin/category/list-categories/list-categories.ts",

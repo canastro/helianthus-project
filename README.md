@@ -73,8 +73,7 @@
         - API: Add eslintrc and jscs
         - API: Add unit-tests (this should have been done with TDD :(  )
         - FE: Add unit tests
-        - FE: Reestructure files into a different organization... components folder is too vague
-        -
+        - Build: add back watcher and livereload
 
     - Gallery
         - Layout: the browsing of photos (group/filter by category/tag/name/setup)

@@ -54,7 +54,10 @@ export class SideNav {
                 path: '/admin/listAlbums'
             }, {
                 name: 'Create',
-                path: '/admin/createAlbum'
+                path: '/admin/createAlbum',
+                params: {
+                    id: null
+                }
             }],
             name: 'Album',
             isActive: false

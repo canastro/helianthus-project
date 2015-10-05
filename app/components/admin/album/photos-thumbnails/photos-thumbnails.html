@@ -1,0 +1,7 @@
+<ul class="photo-thumnails">
+    <li *ng-for="#photo of photos" class="photo-thumnails-item">
+        <div class="photo-thumnails-wrapper">
+            <img class="photo-thumnails-img" [src]="'/static/' + photo.name" [alt]="photo.title"/>
+        </div>
+    </li>
+</ul>

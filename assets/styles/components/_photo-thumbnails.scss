@@ -1,0 +1,34 @@
+.photo-thumnails {
+
+    height: 400px;
+    width: 25%;
+    overflow: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    padding: 10px 0;
+    flex-wrap: wrap;
+
+    .photo-thumnails-item {
+        width: 50%;
+        margin: auto;
+        height: 80px;
+        text-align: center;
+        padding: 4px;
+    }
+
+    .photo-thumnails-wrapper {
+        cursor: pointer;
+        height: 100%;
+        padding: 4px;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: #ccc;
+        }
+    }
+
+    .photo-thumnails-img {
+        height: 100%;
+    }
+}

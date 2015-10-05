@@ -9,6 +9,9 @@ import {
 
 import {RouteParams} from 'angular2/router';
 import {AlbumsService} from '../../../../services/albums';
+import {PhotosService} from '../../../../services/photos';
+import {PhotosThumbnails} from '../photos-thumbnails/photos-thumbnails';
+import {IPhoto} from '../../../../interfaces/photo';
 
 enum Mode {
     EDIT,
@@ -24,20 +27,22 @@ enum Mode {
 })
 
 @View({
-    directives: [FORM_DIRECTIVES],
+    directives: [FORM_DIRECTIVES, PhotosThumbnails],
     templateUrl: 'components/admin/album/create-album/create-album.html'
 })
 
 // component controller
 export class CreateAlbum {
 
+    photos: Array<IPhoto>;
     albumForm: ControlGroup;
     mode: Mode = Mode.CREATE;
 
     constructor(
         params: RouteParams,
         private formBuilder: FormBuilder,
-        private albumsService: AlbumsService
+        private albumsService: AlbumsService,
+        private photosService: PhotosService
     ) {
 
         let albumId = params.get('id');
@@ -48,6 +53,11 @@ export class CreateAlbum {
             description: [''],
             story: ['']
         });
+
+        this.photosService.getPhotos(true, true)
+            .subscribe(result => {
+                this.photos = result;
+            });
 
         if (albumId) {
             this.mode = Mode.EDIT;
