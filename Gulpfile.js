@@ -72,7 +72,6 @@ gulp.task('postinstall', function (done) {
   runSequence(['clean', 'clean.test'], 'install.typings', done);
 });
 
-
 // --------------
 // Serve dev.
 // gulp.task('serve.dev', ['build.dev', 'livereload'], tasks('serve.dev'));
@@ -80,14 +79,12 @@ gulp.task('postinstall', function (done) {
 // starts web server
 gulp.task('serve.dev', ['build.dev'], tasks('serve.dev'));
 
-// --------------
-// Serve prod.
+gulp.task('default', function (done) {
+    runSequence('serve.dev', 'watch', done);
+});
 
-// To be implemented (https://github.com/mgechev/angular2-seed/issues/58)
-
-
-// --------------
-// Livereload.
-gulp.task('livereload', function() {
-    utils.livereload();
+// watcher
+gulp.task('watch', function () {
+    gulp.watch(['app/**/**.ts'], ['build.js.dev']);
+	gulp.watch(['assets/**/*.scss'], ['build.sass.dev']);
 });
